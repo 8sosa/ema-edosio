@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
@@ -15,7 +19,7 @@ export async function POST(req: Request) {
       data: { title, synopsis },
     });
     return NextResponse.json({ film });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: "Failed to create film" }, { status: 500 });
   }
 }

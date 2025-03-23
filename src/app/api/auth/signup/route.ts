@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
@@ -27,7 +30,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ message: "User created successfully", user: newUser });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: "Error creating user" }, { status: 500 });
   }
 }

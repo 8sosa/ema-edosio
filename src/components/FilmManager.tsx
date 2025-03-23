@@ -49,8 +49,12 @@ export default function FilmManager() {
       setFilms((prev) => [...prev, data.film]);
       setTitle("");
       setSynopsis("");
-    } catch (error: any) {
-      setErrorMsg(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrorMsg(error.message);
+      } else {
+        setErrorMsg("An unknown error occurred");
+      }
     }
     setLoading(false);
   };

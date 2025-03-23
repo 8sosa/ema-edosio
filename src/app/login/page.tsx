@@ -58,7 +58,7 @@ export default function LoginPage() {
       </form>
       {errorMsg && <p className="text-red-500 mt-4">{errorMsg}</p>}
       <p className="mt-4">
-        Don't have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link href="/signup" className="text-blue-600 underline">
           Sign up here.
         </Link>
