@@ -2,50 +2,106 @@
     display: flex;
     flex-direction: row;
     gap: 5rem;
-}
-.filmHeroPoster {
+    padding: 2rem;
+  }
+  .filmHeroPoster {
     width: 40%;
-}
-.filmHeroDetail {
+  }
+  
+  .filmHeroDetail {
     width: 50%;
     height: 50rem;
-    overflow: scroll;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 4rem;
-}
-.filmHeroImage {
+  }
+  
+  .filmHeroImage {
     width: 100%;
-}
-.filmHeroTitle {
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .filmHeroTitle {
     font-size: 7rem;
-    margin-bottom: .1rem;
+    margin-bottom: 0.1rem;
     text-transform: uppercase;
     font-weight: 800;
     text-align: center;
-}
-.filmHeroDate {
+  }
+  
+  .filmHeroDate {
     font-size: 2.5rem;
     margin-bottom: 2rem;
     font-weight: 300;
-}
-.filmHeroText {
+  }
+  
+  .filmHeroText {
     font-size: 1.7rem;
     margin-bottom: 2rem;
     font-weight: 100;
     text-align: justify;
     color: darkgray;
-}
-.filmHighlight {
+  }
+  
+  .filmHighlight {
     background-color: black;
     height: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.filmHighlightText {
+  }
+  
+  .filmHighlightText {
     font-size: 1.5rem;
     font-weight: 100;
-}
+  }
+  
+  /* For smaller screens, stack the sections vertically */
+  @media (max-width: 768px) {
+    .filmHero {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .filmHeroPoster,
+    .filmHeroDetail {
+      width: 100%;
+    }
+    .filmHeroDetail {
+      height: auto;
+      padding: 1rem;
+    }
+    .filmHeroTitle {
+      font-size: 4rem;
+    }
+    .filmHeroDate {
+      font-size: 2rem;
+    }
+    .filmHeroText {
+      font-size: 1.4rem;
+    }
+    .filmHighlight {
+        padding: 0rem 2rem;
+    }
+  }
+  
+  /* For very small screens, adjust further */
+  @media (max-width: 480px) {
+    .filmHero {
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .filmHeroTitle {
+      font-size: 3rem;
+    }
+    .filmHeroDate {
+      font-size: 1.8rem;
+    }
+    .filmHeroText {
+      font-size: 1.2rem;
+    }
+  }
+  
