@@ -1,0 +1,117 @@
+{
+    "films": [
+      {
+        "title": "When Nigeria Happens",
+        "releaseYear": 2025,
+        "synopsis": "In a city where survival is an art, a young dancer fights to reclaim her dreams after an unexpected tragedy threatens her future. When Nigeria Happens is a bold, visually stunning contemporary dance film that explores love, identity, and resilience in the face of chaos.",
+        "highlights": "Nigeria’s first contemporary dance film, made in collaboration with Qudus Onikeku.",
+        "extendedSynopsis": "In the heart of Lagos, When Nigeria Happens follows Fagbo and Poco, two young dancers bound by love, passion, and a shared dream of making it in the world of dance. Living in a vibrant but struggling commune, they fight to carve out a space where art is enough to sustain them. But when unexpected life challenges arise, they are forced to confront harsh realities that threaten their dreams and test their relationship. Caught between survival and ambition, love and duty, they must make choices that will shape the course of their lives forever. A raw and visually stunning contemporary dance drama, When Nigeria Happens is a powerful exploration of youth, resilience, and the delicate balance between chasing dreams and facing reality.",
+        "details": {
+          "genre": "Dance, Drama",
+          "director": "Ema Edosio Deelen",
+          "behindTheScenes": {
+            "setPhotos": "Explore Behind the Scenes URL",
+            "interviews": "Explore Behind the Scenes URL",
+            "directorsVision": "Explore Behind the Scenes URL"
+          },
+          "cast": [
+            { "role": "Fagbo", "actor": "Name" },
+            { "role": "Pokko", "actor": "Name" }
+          ]
+        },
+        "posters": [
+            "/images/WNH/poster.jpeg",
+            "/images/WNH/poster1.jpeg",
+            "/images/WNH/poster2.jpeg"
+        ],
+        "stills": [
+            "/images/WNH/still.jpeg",
+            "/images/WNH/still1.jpeg",
+            "/images/WNH/still2.jpeg"
+        ]
+      },
+      {
+        "title": "Otiti",
+        "releaseYear": 2022,
+        "synopsis": "Otiti, a skilled fashion designer, has built her life away from her estranged father. But when his health declines, she is forced to confront old wounds and unearth a past she tried to forget. Otiti is a deeply emotional journey of self-discovery, forgiveness, and family ties.",
+        "highlights": "Premiered at major international film festivals, including the Brazil International Film Festival.",
+        "extendedSynopsis": "Otiti tells the compelling story of a reserved seamstress on the brink of a personal and professional breakthrough. As she prepares for an upcoming fashion show, her life takes an unexpected turn when she discovers her connection to a wealthy family she never knew. This revelation thrusts her into a world of familial tensions and hidden agendas, challenging her perceptions of identity, loyalty, and ambition.​",
+        "details": {
+          "genre": "Drama",
+          "director": "Ema Edosio Deelen",
+          "behindTheScenes": {
+            "setPhotos": "Explore Behind the Scenes URL",
+            "interviews": "Explore Behind the Scenes URL",
+            "directorsVision": "Explore Behind the Scenes URL"
+          },
+          "cast": [
+            { "role": "Otiti", "actor": "Gina Castel" },
+            { "role": "Amaka", "actor": "Emem Isaac" },
+            { "role": "Ijeoma", "actor": "Mary Agholor" },
+            { "role": "Woman", "actor": "Tessy Brown" },
+            { "role": "Registration Officer", "actor": "Casmir Chibuike" },
+            { "role": "Odion", "actor": "Charles Etubiebi" },
+            { "role": "Lambert", "actor": "Tunde Daniels" },
+            { "role": "Aunty Onome", "actor": "Yinka Davies" },
+            { "role": "Tega", "actor": "Chimezie Imo" },
+            { "role": "Ejiro", "actor": "Obi Maduegbuna" },
+            { "role": "Omonigbo", "actor": "Toyin Oshinaike" }
+          ]
+        },
+        "posters": [
+            "/images/OTITI/poster.jpg",
+            "/images/OTITI/poster1.jpg",
+            "/images/OTITI/poster2.jpg"
+        ],
+        "stills": [
+            "/images/OTITI/still.jpg",
+            "/images/OTITI/still1.jpg",
+            "/images/OTITI/still2.jpg"
+        ]
+      },
+      {
+        "title": "Kasala!",
+        "releaseYear": 2018,
+        "synopsis": "Four reckless teenagers 'borrow' a car for a joyride in Lagos—only for it to get wrecked. With just 24 hours to fix the mess before the owner returns, they embark on a chaotic adventure through the city, dodging trouble at every turn. Kasala! is a high-energy, hilarious, and raw coming-of-age dramedy.",
+        "highlights": "Screened at over 30 international festivals and praised for its fresh, dynamic storytelling.",
+        "extendedSynopsis": "Kasala! follows the misadventures of four young friends in Lagos who, after crashing a borrowed car, have only five hours to raise the money needed for repairs before the owner returns. Their frantic quest leads them through a series of comedic and challenging situations, offering a vibrant portrayal of youth and resilience in the bustling city.",
+        "details": {
+          "genre": "Comedy, Drama",
+          "director": "Ema Edosio Deelen",
+          "behindTheScenes": {
+            "setPhotos": "Explore Behind the Scenes URL",
+            "interviews": "Explore Behind the Scenes URL",
+            "directorsVision": "Explore Behind the Scenes URL"
+          },
+          "cast": [
+            { "role": "Chikodi", "actor": "Mike Afolarin" },
+            { "role": "Fathia", "actor": "Gabriel Afolayan" },
+            { "role": "Bully", "actor": "Abayomi Alvin" },
+            { "role": "Emem", "actor": "Judith Audu" },
+            { "role": "Bully 2", "actor": "Iyele Chibueze" },
+            { "role": "Neighbour", "actor": "Adenipekun Harmony" },
+            { "role": "Abraham", "actor": "Chimezie Imo" },
+            { "role": "Brother Taju", "actor": "Abiodun Kassim" },
+            { "role": "Big Boss", "actor": "Jide Kosoko" },
+            { "role": "T.J.", "actor": "Emeka Nwagbaraocha" },
+            { "role": "Bambi", "actor": "Sambasa Nzeribe" },
+            { "role": "Egbon", "actor": "Phill Okafor" },
+            { "role": "Shalewa", "actor": "Pelumi Sharayi" },
+            { "role": "Mechanic", "actor": "Kolade Shasi" },
+            { "role": "Effiong", "actor": "Tomiwa Tegbe" }
+          ]
+        },
+        "posters": [
+            "/images/KASALA/poster.jpg",
+            "/images/KASALA/poster1.jpg",
+            "/images/KASALA/poster2.jpg"
+        ],
+        "stills": [
+            "/images/ph.png",
+            "/images/ph.png",
+            "/images/ph.png"
+        ]
+      }
+    ]
+  }
+  

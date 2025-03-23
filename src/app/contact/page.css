@@ -1,0 +1,52 @@
+.contactPage {
+    background-color: #000;
+    margin: auto;
+    padding: 5rem;
+    width: 80%;
+}
+.contactH2 {
+    font-size: 6rem;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+.contactP {
+    font-size: 1rem;
+    font-weight: 100;
+    align-self: flex-start;
+    margin-left: 2rem;
+}
+.contactFormRow{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
+.contactFormRow div{
+    width: 100%;
+}
+.contactFormLabel{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+.inputLine{
+    width: 100%;
+    margin-top: 1rem;
+    border-bottom: 2px solid #fff;
+    outline: none;
+}
+.contactSendBtn {
+    background-color: #fff;
+    color: #000;
+    padding: 1rem 2rem;
+    border: 1px solid rgb(147, 181, 237);
+    border-radius: 2rem;
+    transition: background-color 0.8s ease;
+}
+.contactSendBtn:hover {
+    background-color: rgb(182, 210, 254);
+    border: 1px solid #fff;
+    outline: none;
+}

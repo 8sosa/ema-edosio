@@ -1,0 +1,51 @@
+.filmHero {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}
+.filmHeroPoster {
+    width: 40%;
+}
+.filmHeroDetail {
+    width: 50%;
+    height: 50rem;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+}
+.filmHeroImage {
+    width: 100%;
+}
+.filmHeroTitle {
+    font-size: 7rem;
+    margin-bottom: .1rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-align: center;
+}
+.filmHeroDate {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+.filmHeroText {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+    font-weight: 100;
+    text-align: justify;
+    color: darkgray;
+}
+.filmHighlight {
+    background-color: black;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.filmHighlightText {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
