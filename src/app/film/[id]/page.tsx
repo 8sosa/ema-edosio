@@ -21,26 +21,41 @@ export default function FilmDetailPage() {
 
   return (
     <>
-      <section className='filmHero'>
-        <div className='filmHeroPoster'>
-          {film.posters && film.posters.length > 0 && (
-            <Image
-              src={film.posters[0]}
-              alt={`${film.title} Poster`}
-              width={300}
-              height={450}
-              className="filmHeroImage"
-            />
-          )}
+      <section className="hero bg-gray-900">
+        <Image 
+          src={film.stills[0]}
+          alt={`${film.title} Poster`}
+          width={300}
+          height={450}
+          className='heroBg'
+        />
+        <div className="container">
+          <div className="filmDetails">
+            <p className="accent altMont">A Film by Ema Edosio Deelen</p>
+            <h2 className="mont">{film.title}</h2>
+            <p className="desc altMont">{film.synopsis}</p>
+            <div className="heroBtn-group">
+              <a href="#trailer" className="Trailerbtn">Trailer</a>
+              <a href="#trailer" className="WatchNowbtn">Watch Now</a>
+            </div>
+          </div>
+          <div className="homeAboutFilm">
+            <h3 className="homeAboutFilmTitle altMont">About the Film</h3>
+            <p className="homeAboutFilmText mont">
+              {film.extendedSynopsis}
+            </p>
+            <div className="heroBtn-group1">
+              <a href="#trailer" className="Trailerbtn">More Info</a>
+              <a href="#trailer" className="WatchNowbtn">Buy Tickets</a>
+            </div>
+            <div className="homeAboutFilm">
+              <h3 className="homeAboutFilmTitle altMont">Awards & Accolades</h3>
+              <p className="homeAboutFilmText mont">
+                {film.highlights}
+              </p>
+            </div>
+          </div>
         </div>
-        <div className='filmHeroDetail'>
-          <h1 className='filmHeroTitle altMont'>{film.title}</h1>
-          <h3 className='filmHeroDate mont'>{film.releaseYear}</h3>
-          <p className='filmHeroText mont'>{film.extendedSynopsis}</p>
-        </div>
-      </section>
-      <section className='filmHighlight'>
-        <p className='filmHighlightText sans'>{film.highlights}</p>
       </section>
     </>
 

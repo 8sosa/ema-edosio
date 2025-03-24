@@ -5,14 +5,13 @@ import Link from "next/link";
 
 export default function Header() {
   // const { data: session } = useSession();
-
   return (
-    <header className="navBar text-white p-4">
-      <nav className="container mx-auto flex justify-between items-center">
-        <div className="text-xl font-bold">
+    <header>
+      <nav className="navbar ">
+        <div className="logo">
           <Link href="/">Ema Edosio</Link>
         </div>
-        <div className="space-x-4">
+        <div className="nav-links">
           <Link href="/about" className="hover:underline">About</Link>
           <Link href="/filmography" className="hover:underline">Filmography</Link>
           {/* <Link href="/events" className="hover:underline">Events</Link>

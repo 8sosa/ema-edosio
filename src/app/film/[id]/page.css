@@ -1,107 +1,226 @@
-.filmHero {
-    display: flex;
-    flex-direction: row;
-    gap: 5rem;
+/* Hero Section */
+.hero {
+  position: relative;
+  background-attachment: fixed;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: #fff;
+  text-align: center;
+  overflow: hidden; /* Prevents the absolutely positioned image from causing overflow */
+}
+
+/* Make the Image fill the hero and sit behind content */
+.heroBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Overlay to darken the image */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* Ensure content is on top */
+.hero .container {
+  position: relative;
+  z-index: 3;
+  overflow: auto;
+}
+
+/* Film Details */
+.filmDetails {
+  margin-top: 5rem;
+  width: 50%;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: start;
+  text-align: left;
+}
+
+.hero h2 {
+  font-size: 5rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.accent {
+  font-size: 1.5rem;
+  font-weight: 200;
+  align-self: flex-start;
+}
+
+.desc {
+  font-size: 1.7rem;
+  font-weight: 300;
+  width: 60%;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+}
+
+.WatchNowbtn, .Trailerbtn {
+  max-width: 15rem;
+}
+
+.WatchNowbtn {
+  background-color: #ffeaeb;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 3rem;
+  padding: 1rem 2rem;
+  transition: background-color 0.6s ease;
+}
+
+.WatchNowbtn:hover {
+  background-color: #c40710;
+  color: #000;
+}
+
+.Trailerbtn {
+  padding: 1rem 2rem;
+  background-color: #f3f3f32b;
+  border: 2px solid #000;
+  color: #fff;
+  border-radius: 3rem;
+  transition: background-color 0.6s ease;
+}
+
+.Trailerbtn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.heroBtn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 60%;
+  align-self: flex-start;
+}
+
+.homeAboutFilm {
+  background-color: transparent;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 2rem;
+}  
+
+.homeAboutFilmTitle {
+  font-size: 4rem;
+  text-align: right;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.homeAboutFilmText {
+  font-size: 2rem;
+  font-weight: 300;
+  width: 60%;
+  text-align: right;
+}
+
+.heroBtn-group1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 60%;
+  align-self: flex-end;
+  margin-bottom: 3rem;
+}
+
+/* Responsive adjustments for tablets and small devices */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
     padding: 2rem;
   }
-  .filmHeroPoster {
-    width: 40%;
+  .hero h2 {
+    margin: 4rem 0rem;
   }
-  
-  .filmHeroDetail {
-    width: 50%;
-    height: 50rem;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4rem;
-  }
-  
-  .filmHeroImage {
+  .filmDetails {
     width: 100%;
+    margin: 5rem 0rem;
     height: auto;
-    object-fit: cover;
+    text-align: center;
+    align-items: center;
   }
-  
-  .filmHeroTitle {
-    font-size: 7rem;
-    margin-bottom: 0.1rem;
-    text-transform: uppercase;
-    font-weight: 800;
+  .desc {
+    width: 100%;
+  }
+  .heroBtn-group,
+  .heroBtn-group1 {
+    width: 100%;
+  }
+  .homeAboutFilm {
+    padding: 2rem;
+    align-items: center;
     text-align: center;
   }
-  
-  .filmHeroDate {
+  .homeAboutFilmTitle {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
-    font-weight: 300;
   }
-  
-  .filmHeroText {
-    font-size: 1.7rem;
-    margin-bottom: 2rem;
-    font-weight: 100;
-    text-align: justify;
-    color: darkgray;
-  }
-  
-  .filmHighlight {
-    background-color: black;
-    height: 25rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .filmHighlightText {
+  .homeAboutFilmText {
     font-size: 1.5rem;
-    font-weight: 100;
+    width: 100%;
+    text-align: center;
   }
-  
-  /* For smaller screens, stack the sections vertically */
-  @media (max-width: 768px) {
-    .filmHero {
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .filmHeroPoster,
-    .filmHeroDetail {
-      width: 100%;
-    }
-    .filmHeroDetail {
-      height: auto;
-      padding: 1rem;
-    }
-    .filmHeroTitle {
-      font-size: 4rem;
-    }
-    .filmHeroDate {
-      font-size: 2rem;
-    }
-    .filmHeroText {
-      font-size: 1.4rem;
-    }
-    .filmHighlight {
-        padding: 0rem 2rem;
-    }
+}
+
+/* Additional adjustments specifically for phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 1rem;
   }
-  
-  /* For very small screens, adjust further */
-  @media (max-width: 480px) {
-    .filmHero {
-      gap: 1.5rem;
-      padding: 1rem;
-    }
-    .filmHeroTitle {
-      font-size: 3rem;
-    }
-    .filmHeroDate {
-      font-size: 1.8rem;
-    }
-    .filmHeroText {
-      font-size: 1.2rem;
-    }
+  .filmDetails {
+    margin-top: 5rem;
+    padding: 0 1rem;
+    margin-bottom: 5rem;
   }
-  
+  .hero h2 {
+    font-size: 4.5rem;
+    margin: 3rem 0rem;
+  }
+  .accent {
+    font-size: 0.8rem;
+  }
+  .desc {
+    font-size: 1.2rem;
+  }
+  .homeAboutFilmTitle {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .homeAboutFilmText {
+    font-size: 1.2rem;
+  }
+  .heroBtn-group, 
+  .heroBtn-group1 {
+    gap: 1rem;
+  }
+  .Trailerbtn, .WatchNowbtn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    min-width: 10rem;
+  }
+}

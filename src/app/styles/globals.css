@@ -35,8 +35,56 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-.navBar {
-  background-color: #0a0a0a;
+/* Navigation Bar */
+header {
+  background-color: #00000065;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links Link a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ffca28; /* Example hover color */
+}
+
+.nav-btn {
+  background-color: #fff;
+  color: #000;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #ffca28;
+  color: #000;
 }
 .siteBody {
   width: 100%;
@@ -45,203 +93,160 @@ body {
   align-self: center;
   background-color: #000;
 }
-
-  
-  /* Hero Section */
- /* Base styles remain as before */
 .hero {
-  position: relative;
-  background: url('../../images/home.jpg') no-repeat center center/cover;
-  background-attachment: fixed;
-  width: 100%;
-  height: 90vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 5rem;
+  flex-wrap: wrap; /* allows stacking on smaller screens */
+  background-color: #000;
   color: #fff;
-  text-align: center;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-.hero .container {
-  position: relative;
-  z-index: 2;
-  overflow: scroll;
-}
-.filmDetails {
-  margin-top: 10rem;
-  width: 50%;
-  height: 50rem;
+
+.hero-content {
+  flex: 1 1 500px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-self: start;
-  text-align: left;
+  justify-content: center;
 }
-.hero h2 {
-  font-size: 5rem;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  font-weight: 800;
-}
-.accent {
-  font-size: 1.5rem;
-  font-weight: 200;
-  align-self: flex-start;
-}
-.desc {
-  font-size: 1.7rem;
-  font-weight: 300;
-  width: 60%;
-  align-self: flex-start;
+
+.hero-subtitle {
+  font-size: 1rem;
+  letter-spacing: 1px;
   margin-bottom: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  opacity: 0.8;
 }
-.WatchNowbtn, .Trailerbtn{
-  max-width: 15rem;
+
+.hero-title {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
-.WatchNowbtn {
-  background-color: #ffeaeb;
-  color: #000;
-  border: 2px solid #000;
-  border-radius: 3rem;
-  padding: 1rem 2rem;
-  transition: background-color 0.6s ease;
+
+.hero-training {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
-.WatchNowbtn:hover {
-  background-color: #c40710;
-  color: #000;
+
+.hero-description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  line-height: 1.5;
 }
-.Trailerbtn {
-  padding: 1rem 2rem;
-  background-color: #f3f3f32b;
-  border: 2px solid #000;
-  color: #fff;
-  border-radius: 3rem;
-  transition: background-color 0.6s ease;
-}
-.Trailerbtn:hover {
+
+.cta-button {
   background-color: #fff;
   color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.heroBtn-group {
+
+.cta-button:hover {
+  background-color: #ffca28;
+  color: #000;
+}
+
+.hero-image {
+  flex: 1 1 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Testimonial Section */
+.testimonial {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 60%;
-  align-self: flex-start;
+  flex-wrap: wrap; /* for responsiveness */
+  min-height: 50vh;
+  background-color: #fdfdfd;
+  width: 100%;
 }
-.homeAboutFilm {
-  background-color: transparent;
-  padding: 5rem;
+
+.testimonial-image {
+  flex: 1 1;
+  overflow: hidden;
+  width: 35%;
+}
+
+.testimonial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-content {
+  flex: 1 1 500px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  gap: 2rem;
-}  
-.homeAboutFilmTitle {
-  font-size: 4rem;
-  text-align: right;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-.homeAboutFilmText{
-  font-size: 2rem;
-  font-weight: 300;
-  width: 60%;
-  text-align: right;
-}
-.heroBtn-group1 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 60%;
-  align-self: flex-end;
-  margin-bottom: 3rem;
+  justify-content: center;
+  padding: 2rem 3rem;
 }
 
-/* Responsive adjustments for tablets and small devices */
+.testimonial-quote {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  color: #202020d7;
+}
+
+.testimonial-author {
+  font-size: 3rem;
+  color: #666;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Responsive Media Queries */
 @media (max-width: 768px) {
-  .hero {
-    height: auto;
-    padding: 2rem;
+  .hero-title {
+    font-size: 3rem;
   }
-  .hero h2{
-    margin: 4rem 0rem;
+
+  .hero-training {
+    font-size: 1.5rem;
   }
-  .filmDetails {
-    width: 100%;
-    margin: 5rem 0rem;
-    height: auto;
-    text-align: center;
-    align-items: center;
+
+  .testimonial-quote {
+    font-size: 1.2rem;
   }
-  .desc {
-    width: 100%;
-  }
-  .heroBtn-group,
-  .heroBtn-group1 {
-    width: 100%;
-  }
-  .homeAboutFilm {
-    padding: 2rem;
-    align-items: center;
-    text-align: center;
-  }
-  .homeAboutFilmTitle {
+}
+
+@media (max-width: 480px) {
+  .hero-title {
     font-size: 2.5rem;
   }
-  .homeAboutFilmText {
-    font-size: 1.5rem;
-    width: 100%;
-    text-align: center;
-  }
-}
 
-/* Additional adjustments specifically for phones (max-width: 480px) */
-@media (max-width: 480px) {
-  .hero {
-    padding: 1rem;
-  }
-  .filmDetails {
-    margin-top: 5rem;
-    padding: 0 1rem;
-    margin-bottom: 5rem;
-  }
-  .hero h2 {
-    font-size: 4.5rem;
-    margin: 3rem 0rem;
-  }
-  .accent {
-    font-size: .8rem;
-  }
-  .desc {
+  .hero-training {
     font-size: 1.2rem;
   }
-  .homeAboutFilmTitle {
-    font-size: 2rem;
-    text-align: center;
-  }
-  .homeAboutFilmText {
-    font-size: 1.2rem;
-  }
-  .heroBtn-group, 
-  .heroBtn-group1 {
-    gap: 1rem;
-  }
-  .Trailerbtn, .WatchNowbtn {
-    padding: 0.8rem 1.2rem;
-    font-size: 0.9rem;
-    min-width: 10rem;
+
+  .hero-description {
+    font-size: 1rem;
   }
 }
