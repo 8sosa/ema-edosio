@@ -1,9 +1,9 @@
 import './page.css'
 import Image from "next/image";
-import ph from "../../images/ph.png";
 import Ema from "../../images/ema1.jpg"
 import Ema1 from "../../images/ema2.jpg"
 import Ema2 from "../../images/ema4.jpg"
+import Ema3 from "../../images/ema3.jpg";
 
 export default function AboutPage() {
   return (
@@ -59,7 +59,7 @@ export default function AboutPage() {
         <div>
           <div className="w-full mb-8">
             <Image
-              src={ph}
+              src={Ema3}
               alt="Equipment and cables"
               width={1200}
               height={800}
@@ -68,9 +68,11 @@ export default function AboutPage() {
           </div>
 
           {/* Closing Text */}
-          <p className="text-gray-700 text-lg md:text-xl mb-8">
-            Her films go beyond the surface, capturing the raw, real, and often overlooked narratives of everyday life. With a career spanning over a decade, she has carved a niche in the industry, creating films that speak to Nigerian audiences at home and in the diaspora while resonating with a global audience.
-          </p>
+          <div className="aboutSecondSectionText">
+            <p>
+              Her films go beyond the surface, capturing the raw, real, and often overlooked narratives of everyday life. With a career spanning over a decade, she has carved a niche in the industry, creating films that speak to Nigerian audiences at home and in the diaspora while resonating with a global audience.
+            </p>
+          </div>
         </div>
       </section>
     </main>
