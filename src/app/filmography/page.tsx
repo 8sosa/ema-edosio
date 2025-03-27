@@ -25,7 +25,7 @@ const FilmographyPage: FC = () => {
       <HeroCarousel />
 
       {/* CATEGORY BROWSE */}
-      {/* <section className="container mx-auto p-8">
+      <section className="container mx-auto p-8">
         <h2 className="text-3xl font-bold text-center mb-6">Browse Your Favourite Categories</h2>
         <div className="flex flex-wrap justify-center gap-4">
           {["Action", "Romance", "Thriller", "Comedy", "Drama", "Sci-Fi", "Mystery", "Crime"].map(
@@ -39,10 +39,10 @@ const FilmographyPage: FC = () => {
             )
           )}
         </div>
-      </section> */}
+      </section>
 
       {/* INFO CARDS */}
-      {/* <section className="container mx-auto p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="container mx-auto p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-gray-800 p-6 rounded">
           <h3 className="text-xl font-bold mb-2">Find Your Next Watch</h3>
           <p>
@@ -57,7 +57,7 @@ const FilmographyPage: FC = () => {
           <h3 className="text-xl font-bold mb-2">Join the Conversation</h3>
           <p>Keep track of your favourites and discuss with fellow movie lovers.</p>
         </div>
-      </section> */}
+      </section>
 
       {/* NEW IN / FILMOGRAPHY */}
       <section className="container mx-auto p-8" id="films">

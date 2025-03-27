@@ -48,12 +48,6 @@ export default function FilmDetailPage() {
               <a href="#trailer" className="Trailerbtn">More Info</a>
               <a href="#trailer" className="WatchNowbtn">Buy Tickets</a>
             </div>
-            <div className="homeAboutFilm">
-              <h3 className="homeAboutFilmTitle altMont">Awards & Accolades</h3>
-              <p className="homeAboutFilmText mont">
-                {film.highlights}
-              </p>
-            </div>
           </div>
         </div>
       </section>
