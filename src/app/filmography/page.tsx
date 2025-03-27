@@ -3,7 +3,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import HeroCarousel from '@/components/filmographyHeroCarousel'
+// import HeroCarousel from '@/components/filmographyHeroCarousel'
 
 import filmsData from "@/components/films.json";
 
