@@ -33,11 +33,11 @@ export default function HomePage() {
 
   // Use first film for the hero background stills
   const heroFilm = films[0];
-  const stills: string[] = heroFilm?.stills || [];
-  const randomizedStills = useMemo(
-    () => [...stills].sort(() => Math.random() - 0.5),
-    [stills]
-  );
+  const stills = useMemo(() => heroFilm?.stills || [], [heroFilm]);
+const randomizedStills = useMemo(() => {
+  return [...stills].sort(() => Math.random() - 0.5);
+}, [stills]);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentBackground = randomizedStills.length
     ? randomizedStills[currentIndex]
