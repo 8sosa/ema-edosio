@@ -22,7 +22,7 @@ const FilmographyPage: FC = () => {
   return (
     <main className="bg-black text-white min-h-screen">
       {/* HERO SECTION */}
-      <HeroCarousel />
+      {/* <HeroCarousel /> */}
 
       {/* CATEGORY BROWSE */}
       <section className="container mx-auto p-8">

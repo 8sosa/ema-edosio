@@ -223,6 +223,19 @@ footer {
   padding: 2rem;
 }
 
+/* style.css */
+
+/* Hide scrollbar for Chrome, Safari, Edge */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 768px) {
   .hero-title {
@@ -242,7 +255,9 @@ footer {
   .hero-title {
     font-size: 2.5rem;
   }
-
+  header {
+    background-color: #000000d3;
+  }
   .hero-training {
     font-size: 1.2rem;
   }
