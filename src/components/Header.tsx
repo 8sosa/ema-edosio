@@ -13,10 +13,10 @@ export default function Header() {
         {/* Desktop Nav (hidden on small screens) */}
         <nav className="hidden md:flex space-x-6">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About</NavLink>
           <NavLink href="/filmography">Watch More</NavLink>
           <NavLink href="/masterclass">Masterclass</NavLink>
           {/* <NavLink href="/merch">Merch</NavLink> */}
+          <NavLink href="/about">About</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </nav>
 

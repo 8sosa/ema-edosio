@@ -63,44 +63,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* FILM CATEGORIES */}
-      <section className="relative bg-black text-white min-h-screen w-full flex flex-col">
-        {/* Header Row */}
-        <div className="flex items-center justify-between px-6 py-4">
-          <h2 className="text-base md:text-lg lg:text-xl uppercase tracking-wide text-gray-400">
-            Our Latest Releases
-          </h2>
-          <a href="#" className="text-sm md:text-base text-orange-500 hover:underline">
-            Watch All
-          </a>
-        </div>
-        {/* Grid of Posters */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 px-8 py-5">
-          {films.map((film, index) => {
-            const slug = film.title.replace(/\s+/g, "-").toLowerCase();
-            return (
-              <Link
-                key={index}
-                href={`/film/${slug}`}
-                className="block bg-gray-800 rounded overflow-hidden hover:scale-105 transition-transform"
-              >
-                <div className="relative w-full aspect-[2/3]">
-                  {film.posters && film.posters.length > 0 && (
-                    <Image
-                      src={film.posters[0]}
-                      alt={`${film.title} Poster`}
-                      fill
-                      className="object-cover"
-                    />
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
+      
       {/* ABOUT Ema */}
       <section className="hero flex flex-col md:flex-row items-center justify-between bg-gray-900 text-white p-8 md:p-12 lg:p-16">
         <div className="hero-content max-w-lg space-y-4">
