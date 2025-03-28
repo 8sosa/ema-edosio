@@ -125,16 +125,16 @@ export default function Page() {
           {/* Testimonial 1 */}
           <div className="flex-1 bg-gray-800 p-6 rounded-lg">
             <p className="italic mb-4">
-              "MasterClass opened my eyes to new creative possibilities. 
-              The lessons are so in-depth!"
+            &quot;MasterClass opened my eyes to new creative possibilities. 
+              The lessons are so in-depth!&quot;
             </p>
             <p className="font-semibold">- Jane J.</p>
           </div>
           {/* Testimonial 2 */}
           <div className="flex-1 bg-gray-800 p-6 rounded-lg">
             <p className="italic mb-4">
-              "I've learned so much from the best in the business. 
-              It's like having a personal mentor on-demand."
+            &quot;I&apos;ve learned so much from the best in the business. 
+              It&apos;s like having a personal mentor on-demand.&quot;
             </p>
             <p className="font-semibold">- John D.</p>
           </div>

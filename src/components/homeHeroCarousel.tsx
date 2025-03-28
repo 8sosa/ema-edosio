@@ -3,22 +3,19 @@ import { useState, useEffect, useMemo } from "react";
 import filmsData from "./films.json";
 
 export default function HeroCarousel() {
-  // Pick a specific film, for example the first film in the list.
   const filmIndex = 0;
   const film = filmsData.films[filmIndex];
 
-  // Collect the stills for the specific film (or an empty array if undefined)
-  const stills: string[] = film?.stills || [];
+  // Memoize the stills array so that it only changes when `film` changes.
+  const stills = useMemo(() => film?.stills || [], [film]);
 
   // Randomize the stills
   const randomizedStills = useMemo(() => {
     return [...stills].sort(() => Math.random() - 0.5);
   }, [stills]);
 
-  // State to track the current index
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Cycle through stills with an interval
   useEffect(() => {
     if (!randomizedStills.length) return;
 
@@ -29,7 +26,6 @@ export default function HeroCarousel() {
     return () => clearInterval(intervalId);
   }, [randomizedStills]);
 
-  // Current background image
   const currentBackground = randomizedStills.length ? randomizedStills[currentIndex] : "";
 
   return (
