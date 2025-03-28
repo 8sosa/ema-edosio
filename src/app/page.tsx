@@ -3,11 +3,11 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Home from "../images/home.jpg";
-import FCarousel from "@/components/filmCarousel";
 import filmsData from "@/components/films.json";
 
 interface Film {
   title: string;
+  teaser: string;
   category: string;
   posters?: string[];
   synopsis?: string;
@@ -20,51 +20,29 @@ interface FilmsFile {
 
 export default function HomePage() {
   const { films } = filmsData as FilmsFile;
-
-  // Group films by category
-  const filmsByCategory = films.reduce<Record<string, Film[]>>((acc, film) => {
-    const cat = film.category || "Other";
-    if (!acc[cat]) {
-      acc[cat] = [];
-    }
-    acc[cat].push(film);
-    return acc;
-  }, {});
-
-  // Use first film for the hero background stills
   const heroFilm = films[0];
-  const stills = useMemo(() => heroFilm?.stills || [], [heroFilm]);
-const randomizedStills = useMemo(() => {
-  return [...stills].sort(() => Math.random() - 0.5);
-}, [stills]);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const currentBackground = randomizedStills.length
-    ? randomizedStills[currentIndex]
-    : "/images/ph.png";
-
-  // Cycle through stills every 3 seconds
-  useEffect(() => {
-    if (!randomizedStills.length) return;
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % randomizedStills.length);
-    }, 3000);
-    return () => clearInterval(intervalId);
-  }, [randomizedStills]);
-
-  // Generate a slug for the first film
   const heroSlug = heroFilm.title.replace(/\s+/g, "-").toLowerCase();
 
   return (
     <>
       {/* HERO SECTION */}
-      <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-700"
-          style={{ backgroundImage: `url(${currentBackground})` }}
-        >
+      <section className="relative w-full h-[100vh] md:h-[70vh] lg:h-[100vh] overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+          >
+            <source src={heroFilm.teaser} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900 opacity-70" />
         </div>
+        {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-start justify-end h-full p-8 md:p-12 lg:p-16">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2">
             {heroFilm.title}
@@ -88,34 +66,40 @@ const randomizedStills = useMemo(() => {
       </section>
 
       {/* FILM CATEGORIES */}
-      <section className="space-y-8 py-8 md:py-10 lg:py-12 px-4 md:px-6 lg:px-8">
-        {Object.entries(filmsByCategory).map(([category, filmsInCat]) => (
-          <div key={category} className="space-y-2">
-            <h2 className="text-xl md:text-2xl font-semibold capitalize">
-              {category}
-            </h2>
-            <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
-              {filmsInCat.map((film, idx) => (
-                <div
-                  key={idx}
-                  className="min-w-[150px] md:min-w-[180px] lg:min-w-[200px] flex-shrink-0"
-                >
-                  <div className="relative w-full h-40 md:h-52 lg:h-60 bg-gray-800 rounded overflow-hidden">
+      <section className="relative bg-black text-white min-h-screen w-full flex flex-col">
+        {/* Header Row */}
+        <div className="flex items-center justify-between px-6 py-4">
+          <h2 className="text-base md:text-lg lg:text-xl uppercase tracking-wide text-gray-400">
+            Our Latest Releases
+          </h2>
+          <a href="#" className="text-sm md:text-base text-orange-500 hover:underline">
+            Watch All
+          </a>
+        </div>
+        {/* Grid of Posters */}
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 px-8 py-5">
+          {films.map((film, index) => {
+            const slug = film.title.replace(/\s+/g, "-").toLowerCase();
+            return (
+              <Link
+                key={index}
+                href={`/film/${slug}`}
+                className="block bg-gray-800 rounded overflow-hidden hover:scale-105 transition-transform"
+              >
+                <div className="relative w-full aspect-[2/3]">
+                  {film.posters && film.posters.length > 0 && (
                     <Image
-                      src={film.posters?.[0] ?? "/images/ph.png"}
-                      alt={film.title}
+                      src={film.posters[0]}
+                      alt={`${film.title} Poster`}
                       fill
                       className="object-cover"
                     />
-                  </div>
-                  <p className="mt-2 text-sm md:text-base text-gray-200">
-                    {film.title}
-                  </p>
+                  )}
                 </div>
-              ))}
-            </div>
-          </div>
-        ))}
+              </Link>
+            );
+          })}
+        </div>
       </section>
 
       {/* ABOUT Ema */}
@@ -142,14 +126,6 @@ const randomizedStills = useMemo(() => {
         <div className="hero-image mt-6 md:mt-0 w-full md:w-1/2 relative h-64 md:h-96">
           <Image src={Home} alt="Woman in a metallic jacket" fill className="object-cover rounded" />
         </div>
-      </section>
-
-      {/* RELEASES */}
-      <section className="py-8 md:py-10 lg:py-12">
-        <h2 className="mb-4 text-3xl font-bold md:text-4xl text-center">
-          Releases Coming Soon
-        </h2>
-        <FCarousel />
       </section>
     </>
   );

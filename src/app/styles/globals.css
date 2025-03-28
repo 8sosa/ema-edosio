@@ -1,11 +1,11 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Montserrat:ital,wght@0,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --color-background: #ffffff;
   --color-foreground: #171717;
-  /* Add your font variables if needed */
 }
 
 .mont {
@@ -14,13 +14,14 @@
 .inter {
   font-family: "Inter", sans-serif;
 }
-.altMont{
+.altMont {
   font-family: "Montserrat Alternates", sans-serif;
 }
 .sans {
   font-family: "Work Sans", sans-serif;
   font-optical-sizing: auto;
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -35,13 +36,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 /* Navigation Bar */
 header {
-  background-color: #00000065;
+  background-color: transparent;
   color: #fff;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -51,25 +56,16 @@ header {
   padding: 1rem 2rem;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
 
-.nav-links Link a {
+.nav-links a {
   text-decoration: none;
   color: #fff;
   transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-  color: #ffca28; /* Example hover color */
+.nav-links a:hover {
+  color: #ffca28;
 }
 
 .nav-btn {
@@ -86,6 +82,7 @@ header {
   background-color: #ffca28;
   color: #000;
 }
+
 .siteBody {
   width: 100%;
   display: flex;
@@ -93,10 +90,15 @@ header {
   align-self: center;
   background-color: #000;
 }
+footer {
+  background-color: #000;
+}
+
+/* HERO Section */
 .hero {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* allows stacking on smaller screens */
+  flex-wrap: wrap;
   background-color: #000;
   color: #fff;
   min-height: 100vh;
@@ -145,7 +147,6 @@ header {
 .cta-button {
   background-color: #fff;
   color: #000;
-  border: none;
   padding: 1rem 2rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -171,98 +172,122 @@ header {
   object-fit: cover;
 }
 
-/* Testimonial Section */
-.testimonial {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; /* for responsiveness */
-  min-height: 50vh;
-  background-color: #fdfdfd;
-  width: 100%;
-}
-
-.testimonial-image {
-  flex: 1 1;
-  overflow: hidden;
-  width: 35%;
-}
-
-.testimonial-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.testimonial-content {
-  flex: 1 1 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 3rem;
-}
-
-.testimonial-quote {
-  font-size: 1.5rem;
-  font-style: italic;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-  color: #202020d7;
-}
-
-.testimonial-author {
-  font-size: 3rem;
-  color: #666;
-  font-weight: bold;
-}
-
-/* Footer */
-footer {
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  padding: 2rem;
-}
-
-/* style.css */
-
-/* Hide scrollbar for Chrome, Safari, Edge */
+/* Hide scrollbar for horizontal scrolling */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge, and Firefox */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 768px) {
+/* =========================
+   Responsive Breakpoints
+   ========================= */
+
+/* 425px – 767px */
+@media (min-width: 425px) and (max-width: 767px) {
+  .aboutFirstSection {
+    padding: 5rem;
+    height: 80vh;
+  }
+  .aboutFirstSection h1 {
+    font-size: 3rem;
+  }
+  .introText {
+    font-size: 1.5rem;
+    max-width: 35rem;
+  }
   .hero-title {
     font-size: 3rem;
   }
-
   .hero-training {
     font-size: 1.5rem;
   }
+  .hero-description {
+    font-size: 1rem;
+  }
+  .navLink {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  .navLinkActive {
+    color: #83bfcd;
+  }
+}
 
-  .testimonial-quote {
+/* 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .aboutFirstSection {
+    padding: 7rem;
+    height: 90vh;
+  }
+  .aboutFirstSection h1 {
+    font-size: 4rem;
+  }
+  .introText {
+    font-size: 2rem;
+    max-width: 40rem;
+  }
+  .hero-title {
+    font-size: 4rem;
+  }
+  .hero-training {
+    font-size: 2rem;
+  }
+  .hero-description {
+    font-size: 1.1rem;
+  }
+}
+
+/* 1024px – 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .aboutFirstSection {
+    padding: 10rem;
+    height: 100vh;
+  }
+  .aboutFirstSection h1 {
+    font-size: 5rem;
+  }
+  .introText {
+    font-size: 2rem;
+    max-width: 50rem;
+  }
+  .hero-title {
+    font-size: 4.5rem;
+  }
+  .hero-training {
+    font-size: 2rem;
+  }
+  .hero-description {
     font-size: 1.2rem;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.5rem;
+/* 1440px and up */
+@media (min-width: 1440px) {
+  .aboutFirstSection {
+    padding: 12rem;
+    height: 100vh;
   }
-  header {
-    background-color: #000000d3;
+  .aboutFirstSection h1 {
+    font-size: 6rem;
+  }
+  .introText {
+    font-size: 2.5rem;
+    max-width: 60rem;
+  }
+  .hero-title {
+    font-size: 6rem;
   }
   .hero-training {
-    font-size: 1.2rem;
+    font-size: 2.5rem;
   }
-
   .hero-description {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 }

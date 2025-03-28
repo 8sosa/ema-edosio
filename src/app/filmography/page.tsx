@@ -1,14 +1,12 @@
-"use client"; 
+"use client";
 
-import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-// import HeroCarousel from '@/components/filmographyHeroCarousel'
-
 import filmsData from "@/components/films.json";
 
 interface Film {
   title: string;
+  synopsis?: string;
   posters?: string[];
 }
 
@@ -16,65 +14,43 @@ interface FilmsFile {
   films: Film[];
 }
 
-const FilmographyPage: FC = () => {
+export default function FilmographyPage() {
   const { films } = filmsData as FilmsFile;
 
   return (
-    <main className="bg-black text-white min-h-screen">
-      {/* HERO SECTION */}
-      {/* <HeroCarousel /> */}
-
+    <main className="bg-black text-white min-h-screen py-8">
       {/* CATEGORY BROWSE */}
-      <section className="container mx-auto p-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Browse Your Favourite Categories</h2>
+      <section className="container mx-auto p-4">
+        <h2 className="text-3xl font-bold text-center mb-6">
+          Browse Your Favourite Categories
+        </h2>
         <div className="flex flex-wrap justify-center gap-4">
-          {["Action", "Romance", "Thriller", "Comedy", "Drama", "Sci-Fi", "Mystery", "Crime"].map(
-            (category, i) => (
-              <button
-                key={i}
-                className="px-4 py-2 bg-gray-800 rounded hover:bg-gray-700 transition"
-              >
-                {category}
-              </button>
-            )
-          )}
-        </div>
-      </section>
-
-      {/* INFO CARDS */}
-      <section className="container mx-auto p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gray-800 p-6 rounded">
-          <h3 className="text-xl font-bold mb-2">Find Your Next Watch</h3>
-          <p>
-            Recommended just for you, curated from critics and viewers worldwide.
-          </p>
-        </div>
-        <div className="bg-gray-800 p-6 rounded">
-          <h3 className="text-xl font-bold mb-2">Unbiased Reviews</h3>
-          <p>Real insights and honest opinions on the latest and greatest in film.</p>
-        </div>
-        <div className="bg-gray-800 p-6 rounded">
-          <h3 className="text-xl font-bold mb-2">Join the Conversation</h3>
-          <p>Keep track of your favourites and discuss with fellow movie lovers.</p>
+          {["Romance", "Comedy", "Drama", "Mystery", "Crime"].map((category, i) => (
+            <button
+              key={i}
+              className="px-4 py-2 bg-gray-800 rounded hover:bg-gray-700 transition"
+            >
+              {category}
+            </button>
+          ))}
         </div>
       </section>
 
       {/* NEW IN / FILMOGRAPHY */}
-      <section className="container mx-auto p-8" id="films">
+      <section className="container mx-auto p-4" id="films">
         <h2 className="text-3xl font-bold text-center mb-6">New In</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* Container for each film row */}
+        <div className="space-y-8">
           {films.map((film, index) => {
-            // Generate a slug from the film title (e.g. "When Nigeria Happens" => "when-nigeria-happens")
+            // Generate a slug from the film title
             const slug = film.title.replace(/\s+/g, "-").toLowerCase();
-
             return (
-              <Link
+              <div
                 key={index}
-                href={`/film/${slug}`}
-                className="block bg-gray-800 rounded overflow-hidden hover:scale-105 transition-transform"
+                className="flex flex-col md:flex-row gap-4 items-center bg-gray-900 rounded p-4"
               >
-                {/* Poster */}
-                <div className="relative w-full h-96">
+                {/* Film Poster */}
+                <div className="relative w-full md:w-1/4 lg:w-1/5 aspect-[2/3] bg-gray-800 rounded overflow-hidden">
                   {film.posters && film.posters.length > 0 && (
                     <Image
                       src={film.posters[0]}
@@ -84,17 +60,23 @@ const FilmographyPage: FC = () => {
                     />
                   )}
                 </div>
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-white mt-3 text-center p-4">
-                  {film.title}
-                </h3>
-              </Link>
+                {/* Film Info */}
+                <div className="flex flex-col justify-between w-full md:w-3/4 lg:w-4/5 lg:p-20">
+                  <h3 className="lg:text-5xl font-semibold text-white p-2">
+                    {film.title}
+                  </h3>
+                  <p className="lg:text-2xl text-white p-2 lg:py-15">{film.synopsis}</p>
+                  <Link href={`/film/${slug}`}>
+                    <button className="bg-gray-800 text-white px-6 py-2 rounded hover:scale-105 transition-transform mt-4">
+                      Watch Now
+                    </button>
+                  </Link>
+                </div>
+              </div>
             );
           })}
         </div>
       </section>
     </main>
   );
-};
-
-export default FilmographyPage;
+}
