@@ -1,0 +1,127 @@
+.filmItem {
+    border-bottom: 1px solid #2e2e2e;
+    padding-bottom: 1rem;
+}
+
+.filmItemBtn,
+.filmItemBtn1 {
+    border: 1px solid #fff;
+    background-color: transparent;
+    transition: all 0.6s ease;
+    color: #fff;
+}
+
+.filmItemBtn:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.filmItemBtn1:hover {
+    background-color: rgb(190, 255, 206);
+    color: black;
+}
+
+/* Base (Extra Small - Mobile up to 639px) */
+.filmItemText {
+    border-left: none;
+    padding: 1rem;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.filmItemText h3 {
+    font-size: 2rem;
+}
+
+.filmItemText p {
+    font-size: 1rem;
+    font-weight: 200;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Small devices (640px - 767px) */
+@media (min-width: 320px) and (max-width: 767px) {
+  .filmItemText {
+      border-left: none;
+      padding: 1.5rem;
+      text-align: center;
+  }
+  .filmItemText h3 {
+      font-size: 2.5rem;
+  }
+  .filmItemText p {
+      font-size: 1.1rem;
+      padding: 1.2rem 0;
+  }
+  .filmItemBtn, .filmItemBtn1 {
+    font-size: .7rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Medium devices (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .filmItemText {
+      border-left: none;
+      padding: 2rem;
+      text-align: center;
+  }
+  .filmItemText h3 {
+      font-size: 3rem;
+  }
+  .filmItemText p {
+      font-size: 1.15rem;
+      padding: 1.3rem 0;
+  }
+}
+
+/* Large devices (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .filmItemText {
+      border-left: 1px solid #fff;
+      padding: 3rem 1.5rem;
+      width: 100%;
+      align-items: center;
+      text-align: right;
+  }
+  .filmItemText h3 {
+      font-size: 3rem;
+  }
+  .filmItemText p {
+      font-size: 1.1rem;
+      padding: 1.3rem 0;
+  }
+}
+
+/* Extra Large devices (1280px - 1535px) */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .filmItemText {
+      border-left: 1px solid #fff;
+      padding: 6rem 2rem;
+  }
+  .filmItemText h3 {
+      font-size: 4rem;
+  }
+  .filmItemText p {
+      font-size: 1.2rem;
+      padding: 1.5rem 0;
+      max-width: 90%;
+  }
+}
+
+/* 2XL devices (1536px and up) */
+@media (min-width: 1536px) {
+  .filmItemText {
+      border-left: 1px solid #fff;
+      padding: 7rem 2rem;
+  }
+  .filmItemText h3 {
+      font-size: 4rem;
+  }
+  .filmItemText p {
+      font-size: 1.2rem;
+      padding: 1.5rem 0;
+  }
+}

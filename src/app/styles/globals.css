@@ -1,6 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Montserrat:ital,wght@0,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -8,14 +7,14 @@
   --color-foreground: #171717;
 }
 
-.mont {
-  font-family: "Montserrat Alternates", sans-serif;
+.title {
+  font-family: "IBM Plex Sans", sans-serif;
 }
-.inter {
-  font-family: "Inter", sans-serif;
+.text {
+  font-family: "Nunito Sans", sans-serif;
 }
-.altMont {
-  font-family: "Montserrat Alternates", sans-serif;
+.body {
+  font-family: "DM Sans", sans-serif;
 }
 .sans {
   font-family: "Work Sans", sans-serif;

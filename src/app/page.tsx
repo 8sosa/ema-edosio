@@ -43,10 +43,10 @@ export default function HomePage() {
         </div>
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-start justify-end h-full p-8 md:p-12 lg:p-16">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2">
+          <h1 className="title text-3xl md:text-5xl lg:text-6xl font-bold mb-2">
             {heroFilm.title}
           </h1>
-          <p className="text-md md:text-lg max-w-[50ch] mb-4">
+          <p className="title text-md md:text-lg max-w-[50ch] mb-4">
             {heroFilm.synopsis}
           </p>
           <div className="flex space-x-3">
@@ -66,26 +66,26 @@ export default function HomePage() {
       
       {/* ABOUT Ema */}
       <section className="hero flex flex-col md:flex-row items-center justify-between bg-gray-900 text-white p-8 md:p-12 lg:p-16">
-        <div className="hero-content max-w-lg space-y-4">
-          <p className="hero-subtitle uppercase text-sm tracking-widest">
+        <div className="hero-content space-y-4">
+          <p className="title hero-subtitle uppercase text-sm tracking-widest">
             Ema Edosio Deelen
           </p>
-          <h1 className="hero-title text-3xl md:text-4xl font-bold">
+          <h1 className="hero-title text-3xl md:text-4xl font-bold title">
             Cinema That Speaks.
           </h1>
-          <h2 className="hero-training text-xl md:text-2xl">
+          <h2 className="body hero-training text-xl md:text-2xl">
             Stories That Stay With You.
           </h2>
-          <p className="hero-description">
+          <p className="hero-description text">
             Authentic, bold, and deeply human storytelling.
           </p>
-          <Link href="/about">
+          <Link href="/filmography">
             <button className="cta-button bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition">
-              SEE ME
+              Watch More
             </button>
           </Link>
         </div>
-        <div className="hero-image mt-6 md:mt-0 w-full md:w-1/2 relative h-64 md:h-96">
+        <div className="hero-image mt-6 md:mt-0 w-1/5 relative aspect-[1/1]">
           <Image src={Home} alt="Woman in a metallic jacket" fill className="object-cover rounded" />
         </div>
       </section>

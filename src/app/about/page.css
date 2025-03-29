@@ -11,55 +11,6 @@
   background-color: #000;
   color: #fff;
 }
-
-/* About First Section (Hero) */
-.aboutFirstSection {
-  position: relative;
-  background-image: url('/images/aboutbg.jpeg');
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  padding: 4rem; /* Base padding for smallest screens */
-  min-height: 50rem;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.aboutFirstSection::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
-}
-
-.aboutFirstSection h1,
-.aboutFirstSection p {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-.aboutFirstSection h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #fff1f1;
-  margin-bottom: 1rem;
-}
-
-.introText {
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: #fff1f1;
-  max-width: 30rem;
-  margin-bottom: 1.5rem;
-}
-
 /* About Second Section (Content) */
 .aboutSecondSection {
   display: flex;
@@ -107,6 +58,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .aboutTextSection h1 {
@@ -121,28 +74,23 @@
   margin-top: 1rem;
   line-height: 1.6;
 }
-
+.aboutTextSection button {
+  border: 1px solid #fff;
+  padding: 1rem 2rem;
+  width: max-content;
+  transition: all 0.7s ease;
+}
+.aboutTextSection button:hover {
+  background-color: #cdf9f1;
+  color: #000;
+}
 /* =======================
    Responsive Breakpoints
    ======================= */
 
 /* 425px - 767px */
 @media (min-width: 425px) and (max-width: 767px) {
-  .aboutFirstSection {
-    padding: 5rem 3rem;
-    height: 50vh;
-    min-height: 30rem;
-  }
-  
-  .aboutFirstSection h1 {
-    font-size: 3rem;
-  }
-  
-  .introText {
-    font-size: 1rem;
-    max-width: 35rem;
-  }
-  
+ 
   .aboutSecondSection {
     gap: 1.5rem;
     padding: 1.5rem;
@@ -169,20 +117,7 @@
 
 /* 768px - 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .aboutFirstSection {
-    padding: 7rem 5rem;
-    height: 90vh;
-  }
-  
-  .aboutFirstSection h1 {
-    font-size: 4rem;
-  }
-  
-  .introText {
-    font-size: 2rem;
-    max-width: 40rem;
-  }
-  
+
   .aboutSecondSection {
     gap: 2rem;
     padding: 2rem;
@@ -209,20 +144,7 @@
 
 /* 1024px - 1439px */
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .aboutFirstSection {
-    padding: 10rem 5rem;
-    height: 100vh;
-  }
-  
-  .aboutFirstSection h1 {
-    font-size: 5rem;
-  }
-  
-  .introText {
-    font-size: 2rem;
-    max-width: 50rem;
-  }
-  
+ 
   .aboutSecondSection {
     gap: 2rem;
     padding: 10rem 3rem;
@@ -249,20 +171,7 @@
 
 /* 1440px and up */
 @media (min-width: 1440px) {
-  .aboutFirstSection {
-    padding: 12rem;
-    height: 100vh;
-  }
-  
-  .aboutFirstSection h1 {
-    font-size: 6rem;
-  }
-  
-  .introText {
-    font-size: 2.5rem;
-    max-width: 50rem;
-  }
-  
+ 
   .aboutSecondSection {
     gap: 2.5rem;
     padding: 10rem 4rem;

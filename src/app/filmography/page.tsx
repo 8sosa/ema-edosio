@@ -1,5 +1,6 @@
 "use client";
 
+import './page.css'
 import Link from "next/link";
 import Image from "next/image";
 import filmsData from "@/components/films.json";
@@ -8,6 +9,10 @@ interface Film {
   title: string;
   synopsis?: string;
   posters?: string[];
+  runtime?: string;
+  language?: string;
+  producer?: string;
+  director?: string;
 }
 
 interface FilmsFile {
@@ -18,7 +23,7 @@ export default function FilmographyPage() {
   const { films } = filmsData as FilmsFile;
 
   return (
-    <main className="bg-black text-white min-h-screen py-8">
+    <main className="bg-black text-white min-h-screen py-10 lg:py-15">
       {/* CATEGORY BROWSE */}
       <section className="container mx-auto p-4">
         <h2 className="text-3xl font-bold text-center mb-6">
@@ -39,18 +44,18 @@ export default function FilmographyPage() {
       {/* NEW IN / FILMOGRAPHY */}
       <section className="container mx-auto p-4" id="films">
         <h2 className="text-3xl font-bold text-center mb-6">New In</h2>
-        {/* Container for each film row */}
-        <div className="space-y-8">
+        <div className="space-y-8 lg:px-10">
           {films.map((film, index) => {
             // Generate a slug from the film title
             const slug = film.title.replace(/\s+/g, "-").toLowerCase();
+
             return (
               <div
                 key={index}
-                className="flex flex-col md:flex-row gap-4 items-center bg-gray-900 rounded p-4"
+                className="filmItem flex flex-col lg:flex-row items-center rounded gap-6"
               >
-                {/* Film Poster */}
-                <div className="relative w-full md:w-1/4 lg:w-1/5 aspect-[2/3] bg-gray-800 rounded overflow-hidden">
+                {/* Left side: Film Poster */}
+                <div className="relative w-full lg:w-5/10 aspect-[2/3] bg-gray-800 overflow-hidden">
                   {film.posters && film.posters.length > 0 && (
                     <Image
                       src={film.posters[0]}
@@ -60,17 +65,36 @@ export default function FilmographyPage() {
                     />
                   )}
                 </div>
-                {/* Film Info */}
-                <div className="flex flex-col justify-between w-full md:w-3/4 lg:w-4/5 lg:p-20">
-                  <h3 className="lg:text-5xl font-semibold text-white p-2">
+
+                {/* Right side: Film Info */}
+                <div className="filmItemText flex flex-col w-full lg:w-1/3 gap-4">
+                  {/* Title */}
+                  <h3 className="text-3xl font-semibold title">
                     {film.title}
                   </h3>
-                  <p className="lg:text-2xl text-white p-2 lg:py-15">{film.synopsis}</p>
-                  <Link href={`/film/${slug}`}>
-                    <button className="bg-gray-800 text-white px-6 py-2 rounded hover:scale-105 transition-transform mt-4">
-                      Watch Now
-                    </button>
-                  </Link>
+                  {/* Runtime / Language / Producer / Director */}
+                  <span className="text-sm text-gray-300 text">
+                    {film.runtime ? film.runtime : "N/A"} |{" "}
+                    {film.language ? film.language : "N/A"} |{" "}
+                    {film.producer ? film.producer : "N/A"} |{" "}
+                    {film.director ? film.director : "N/A"}
+                  </span>
+                  {/* Synopsis */}
+                  <p className="text">
+                    {film.synopsis}
+                  </p>
+                  <div className="flex items-center justify-evenly gap-4 w-full">
+                    <Link href={`/film/${slug}`}>
+                      <button className="filmItemBtn p-3 px-10 rounded-full hover:scale-105 transition-transform">
+                        ▶ Watch Now
+                      </button>
+                    </Link>
+                    <Link href={`/film/${slug}`}>
+                      <button className="filmItemBtn1 p-3 px-10 rounded-full hover:scale-105 transition-transform">
+                        💲 Get Screening License
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

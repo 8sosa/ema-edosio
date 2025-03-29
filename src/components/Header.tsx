@@ -11,11 +11,11 @@ export default function Header() {
     <header className="bg-black text-white">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-around">
         {/* Desktop Nav (hidden on small screens) */}
-        <nav className="hidden md:flex space-x-6">
+        <nav className="title hidden md:flex space-x-6">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/filmography">Watch More</NavLink>
           <NavLink href="/masterclass">Masterclass</NavLink>
-          {/* <NavLink href="/merch">Merch</NavLink> */}
+          <NavLink href="/merch">Merch</NavLink>
           <NavLink href="/about">About</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </nav>
@@ -45,7 +45,7 @@ export default function Header() {
             <HiOutlineX />
           </button>
         </div>
-        <nav className="flex flex-col p-4 space-y-4 text-center items-end mont">
+        <nav className="flex flex-col p-4 space-y-4 text-center items-end title">
           <NavLink href="/" className="navLink">
             Home
           </NavLink>
@@ -58,9 +58,9 @@ export default function Header() {
           <NavLink href="/masterclass" className="navLink">
             Masterclass
           </NavLink>
-          {/* <NavLink href="/merch" className="navLink">
+          <NavLink href="/merch" className="navLink">
             Merch
-          </NavLink> */}
+          </NavLink>
           <NavLink href="/contact" className="navLink">
             Contact
           </NavLink>

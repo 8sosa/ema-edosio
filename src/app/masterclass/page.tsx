@@ -25,33 +25,8 @@ export default function Page() {
       {/* 2-COLUMN SECTION (IMAGES + TEXT) */}
       <section className="flex flex-col md:flex-row items-start justify-center gap-8 max-w-5xl mx-auto py-16 px-4 md:px-8">
         {/* Left Column: Images */}
-        <div className="flex-1 w-full h-auto grid grid-cols-2 gap-4">
-          {/* Replace these with your own images */}
-          <div className="relative w-full h-40 sm:h-52 md:h-64 bg-gray-700 rounded-lg overflow-hidden">
-              <Image
-              src="/images/ph.png"
-              alt="Masterclass Sample 1"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative w-full h-40 sm:h-52 md:h-64 bg-gray-700 rounded-lg overflow-hidden">
-              <Image
-              src="/images/ph.png"
-              alt="Masterclass Sample 2"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative w-full h-40 sm:h-52 md:h-64 bg-gray-700 rounded-lg overflow-hidden">
-              <Image
-              src="/images/ph.png"
-              alt="Masterclass Sample 3"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative w-full h-40 sm:h-52 md:h-64 bg-gray-700 rounded-lg overflow-hidden">
+        <div className="flex-1 w-full aspect-[1/1]">
+          <div className="relative w-full aspect-[1/1] bg-gray-700 rounded-lg overflow-hidden">
               <Image
               src="/images/ph.png"
               alt="Masterclass Sample 4"
