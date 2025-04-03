@@ -18,13 +18,13 @@ interface Item {
 }
 
 export default function ItemPage() {
-  const { id } = useParams<{ id: string }>(); // using next/navigation's useParams
+  const { id } = useParams<{ id: string }>(); // Get dynamic id from URL
   const router = useRouter();
   const [item, setItem] = useState<Item | null>(null);
 
   useEffect(() => {
     if (id) {
-      const foundItem = Merchandise.merchandise.find(
+      const foundItem: Item | undefined = Merchandise.merchandise.find(
         (itm: Item) => itm.id === Number(id)
       );
       if (foundItem) {
@@ -43,25 +43,25 @@ export default function ItemPage() {
     );
   }
 
-  // Example recommended products (filtering by category, or just random picks)
-  const recommended = Merchandise.merchandise
+  // Recommended products of the same category, excluding the current item
+  const recommended: Item[] = Merchandise.merchandise
     .filter((p: Item) => p.category === item.category && p.id !== item.id)
     .slice(0, 4);
 
   return (
     <main className="max-w-screen-xl mx-auto px-4 py-15">
-      {/* Breadcrumb or top info (optional) */}
-      <div className="mb-4 text-sm text-white">
+      {/* Breadcrumb */}
+      <div className="mb-4 text-sm text-gray-600">
         <button onClick={() => router.back()} className="underline">
           &larr; Back
         </button>
       </div>
 
-      {/* Main product info layout */}
+      {/* Main Product Info */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-        {/* Left side: Image */}
+        {/* Left: Image */}
         <div className="md:col-span-5 lg:col-span-6">
-          <div className="relative w-full aspect-[1/1] bg-gray-100 rounded-md overflow-hidden">
+          <div className="relative w-full h-96 bg-gray-100 rounded-md overflow-hidden">
             <Image
               src={item.image}
               alt={item.name}
@@ -71,32 +71,32 @@ export default function ItemPage() {
           </div>
         </div>
 
-        {/* Right side: Product details */}
+        {/* Right: Product Details */}
         <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-4">
-          {/* Title and rating */}
+          {/* Title and Rating */}
           <div>
             <h1 className="text-2xl md:text-3xl font-bold mb-2">{item.name}</h1>
             <div className="flex items-center gap-1 text-yellow-500">
-              {[...Array(item.rating || 4)].map((_, i) => (
+              {[...Array(item.rating || 4)].map((_, i: number) => (
                 <AiFillStar key={i} />
               ))}
-              <span className="ml-2 text-sm text-white">
-                {item.rating || 4}.0 Rating
+              <span className="ml-2 text-sm text-gray-600">
+                {(item.rating || 4).toFixed(1)} Rating
               </span>
             </div>
           </div>
 
           {/* Price */}
-          <div className="text-3xl font-semibold text-gray-200">
+          <div className="text-3xl font-semibold text-green-600">
             ${item.price.toFixed(2)}
           </div>
 
-          {/* Short description */}
+          {/* Description */}
           {item.description && (
-            <p className="text-white mt-2">{item.description}</p>
+            <p className="text-gray-700 mt-2">{item.description}</p>
           )}
 
-          {/* Quantity & Add to Cart (example) */}
+          {/* Quantity Selector */}
           <div className="mt-4 flex items-center gap-4">
             <label htmlFor="quantity" className="font-semibold">
               Quantity:
@@ -110,18 +110,18 @@ export default function ItemPage() {
             />
           </div>
 
-          {/* Buttons */}
+          {/* Action Buttons */}
           <div className="mt-6 flex flex-col sm:flex-row gap-4">
-            <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
               Add to Cart
             </button>
-            <button className="border border-red-600 text-white-600 px-4 py-2 rounded hover:bg-red-700 transition">
+            <button className="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50 transition">
               Buy Now
             </button>
           </div>
 
-          {/* Additional details, shipping, etc. */}
-          <div className="mt-8 border-t pt-4 text-sm text-white space-y-2">
+          {/* Additional Details */}
+          <div className="mt-8 border-t pt-4 text-sm text-gray-700 space-y-2">
             <p>
               <strong>Category:</strong> {item.category}
             </p>
@@ -138,23 +138,23 @@ export default function ItemPage() {
         </div>
       </div>
 
-      {/* Product description / specifications / reviews tabs (example) */}
+      {/* Product Description Section */}
       <div className="mt-10 border-t pt-6">
         <h2 className="text-xl font-semibold mb-4">Product Details</h2>
-        <p className="text-white">
+        <p className="text-gray-700">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue
           mauris eget felis euismod, et placerat velit fermentum. Suspendisse
           potenti. Aliquam porta urna sit amet augue vulputate, at tempus sapien
-          tempus. Phasellus ac orci a erat euismod tristique et eget metus. 
+          tempus. Phasellus ac orci a erat euismod tristique et eget metus.
         </p>
       </div>
 
-      {/* Recommended products / You may also like */}
+      {/* Recommended Products */}
       {recommended.length > 0 && (
         <div className="mt-10 border-t pt-6">
           <h2 className="text-xl font-semibold mb-6">You may also like</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {recommended.map((recItem) => (
+            {recommended.map((recItem: Item) => (
               <div
                 key={recItem.id}
                 onClick={() => router.push(`/merch/${recItem.id}`)}
@@ -169,8 +169,8 @@ export default function ItemPage() {
                   />
                 </div>
                 <div className="mt-2">
-                  <h3 className="font-semibold text-white">{recItem.name}</h3>
-                  <p className="text-white">${recItem.price.toFixed(2)}</p>
+                  <h3 className="font-semibold text-gray-800">{recItem.name}</h3>
+                  <p className="text-gray-500">${recItem.price.toFixed(2)}</p>
                 </div>
               </div>
             ))}
