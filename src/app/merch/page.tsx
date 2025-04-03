@@ -1,11 +1,23 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect, RefObject } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { TfiLayoutLineSolid } from "react-icons/tfi";
 import Merchandise from "@/components/merch.json";
 import "./page.css";
+
+// Define the Item interface for your merchandise data
+interface Item {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  category: string;
+  tag: string[];
+  quantity: number;
+}
 
 const categories = [
   { id: 1, name: "Shirts" },
@@ -18,25 +30,32 @@ const categories = [
 
 const tags = ["When Nigeria Happens", "Otiti", "Kasala"];
 
+// Cast your merchandise data to the proper type
+const merchItems = Merchandise.merchandise as Item[];
+
 export default function HomePage() {
   // State to track which tag is selected (if any)
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  // Create a ref for each category section for scrolling
-  const categoryRefs: Record<string, RefObject<HTMLDivElement | null>> = categories.reduce(
-    (acc, category) => {
-      acc[category.name] = useRef<HTMLDivElement>(null);
-      return acc;
-    },
-    {} as Record<string, RefObject<HTMLDivElement | null>>
-  );
+  // Instead of calling useRef in a loop, create a container ref
+  // and initialize the refs once.
+  const categoryRefs = useRef<
+    Record<string, React.RefObject<HTMLDivElement | null>>
+  >({});
+
+  // Populate the refs on the first render only
+  if (Object.keys(categoryRefs.current).length === 0) {
+    categories.forEach((category) => {
+      categoryRefs.current[category.name] = React.createRef<HTMLDivElement>();
+    });
+  }
 
   // Ref for the tag section
   const tagSectionRef = useRef<HTMLDivElement>(null);
 
   // Handler for category click – scroll to the respective section
   const handleCategoryClick = (catName: string) => {
-    categoryRefs[catName].current?.scrollIntoView({ behavior: "smooth" });
+    categoryRefs.current[catName].current?.scrollIntoView({ behavior: "smooth" });
   };
 
   // Handler for tag click – set the selected tag and scroll to tag section
@@ -51,9 +70,9 @@ export default function HomePage() {
     }
   }, [selectedTag]);
 
-  // Helper to render a product card with navigation
-  const ProductCard = ({ item }: { item: any }) => (
-    <Link href={`/merch/${item.id}`} passHref>
+  // ProductCard component with navigation to the item detail page.
+  const ProductCard = ({ item }: { item: Item }) => (
+    <Link href={`/merch/${item.id}`}>
       <div className="flex flex-col w-full cursor-pointer">
         <div className="relative w-full aspect-square bg-gray-100 rounded overflow-hidden">
           <Image
@@ -118,7 +137,7 @@ export default function HomePage() {
             New Arrivals
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {Merchandise.merchandise.slice(0, 8).map((item, idx) => (
+            {merchItems.slice(0, 8).map((item, idx) => (
               <ProductCard key={idx} item={item} />
             ))}
           </div>
@@ -126,13 +145,11 @@ export default function HomePage() {
 
         {/* Sections for each category */}
         {categories.map((cat) => {
-          const items = Merchandise.merchandise.filter(
-            (item: any) => item.category === cat.name
-          );
+          const items = merchItems.filter((item: Item) => item.category === cat.name);
           return (
             <section
               key={cat.id}
-              ref={categoryRefs[cat.name]}
+              ref={categoryRefs.current[cat.name]}
               className="py-12 px-6 max-w-8xl"
             >
               <h2 className="title text-2xl md:text-3xl font-bold mb-6">
@@ -140,7 +157,7 @@ export default function HomePage() {
               </h2>
               {items.length > 0 ? (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {items.map((item: any, idx: number) => (
+                  {items.map((item: Item, idx: number) => (
                     <ProductCard key={idx} item={item} />
                   ))}
                 </div>
@@ -160,13 +177,13 @@ export default function HomePage() {
             <h2 className="title text-2xl md:text-3xl font-bold mb-6">
               {selectedTag}
             </h2>
-            {Merchandise.merchandise.filter((item: any) =>
+            {merchItems.filter((item: Item) =>
               item.tag.includes(selectedTag)
             ).length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {Merchandise.merchandise
-                  .filter((item: any) => item.tag.includes(selectedTag))
-                  .map((item: any, idx: number) => (
+                {merchItems
+                  .filter((item: Item) => item.tag.includes(selectedTag))
+                  .map((item: Item, idx: number) => (
                     <ProductCard key={idx} item={item} />
                   ))}
               </div>

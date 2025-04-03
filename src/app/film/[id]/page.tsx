@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import './page.css';
 import { useParams } from "next/navigation";
 import films from "../../../components/films.json";
@@ -10,6 +11,7 @@ export default function FilmDetailPage() {
   const film = films.films.find(
     (f) => f.title.replace(/\s+/g, "-").toLowerCase() === id
   );
+  const [showModal, setShowModal] = useState(false);
 
   if (!film) {
     return (
@@ -20,6 +22,16 @@ export default function FilmDetailPage() {
     );
   }
 
+  const openModal = () => {
+    if (film.videoUrl) {
+      setShowModal(true);
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <main className="bg-black text-white min-h-screen pt-24 pb-10 px-6">
       <div className="container mx-auto max-w-6xl">
@@ -29,8 +41,8 @@ export default function FilmDetailPage() {
         </Link>
 
         <div className="film">
-        {/* Film Title */}
-        <h1 className="title text-4xl font-bold mt-4">{film.title}</h1>
+          {/* Film Title */}
+          <h1 className="title text-4xl font-bold mt-4">{film.title}</h1>
           {/* Film Poster with Play Button Overlay */}
           <div className="mt-6 relative w-full aspect-video bg-gray-800 overflow-hidden rounded-lg">
             {film.posters && film.posters.length > 0 && (
@@ -43,7 +55,10 @@ export default function FilmDetailPage() {
             )}
             {/* Centered Play Button */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <button className="playBtn hover:scale-105 transition-transform">
+              <button 
+                onClick={openModal}
+                className="playBtn hover:scale-105 transition-transform text-4xl text-white bg-black bg-opacity-50 rounded-full p-4"
+              >
                 ▶
               </button>
             </div>
@@ -58,6 +73,29 @@ export default function FilmDetailPage() {
           </button>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
+          <div className="relative w-full max-w-4xl">
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 text-white text-2xl font-bold"
+            >
+              &times;
+            </button>
+            <div className="aspect-video">
+              <iframe
+                src={film.videoUrl}
+                title={`${film.title} Video`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
