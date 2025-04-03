@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, RefObject } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { TfiLayoutLineSolid } from "react-icons/tfi";
 import Merchandise from "@/components/merch.json";
 import "./page.css";
@@ -50,22 +51,24 @@ export default function HomePage() {
     }
   }, [selectedTag]);
 
-  // Helper to render a product card
+  // Helper to render a product card with navigation
   const ProductCard = ({ item }: { item: any }) => (
-    <div className="flex flex-col w-full">
-      <div className="relative w-full aspect-square bg-gray-100 rounded overflow-hidden">
-        <Image
-          src={item.image}
-          alt={item.name}
-          fill
-          className="object-cover object-center"
-        />
+    <Link href={`/merch/${item.id}`} passHref>
+      <div className="flex flex-col w-full cursor-pointer">
+        <div className="relative w-full aspect-square bg-gray-100 rounded overflow-hidden">
+          <Image
+            src={item.image}
+            alt={item.name}
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="mt-2">
+          <h3 className="text-md font-semibold">{item.name}</h3>
+          <p className="text-sm text-gray-500">${item.price.toFixed(2)}</p>
+        </div>
       </div>
-      <div className="mt-2">
-        <h3 className="text-md font-semibold">{item.name}</h3>
-        <p className="text-sm text-gray-500">${item.price.toFixed(2)}</p>
-      </div>
-    </div>
+    </Link>
   );
 
   return (

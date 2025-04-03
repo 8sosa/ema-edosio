@@ -1,6 +1,7 @@
 {
     "merchandise": [
       {
+        "id": 1,
         "name": "Graphic T-Shirt",
         "price": 19.99,
         "description": "A stylish and comfortable cotton t-shirt with a unique graphic print.",
@@ -10,6 +11,7 @@
         "image": "/images/Merch/shirt.jpg"
       },
       {
+        "id": 2,
         "name": "Glasses",
         "price": 12.99,
         "description": "Trendy and durable glasses for everyday use.",
@@ -19,6 +21,7 @@
         "image": "/images/Merch/glasses.jpg"
       },
       {
+        "id": 3,
         "name": "Baseball Cap",
         "price": 14.99,
         "description": "Adjustable baseball cap with a stylish embroidered design.",
@@ -28,6 +31,7 @@
         "image": "/images/Merch/cap.jpg"
       },
       {
+        "id": 4,
         "name": "Jacket",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
@@ -37,6 +41,7 @@
         "image": "/images/Merch/jacket.jpg"
       },
       {
+        "id": 5,
         "name": "Sticker Pack",
         "price": 5.99,
         "description": "A pack of high-quality vinyl stickers with vibrant designs.",
@@ -46,6 +51,7 @@
         "image": "/images/Merch/sticker.jpg"
       },
       {
+        "id": 6,
         "name": "Coffee Mug",
         "price": 9.99,
         "description": "A durable ceramic coffee mug, perfect for your morning brew.",
@@ -55,6 +61,7 @@
         "image": "/images/Merch/mug.jpg"
       },
       {
+        "id": 7,
         "name": "Tracksuit",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
@@ -64,6 +71,7 @@
         "image": "/images/Merch/tracksuit.jpg"
       },
       {
+        "id": 8,
         "name": "Bag",
         "price": 29.99,
         "description": "A versatile and spacious bag for daily use.",
@@ -73,6 +81,7 @@
         "image": "/images/Merch/bag.jpg"
       },
       {
+        "id": 9,
         "name": "Trousers",
         "price": 34.99,
         "description": "Comfortable and stylish trousers suitable for any occasion.",
