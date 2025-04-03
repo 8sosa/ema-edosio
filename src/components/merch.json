@@ -1,0 +1,86 @@
+{
+    "merchandise": [
+      {
+        "name": "Graphic T-Shirt",
+        "price": 19.99,
+        "description": "A stylish and comfortable cotton t-shirt with a unique graphic print.",
+        "category": "Shirts",
+        "tag": ["When Nigeria Happens", "Otiti"],
+        "quantity": 50,
+        "image": "/images/Merch/shirt.jpg"
+      },
+      {
+        "name": "Glasses",
+        "price": 12.99,
+        "description": "Trendy and durable glasses for everyday use.",
+        "category": "Accessories",
+        "tag": ["Kasala"],
+        "quantity": 100,
+        "image": "/images/Merch/glasses.jpg"
+      },
+      {
+        "name": "Baseball Cap",
+        "price": 14.99,
+        "description": "Adjustable baseball cap with a stylish embroidered design.",
+        "category": "Accessories",
+        "tag": ["When Nigeria Happens"],
+        "quantity": 75,
+        "image": "/images/Merch/cap.jpg"
+      },
+      {
+        "name": "Jacket",
+        "price": 39.99,
+        "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
+        "category": "Jackets",
+        "tag": ["Otiti"],
+        "quantity": 40,
+        "image": "/images/Merch/jacket.jpg"
+      },
+      {
+        "name": "Sticker Pack",
+        "price": 5.99,
+        "description": "A pack of high-quality vinyl stickers with vibrant designs.",
+        "category": "Stickers",
+        "tag": ["Kasala"],
+        "quantity": 200,
+        "image": "/images/Merch/sticker.jpg"
+      },
+      {
+        "name": "Coffee Mug",
+        "price": 9.99,
+        "description": "A durable ceramic coffee mug, perfect for your morning brew.",
+        "category": "miscellaneous",
+        "tag": ["When Nigeria Happens"],
+        "quantity": 80,
+        "image": "/images/Merch/mug.jpg"
+      },
+      {
+        "name": "Tracksuit",
+        "price": 49.99,
+        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
+        "category": "Jackets",
+        "tag": ["Otiti"],
+        "quantity": 30,
+        "image": "/images/Merch/tracksuit.jpg"
+      },
+      {
+        "name": "Bag",
+        "price": 29.99,
+        "description": "A versatile and spacious bag for daily use.",
+        "category": "Accessories",
+        "tag": ["Kasala"],
+        "quantity": 50,
+        "image": "/images/Merch/bag.jpg"
+      },
+      {
+        "name": "Trousers",
+        "price": 34.99,
+        "description": "Comfortable and stylish trousers suitable for any occasion.",
+        "category": "Trousers",
+        "tag": ["When Nigeria Happens"],
+        "quantity": 60,
+        "image": "/images/Merch/trouser.jpg"
+      }
+    ]
+  }
+  

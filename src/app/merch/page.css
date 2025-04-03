@@ -1,3 +1,9 @@
 .overlay {
     background-color: rgba(0, 0, 0, 0.443);
 }
+aside {
+    position: sticky;
+    top: 5rem;
+    max-height: max-content;
+    margin-top: 5rem;
+}

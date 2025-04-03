@@ -1,14 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavLink from "./NavLink";
 import { HiOutlineMenuAlt4, HiOutlineX } from "react-icons/hi";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+
+  // Update header style on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
-    <header className="bg-black text-white">
+    <header
+        className={`header fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+          scrolled ? "bg-black shadow-sm" : "bg-transparent"
+        }`}
+      >
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-around">
         {/* Desktop Nav (hidden on small screens) */}
         <nav className="title hidden md:flex space-x-6">
