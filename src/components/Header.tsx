@@ -32,7 +32,7 @@ export default function Header() {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/filmography">Watch More</NavLink>
           <NavLink href="/masterclass">Masterclass</NavLink>
-          <NavLink href="/merch">Merch</NavLink>
+          <NavLink href="/merch">Shop</NavLink>
           <NavLink href="/about">About</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </nav>

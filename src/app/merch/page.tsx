@@ -20,12 +20,11 @@ interface Item {
 }
 
 const categories = [
-  { id: 1, name: "Shirts" },
-  { id: 2, name: "Jackets" },
-  { id: 3, name: "Trousers" },
-  { id: 4, name: "Accessories" },
-  { id: 5, name: "Stickers" },
-  { id: 6, name: "miscellaneous" },
+  { id: 1, name: "TEES" },
+  { id: 2, name: "CAPS" },
+  { id: 3, name: "STICKERS" },
+  { id: 4, name: "TOTE BAGS" },
+  { id: 5, name: "KEY CHAINS" },
 ];
 
 const tags = ["When Nigeria Happens", "Otiti", "Kasala"];
