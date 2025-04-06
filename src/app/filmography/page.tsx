@@ -83,7 +83,7 @@ export default function FilmographyPage() {
                   <p className="text">
                     {film.synopsis}
                   </p>
-                  <div className="flex items-center justify-evenly gap-4 w-full">
+                  <div className="flex items-center justify-evenly gap-4 w-full body">
                     <Link href={`/film/${slug}`}>
                       <button className="filmItemBtn p-3 px-10 rounded-full hover:scale-105 transition-transform">
                         ▶ Watch Now
@@ -91,7 +91,7 @@ export default function FilmographyPage() {
                     </Link>
                     <Link href={`/film/${slug}`}>
                       <button className="filmItemBtn1 p-3 px-10 rounded-full hover:scale-105 transition-transform">
-                        💲 Get Screening License
+                        Trailer
                       </button>
                     </Link>
                   </div>

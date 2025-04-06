@@ -6,7 +6,9 @@
   --color-background: #ffffff;
   --color-foreground: #171717;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .title {
   font-family: "IBM Plex Sans", sans-serif;
 }

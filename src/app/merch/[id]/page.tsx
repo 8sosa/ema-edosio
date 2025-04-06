@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import Merchandise from "@/components/merch.json";
 import { AiFillStar } from "react-icons/ai";
@@ -10,7 +11,7 @@ interface Item {
   id: number;
   name: string;
   price: number;
-  image: string; // single image URL
+  image: string;
   description?: string;
   category?: string;
   tag?: string[];
@@ -18,13 +19,15 @@ interface Item {
 }
 
 export default function ItemPage() {
-  const { id } = useParams<{ id: string }>(); // Get dynamic id from URL
+  const { id } = useParams<{ id: string }>();
   const router = useRouter();
   const [item, setItem] = useState<Item | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     if (id) {
-      const foundItem: Item | undefined = Merchandise.merchandise.find(
+      const foundItem = Merchandise.merchandise.find(
         (itm: Item) => itm.id === Number(id)
       );
       if (foundItem) {
@@ -35,21 +38,35 @@ export default function ItemPage() {
     }
   }, [id]);
 
+  const handleAdd = () => {
+    if (!item) return;
+
+    const newItem = {
+      id: item.id.toString(),
+      title: item.name,
+      price: item.price,
+      quantity: quantity,
+      image: item.image
+    };
+
+    addToCart(newItem);
+    console.log("added" + newItem)
+  };
+
   if (!item) {
     return (
-      <div className="p-6 flex justify-center items-center min-h-screen">
+      <div className="p-6 flex justify-center items-center min-h-screen text-white">
         Loading item details...
       </div>
     );
   }
 
-  // Recommended products of the same category, excluding the current item
   const recommended: Item[] = Merchandise.merchandise
     .filter((p: Item) => p.category === item.category && p.id !== item.id)
     .slice(0, 4);
 
   return (
-    <main className="max-w-screen-xl mx-auto px-4 py-15">
+    <main className="max-w-screen-xl mx-auto px-4 py-15 text-white">
       {/* Breadcrumb */}
       <div className="mb-4 text-sm text-gray-200">
         <button onClick={() => router.back()} className="underline">
@@ -59,7 +76,7 @@ export default function ItemPage() {
 
       {/* Main Product Info */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-        {/* Left: Image */}
+        {/* Image */}
         <div className="md:col-span-5 lg:col-span-6">
           <div className="relative w-full aspect-[1/1] bg-gray-100 rounded-md overflow-hidden">
             <Image
@@ -71,13 +88,12 @@ export default function ItemPage() {
           </div>
         </div>
 
-        {/* Right: Product Details */}
+        {/* Product Details */}
         <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-4">
-          {/* Title and Rating */}
           <div>
             <h1 className="text-2xl md:text-3xl font-bold mb-2">{item.name}</h1>
             <div className="flex items-center gap-1 text-yellow-500">
-              {[...Array(item.rating || 4)].map((_, i: number) => (
+              {[...Array(item.rating || 4)].map((_, i) => (
                 <AiFillStar key={i} />
               ))}
               <span className="ml-2 text-sm text-gray-200">
@@ -86,12 +102,10 @@ export default function ItemPage() {
             </div>
           </div>
 
-          {/* Price */}
           <div className="text-3xl font-semibold text-green-100">
             ${item.price.toFixed(2)}
           </div>
 
-          {/* Description */}
           {item.description && (
             <p className="text-gray-200 mt-2">{item.description}</p>
           )}
@@ -104,15 +118,19 @@ export default function ItemPage() {
             <input
               id="quantity"
               type="number"
-              defaultValue={1}
+              value={quantity}
               min={1}
-              className="w-16 p-1 border rounded"
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              className="w-16 p-1 border rounded text-white"
             />
           </div>
 
           {/* Action Buttons */}
           <div className="mt-6 flex flex-col sm:flex-row gap-4">
-            <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+            <button
+              onClick={handleAdd}
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+            >
               Add to Cart
             </button>
             <button className="border border-red-600 text-gray-100 px-4 py-2 rounded hover:bg-red-700 transition">
@@ -120,32 +138,22 @@ export default function ItemPage() {
             </button>
           </div>
 
-          {/* Additional Details */}
+          {/* Additional Info */}
           <div className="mt-8 border-t pt-4 text-sm text-gray-100 space-y-2">
-            <p>
-              <strong>Category:</strong> {item.category}
-            </p>
-            <p>
-              <strong>Tags:</strong> {item.tag?.join(", ")}
-            </p>
-            <p>
-              <strong>Shipping:</strong> Free shipping on orders over $100
-            </p>
-            <p>
-              <strong>Returns:</strong> 30-day return policy
-            </p>
+            <p><strong>Category:</strong> {item.category}</p>
+            <p><strong>Tags:</strong> {item.tag?.join(", ")}</p>
+            <p><strong>Shipping:</strong> Free shipping on orders over $100</p>
+            <p><strong>Returns:</strong> 30-day return policy</p>
           </div>
         </div>
       </div>
 
-      {/* Product Description Section */}
+      {/* Description Section */}
       <div className="mt-10 border-t pt-6">
         <h2 className="text-xl font-semibold mb-4">Product Details</h2>
         <p className="text-gray-200">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue
-          mauris eget felis euismod, et placerat velit fermentum. Suspendisse
-          potenti. Aliquam porta urna sit amet augue vulputate, at tempus sapien
-          tempus. Phasellus ac orci a erat euismod tristique et eget metus.
+          mauris eget felis euismod, et placerat velit fermentum.
         </p>
       </div>
 

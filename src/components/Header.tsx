@@ -1,15 +1,17 @@
 "use client";
-
+import CartDrawer from "./CartDrawer";
 import { useState, useEffect } from "react";
 import NavLink from "./NavLink";
 import { HiOutlineMenuAlt4, HiOutlineX } from "react-icons/hi";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { cart, openCart } = useCart();
+  const totalItems = cart.reduce((sum, i) => sum + i.quantity, 0);
 
-
-  // Update header style on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -19,15 +21,14 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   return (
     <header
-        className={`header fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          scrolled ? "bg-black shadow-sm" : "bg-transparent"
-        }`}
-      >
-      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-around">
-        {/* Desktop Nav (hidden on small screens) */}
+      className={`header fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        scrolled ? "bg-black shadow-sm" : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+        {/* Desktop Nav */}
         <nav className="title hidden md:flex space-x-6">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/filmography">Watch More</NavLink>
@@ -35,9 +36,23 @@ export default function Header() {
           <NavLink href="/merch">Shop</NavLink>
           <NavLink href="/about">About</NavLink>
           <NavLink href="/contact">Contact</NavLink>
+          {/* Cart Icon */}
+          <button
+            onClick={openCart}
+            className="relative cursor-pointer"
+            aria-label="Open Cart"
+          >
+            <ShoppingCart className="w-6 h-6 text-white" />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
+                {totalItems}
+              </span>
+            )}
+          </button>
         </nav>
 
-        {/* Burger Icon (shows on small screens) */}
+
+        {/* Mobile Burger Icon */}
         <button
           className="md:hidden text-3xl focus:outline-none"
           onClick={() => setMenuOpen(true)}
@@ -47,7 +62,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Off-Canvas Menu (visible on mobile/tablets) */}
+      {/* Mobile Off-Canvas Menu */}
       <div
         className={`fixed top-0 right-0 h-screen w-full bg-black transform 
           ${menuOpen ? "translate-x-0" : "translate-x-full"} 
@@ -63,26 +78,28 @@ export default function Header() {
           </button>
         </div>
         <nav className="flex flex-col p-4 space-y-4 text-center items-end title">
-          <NavLink href="/" className="navLink">
-            Home
-          </NavLink>
-          <NavLink href="/about" className="navLink">
-            About
-          </NavLink>
-          <NavLink href="/filmography" className="navLink">
-            Watch More
-          </NavLink>
-          <NavLink href="/masterclass" className="navLink">
-            Masterclass
-          </NavLink>
-          <NavLink href="/merch" className="navLink">
-            Merch
-          </NavLink>
-          <NavLink href="/contact" className="navLink">
-            Contact
-          </NavLink>
+          <NavLink href="/" className="navLink">Home</NavLink>
+          <NavLink href="/about" className="navLink">About</NavLink>
+          <NavLink href="/filmography" className="navLink">Watch More</NavLink>
+          <NavLink href="/masterclass" className="navLink">Masterclass</NavLink>
+          <NavLink href="/merch" className="navLink">Merch</NavLink>
+          <NavLink href="/contact" className="navLink">Contact</NavLink>
+            {/* Cart Icon */}
+            <button
+              onClick={openCart}
+              className="relative cursor-pointer"
+              aria-label="Open Cart"
+            >
+              <ShoppingCart className="w-6 h-6 text-white" />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
+                  {totalItems}
+                </span>
+              )}
+            </button>
         </nav>
       </div>
+      <CartDrawer />
     </header>
   );
 }

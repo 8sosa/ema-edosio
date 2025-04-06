@@ -1,6 +1,7 @@
-import './styles/globals.css'; 
 import SessionProviderWrapper from "@/components/SessionProviderWrapper";
+import { CartProvider } from "@/context/CartContext";
 import Header from "@/components/Header";
+import './styles/globals.css'; 
 
 export const metadata = {
   title: "Ema Edosio",
@@ -13,9 +14,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body className="flex flex-col min-h-screen">
         <SessionProviderWrapper>
-          <Header />
+          <CartProvider>
+            <Header />
+            <main className="flex-grow siteBody">{children}</main>
+          </CartProvider>
         </SessionProviderWrapper>
-        <main className="flex-grow siteBody">{children}</main>
         <footer className="flex flex-row justify-between bg-gray-800 text-white p-4 text-center">
           <p>© {new Date().getFullYear()} Ema Edosio. </p>
           <p>All rights reserved.</p>

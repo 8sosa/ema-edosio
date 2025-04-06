@@ -67,9 +67,9 @@ export default function FilmDetailPage() {
 
         {/* Film Synopsis and Screening License Button */}
         <div className="filmInfo mt-6">
-          <p className="text leading-relaxed py-10">{film.extendedSynopsis}</p>
+          <p className="text text-center leading-relaxed py-10">{film.extendedSynopsis}</p>
           <button className="mt-4 bg-orange-600 text-white px-6 py-3 rounded hover:bg-orange-500 transition-colors w-full sm:w-auto">
-            Get Screening License
+            Watch Trailer
           </button>
         </div>
       </div>
