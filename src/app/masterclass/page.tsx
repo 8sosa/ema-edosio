@@ -42,7 +42,7 @@ export default function Page() {
             Bring Your Vision to Life.
           </h2>
           <p className="text-gray-300">
-            Whether you're an aspiring director, cinematographer, or screenwriter,
+            Whether you&aposre an aspiring director, cinematographer, or screenwriter,
             learn how to turn raw ideas into visually stunning films.
             Gain insider knowledge on camera techniques, storytelling, and editing.
           </p>
@@ -113,7 +113,7 @@ export default function Page() {
           {/* Testimonial 2 */}
           <div className="flex-1 bg-gray-800 p-6 rounded-lg">
             <p className="italic mb-4">
-              &quot;I learned techniques that I never thought possible. It's like having
+              &quot;I learned techniques that I never thought possible. It&aposs like having
               an on-demand mentor for every shoot.&quot;
             </p>
             <p className="font-semibold">- Morgan S.</p>
