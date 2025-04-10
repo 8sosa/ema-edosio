@@ -74,19 +74,19 @@ const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
             <video
               controls
               className="w-full h-auto rounded-lg shadow-lg"
-              src="/videos/deleted1.mp4"
+              src="/videos/wnh.mp4"
             >
               Your browser doesn’t support <code>&lt;video&gt;</code>.
             </video>
             <video
               controls
               className="w-full h-auto rounded-lg shadow-lg"
-              src="/videos/deleted2.mp4"
+              src="/videos/wnh.mp4"
             />
             <video
               controls
               className="w-full h-auto rounded-lg shadow-lg"
-              src="/videos/deleted3.mp4"
+              src="/videos/wnh.mp4"
             />
           </div>
         </div>
@@ -97,17 +97,17 @@ const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
             <video
               controls
               className="w-full h-auto rounded-lg shadow-lg"
-              src="/videos/bts1.mp4"
+              src="/videos/wnh.mp4"
             />
             <video
               controls
               className="w-full h-auto rounded-lg shadow-lg"
-              src="/videos/bts2.mp4"
+              src="/videos/wnh.mp4"
             />
             <video
               controls
               className="w-full h-auto rounded-lg shadow-lg"
-              src="/videos/bts3.mp4"
+              src="/videos/wnh.mp4"
             />
           </div>
         </div>
