@@ -31,6 +31,16 @@ export default async function ModulePage({
         <Link href="/classes" className="text-purple-700 hover:underline text">
           &larr; Back to Modules
         </Link>
+          {/* Video container */}
+        <div className="mt-6 relative w-full aspect-video bg-black rounded-md overflow-hidden">
+          <video
+            controls
+            className="w-full h-full object-cover"
+            src="/videos/wnh.mp4"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <h1 className="text-4xl font-bold mt-4 mb-6 title">{moduleData.title}</h1>
         <div className="prose max-w-none body">
           {moduleData.content.split("\n\n").map((paragraph, index) => (

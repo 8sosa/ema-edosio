@@ -55,9 +55,9 @@ export default function HomePage() {
                 Watch Now
               </button>
             </Link>
-            <Link href={`/film/${heroSlug}`}>
+            <Link href={`/film/${heroSlug}/trailer`}>
               <button className="bg-gray-600 bg-opacity-75 px-6 py-2 rounded hover:bg-gray-500 transition">
-                More Info
+                Trailer
               </button>
             </Link>
           </div>

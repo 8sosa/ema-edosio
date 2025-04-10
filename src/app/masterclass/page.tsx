@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full bg-black text-white flex flex-col items-center py-16 px-4 my-10 md:px-8">
+      <section className="relative w-full bg-black text-white flex flex-col items-center py-30 px-4 my-10 md:px-8">
         <div className="max-w-5xl w-full text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 uppercase">
             Master the Art of Filmmaking.
@@ -81,7 +81,7 @@ export default function Page() {
             href="/classes"
             className="inline-block bg-white text-black font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition"
           >
-            Learn About Our Enterprise Program
+            Join Our Enterprise Program
           </Link>
         </div>
         <div className="flex-1 w-full">

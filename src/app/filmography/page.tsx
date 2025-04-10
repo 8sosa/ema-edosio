@@ -23,17 +23,17 @@ export default function FilmographyPage() {
   const { films } = filmsData as FilmsFile;
 
   return (
-    <main className="bg-black text-white min-h-screen py-10 lg:py-15">
+    <main className="bg-black text-white min-h-screen py-30">
       {/* CATEGORY BROWSE */}
       <section className="container mx-auto p-4">
-        <h2 className="text-3xl font-bold text-center mb-6">
+        <h2 className="text-3xl font-bold text-center mb-6 title">
           Browse Your Favourite Categories
         </h2>
         <div className="flex flex-wrap justify-center gap-4">
-          {["Romance", "Comedy", "Drama", "Mystery", "Crime"].map((category, i) => (
+          {["Romance", "Comedy", "Drama", "Dance"].map((category, i) => (
             <button
               key={i}
-              className="px-4 py-2 bg-gray-800 rounded hover:bg-gray-700 transition"
+              className="body px-4 py-2 bg-gray-800 rounded hover:bg-green-200 hover:text-black transition"
             >
               {category}
             </button>
@@ -43,8 +43,8 @@ export default function FilmographyPage() {
 
       {/* NEW IN / FILMOGRAPHY */}
       <section className="container mx-auto p-4" id="films">
-        <h2 className="text-3xl font-bold text-center mb-6">New In</h2>
-        <div className="space-y-8 lg:px-10">
+        {/* <h2 className="text-3xl font-bold text-center mb-6">New In</h2> */}
+        <div className="space-y-8 lg:px-10 py-10">
           {films.map((film, index) => {
             // Generate a slug from the film title
             const slug = film.title.replace(/\s+/g, "-").toLowerCase();
@@ -89,7 +89,7 @@ export default function FilmographyPage() {
                         ▶ Watch Now
                       </button>
                     </Link>
-                    <Link href={`/film/${slug}`}>
+                    <Link href={`/film/${slug}/trailer`}>
                       <button className="filmItemBtn1 p-3 px-10 rounded-full hover:scale-105 transition-transform">
                         Trailer
                       </button>

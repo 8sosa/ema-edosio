@@ -67,7 +67,9 @@ header {
 .nav-links a:hover {
   color: #ffca28;
 }
-
+.navLinkActive, .navLink:hover {
+  color: #83bfcd;
+}
 .nav-btn {
   background-color: #fff;
   color: #000;
@@ -214,9 +216,6 @@ footer {
     gap: 2rem;
     font-size: 3rem;
     font-weight: 600;
-  }
-  .navLinkActive {
-    color: #83bfcd;
   }
 }
 

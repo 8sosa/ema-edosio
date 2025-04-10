@@ -29,13 +29,13 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         {/* Desktop Nav */}
-        <nav className="title hidden md:flex space-x-6">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/filmography">Watch More</NavLink>
-          <NavLink href="/masterclass">Masterclass</NavLink>
-          <NavLink href="/merch">Shop</NavLink>
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/contact">Contact</NavLink>
+        <nav className="title hidden md:flex items-center justify-between mx-auto max-w-7xl px-4 py-3 gap-10 text-base lg:text-2xl font-bold cursor-pointer">
+          <NavLink className="navLink" href="/">Home</NavLink>
+          <NavLink className="navLink" href="/filmography">Watch More</NavLink>
+          <NavLink className="navLink" href="/masterclass">Masterclass</NavLink>
+          <NavLink className="navLink" href="/merch">Shop</NavLink>
+          <NavLink className="navLink" href="/about">About</NavLink>
+          <NavLink className="navLink" href="/contact">Contact</NavLink>
           {/* Cart Icon */}
           <button
             onClick={openCart}

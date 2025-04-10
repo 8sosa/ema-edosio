@@ -1,9 +1,7 @@
 "use client";
-import { useState } from "react";
 import './page.css';
 import { useParams } from "next/navigation";
 import films from "../../../components/films.json";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function FilmDetailPage() {
@@ -11,7 +9,6 @@ export default function FilmDetailPage() {
   const film = films.films.find(
     (f) => f.title.replace(/\s+/g, "-").toLowerCase() === id
   );
-  const [showModal, setShowModal] = useState(false);
 
   if (!film) {
     return (
@@ -21,16 +18,22 @@ export default function FilmDetailPage() {
       </div>
     );
   }
+ // Get embed URL if it's a YouTube link
+ const getEmbedUrl = (url: string): string => {
+  try {
+    const u = new URL(url);
+    const vid = u.searchParams.get("v");
+    return vid
+      ? `https://www.youtube.com/embed/${vid}`
+      : url.replace(/watch\?/, "embed/"); // fallback
+  } catch {
+    return url;
+  }
+};
 
-  const openModal = () => {
-    if (film.videoUrl) {
-      setShowModal(true);
-    }
-  };
+const hasYoutubeTrailer = film.trailerUrl && film.trailerUrl.includes("youtube.com");
+const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
 
   return (
     <main className="bg-black text-white min-h-screen pt-24 pb-10 px-6">
@@ -45,57 +48,71 @@ export default function FilmDetailPage() {
           <h1 className="title text-4xl font-bold mt-4">{film.title}</h1>
           {/* Film Poster with Play Button Overlay */}
           <div className="mt-6 relative w-full aspect-video bg-gray-800 overflow-hidden rounded-lg">
-            {film.posters && film.posters.length > 0 && (
-              <Image
-                src={film.posters[0]}
-                alt={`${film.title} Poster`}
-                fill
-                className="object-cover"
-              />
-            )}
-            {/* Centered Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button 
-                onClick={openModal}
-                className="playBtn hover:scale-105 transition-transform text-4xl text-white bg-black bg-opacity-50 rounded-full p-4"
-              >
-                ▶
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Film Synopsis and Screening License Button */}
-        <div className="filmInfo mt-6">
-          <p className="text text-center leading-relaxed py-10">{film.extendedSynopsis}</p>
-          <button className="mt-4 bg-orange-600 text-white px-6 py-3 rounded hover:bg-orange-500 transition-colors w-full sm:w-auto">
-            Watch Trailer
-          </button>
-        </div>
-      </div>
-
-      {/* Video Modal */}
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
-          <div className="relative w-full max-w-4xl">
-            <button
-              onClick={closeModal}
-              className="absolute top-2 right-2 text-white text-2xl font-bold"
-            >
-              &times;
-            </button>
-            <div className="aspect-video">
+            {embedUrl ? (
               <iframe
-                src={film.videoUrl}
-                title={`${film.title} Video`}
+                src={embedUrl}
+                title={`${film.title} Trailer`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="w-full h-full rounded-lg"
+                className="absolute top-0 left-0 w-full h-full"
               ></iframe>
-            </div>
+            ) : (
+              <video
+                controls
+                className="absolute top-0 left-0 w-full h-full object-cover"
+                src={film.trailerVid}
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
         </div>
-      )}
+
+        <div className="mt-8">
+          <h1 className="title text-4xl font-bold">Deleted Scenes</h1>
+          <div className="grid grid-cols-3 gap-4 mt-4">
+            <video
+              controls
+              className="w-full h-auto rounded-lg shadow-lg"
+              src="/videos/deleted1.mp4"
+            >
+              Your browser doesn’t support <code>&lt;video&gt;</code>.
+            </video>
+            <video
+              controls
+              className="w-full h-auto rounded-lg shadow-lg"
+              src="/videos/deleted2.mp4"
+            />
+            <video
+              controls
+              className="w-full h-auto rounded-lg shadow-lg"
+              src="/videos/deleted3.mp4"
+            />
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <h1 className="title text-4xl font-bold">BTS</h1>
+          <div className="grid grid-cols-3 gap-4 mt-4">
+            <video
+              controls
+              className="w-full h-auto rounded-lg shadow-lg"
+              src="/videos/bts1.mp4"
+            />
+            <video
+              controls
+              className="w-full h-auto rounded-lg shadow-lg"
+              src="/videos/bts2.mp4"
+            />
+            <video
+              controls
+              className="w-full h-auto rounded-lg shadow-lg"
+              src="/videos/bts3.mp4"
+            />
+          </div>
+        </div>
+
+      </div>
     </main>
   );
 }
