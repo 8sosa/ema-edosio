@@ -4,12 +4,6 @@ import Link from "next/link";
 import masterclassData from "@/components/modules.json";
 import { Metadata } from "next";
 
-// type Module = {
-//   id: string;
-//   title: string;
-//   content: string;
-//   videoSrc?: string;
-// };
 
 // 1️⃣ Pre‑generate all module routes at build time
 export function generateStaticParams(): { id: string }[] {
@@ -29,7 +23,7 @@ export async function generateMetadata({
   }
   return {
     title: mod.title,
-    description: mod.content.slice(0, 160).replace(/\n/g, " "),
+    description: mod.intro.replace(/\n/g, " "),
   };
 }
 
@@ -47,17 +41,17 @@ export default async function ModulePage({ params }: Props) {
   if (!moduleData) notFound();
 
   return (
-    <main className="container mx-auto min-h-screen py-30 px-4 bg-black text-gray-900">
-      <div className="bg-white p-6 md:p-10 rounded-lg shadow-lg">
+    <main className="container mx-auto py-30 px-4 bg-black text-gray-900">
+      <div className="bg-white py-15 p-6 md:p-10 rounded-lg shadow-lg">
         <Link
           href="/classes"
-          className="text-purple-600 hover:underline text-sm"
+          className="body text-purple-600 hover:underline text-sm"
         >
           ← Back to Modules
         </Link>
 
-        <h1 className="text-3xl md:text-4xl font-bold mt-4 mb-8">
-          {moduleData.title}
+        <h1 className="title text-3xl md:text-4xl font-bold mt-4 mb-8">
+          {moduleData.module}: {moduleData.title}
         </h1>
 
         <div className="flex flex-col lg:flex-row gap-8">
@@ -69,7 +63,7 @@ export default async function ModulePage({ params }: Props) {
               className="w-full h-auto rounded-md"
             />
           </div>
-          <div className="w-full lg:w-2/4 prose prose-lg max-w-none">
+          <div className="body w-full lg:w-2/4 prose prose-lg max-w-none">
             <p>Transript placeholder</p>
           </div>
         </div>

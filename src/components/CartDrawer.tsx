@@ -40,7 +40,7 @@ export default function CartDrawer() {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold">Your Cart</h2>
+              <h2 className="title text-2xl font-bold">Your Cart</h2>
               <button onClick={closeCart}>
                 <X className="w-6 h-6 text-black" />
               </button>
@@ -55,16 +55,16 @@ export default function CartDrawer() {
                       return (
                   <div
                     key={item.id}
-                    className="border-b pb-2 flex justify-between"
+                    className="border-b pb-2 flex justify-between body"
                   >
                     <div>
-                    <div className="relative w-full aspect-[1/1] bg-gray-100 rounded-md overflow-hidden">
+                      <div className="relative w-full aspect-[1/1] bg-gray-100 rounded-md overflow-hidden">
                         <Image
                         src={item.image}
                         alt={item.title}
                         fill
                         className="object-cover object-center"
-                        />
+                      />
                     </div>
                       <p className="font-medium">{item.title}</p>
                       <p className="text-sm text-black-600">

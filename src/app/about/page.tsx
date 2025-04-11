@@ -69,7 +69,7 @@ export default function AboutPage() {
       <div aria-labelledby="consultation-heading" className="container mx-auto mt-16 px-6 lg:px-0 w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Text Column */}
-        <div className="space-y-6 px-5">
+        <div className="space-y-6 px-5 body">
           <h2
             id="consultation-heading"
             className="text-4xl lg:text-5xl font-serif uppercase leading-tight"

@@ -6,15 +6,15 @@ export default function ContactPage() {
       <section className="container contactPage">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Contact Details Section */}
-          <div className="flex-1">
-            <h2 className="contactH2 altMont">Contact</h2>
-            <p className="mb-2 contactP mont">Email - contact@example.com</p>
-            <p className="mb-2 contactP mont">Phone - +123 456 7890</p>
-            <p className="mb-2 contactP mont">Address - 123 Main St, City, Country</p>
+          <div className="flex-1 body">
+            <h2 className="contactH2 title">Contact</h2>
+            <p className="mb-2 contactP">Email - contact@example.com</p>
+            <p className="mb-2 contactP">Phone - +123 456 7890</p>
+            <p className="mb-2 contactP">Address - 123 Main St, City, Country</p>
           </div>
           {/* Form Section */}
           <div className="flex-1">
-            <form className="space-y-4">
+            <form className="space-y-4 body">
               <div className='contactFormRow'>
                 <div>
                   <label htmlFor="name" className="contactFormLabel mont">

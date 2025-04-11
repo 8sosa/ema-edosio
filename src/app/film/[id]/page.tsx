@@ -111,7 +111,7 @@ const sampleVids = [
 
        {/* Deleted Scenes Carousel */}
         <div className="mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">DELETED SCENES</h2>
+          <h2 className="title text-2xl md:text-3xl font-bold mb-4">DELETED SCENES</h2>
           <div className="flex overflow-x-auto space-x-4 pb-4">
             {sampleVids.map((video, idx) => (
               <div key={idx} className="min-w-[200px] flex-shrink-0 w-1/4">
@@ -133,7 +133,7 @@ const sampleVids = [
 
         {/* BTS Carousel */}
         <div className="mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">BTS</h2>
+          <h2 className="title text-2xl md:text-3xl font-bold mb-4">BTS</h2>
           <div className="flex overflow-x-auto space-x-4 pb-4">
             {sampleVideos.map((video, idx) => (
               <div key={idx} className="min-w-[200px] flex-shrink-0 w-1/4">

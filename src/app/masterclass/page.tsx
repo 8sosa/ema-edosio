@@ -1,31 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import masterclassData from "@/components/modules.json";
 
-type Module = {
-  id: string;
-  title: string;
-  module: string;
-  content: string;
-};
 export default function Page() {
-  const modules: Module[] = masterclassData.modules;
-
   return (
     <>
       {/* Hero Section */}
       <section className="relative w-full bg-black text-white flex flex-col items-center py-30 px-4 my-10 md:px-8">
         <div className="max-w-5xl w-full text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 uppercase">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 uppercase title">
             Master the Art of Filmmaking.
             <br />
             Create Stories That Move.
           </h1>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-gray-300 mb-8 max-w-2xl mx-auto body">
             Dive into immersive classes taught by renowned filmmakers.
             Transform your vision into compelling films—one scene at a time.
           </p>
-          <Link href="/classes" className="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded-full text-lg font-semibold">
+          <Link href="/classes" className="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded-full text-lg font-semibold body">
             Start Your Journey
           </Link>
         </div>
@@ -46,10 +37,10 @@ export default function Page() {
         </div>
         {/* Right Column: Text */}
         <div className="flex-1 flex flex-col justify-center space-y-4">
-          <h2 className="text-2xl md:text-3xl font-bold">
+          <h2 className="text-2xl md:text-3xl font-bold title">
             TELL YOUR STORY. YOUR WAY.
           </h2>
-          <div className="text-gray-300 space-y-4">
+          <div className="text-gray-300 space-y-4 body">
             <p>
               This masterclass is for filmmakers who want to create bold, honest stories rooted in their own truth.
             </p>
@@ -65,58 +56,102 @@ export default function Page() {
             <p>
               It’s about helping you find your voice — and using your skills, your environment, and your experiences to create films that connect deeply with audiences.
             </p>
-
-            <p className="font-bold">In this masterclass, I’ll share:</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>How to find your unique voice as a filmmaker</li>
-              <li>How to turn real life into powerful stories</li>
-              <li>My creative process — from idea to screen</li>
-              <li>How to make films with limited resources</li>
-              <li>How to build your audience and distribute your work independently</li>
-            </ul>
           </div>
-
-          <Link href="#modules" className="text-red-500 hover:underline font-semibold">
+          <Link href="#modules" className="text-red-500 hover:underline font-semibold body">
             Explore My Modules
           </Link>
         </div>
       </section>
-      {/* Modules Overview Section */}
-      <section className="py-16 bg-white text-black" id="modules">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold mb-4 title">
-              Masterclass Modules Overview
-            </h2>
-            <p className="text-gray-600 body">
-              Explore the comprehensive modules designed to guide you from the creative process to monetization.
+      <section className="max-w-5xl mx-auto py-16 px-4 body">
+        <div className="flex-1 flex flex-col justify-center space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold title">
+            What You’ll Gain From This Masterclass
+          </h2>
+          <div className="text-white-300 space-y-4">
+            <p>
+              This is a creative toolkit built from real-life experience  designed for filmmakers, storytellers, and creators who want to tell bold, honest, and unforgettable stories.
             </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {modules.map((module) => (
-              <div
-                key={module.id}
-                className="p-6 border rounded-md hover:shadow-lg transition"
-              >
-                <h3 className="text-2xl py-5 font-bold mb-2 title">{module.module}: {module.title}</h3>
-                {/* Display a short excerpt of content */}
-                <p className="text-gray-600 mb-4 pb-5 body">
-                  {module.content.substring(0, 200)}...
-                </p>
-                <Link
-                  href={`/classes/${module.id}`}
-                  className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition text"
-                >
-                  Learn More
-                </Link>
-              </div>
-            ))}
+            <p>
+              Whether you’re just starting out or you’ve been making films for years, this masterclass will challenge you to create from a deeper place  your voice, your world, your truth.
+            </p>
+            <p className="font-bold">
+              By the end of this course, you’ll learn how to:
+            </p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Find your voice and build your personal storytelling style</li>
+              <li>
+                Turn everyday life into powerful stories
+              </li>
+              <li>
+                Write scripts that feel honest and human
+              </li>
+              <li>
+                Create visually striking films with limited resources
+              </li>
+              <li>
+                Work with actors to bring authentic performances to life
+              </li>
+              <li>
+                Build an audience that connects with your work
+              </li>
+              <li>
+                Navigate independent filmmaking in Nigeria and globally
+              </li>
+              <li>
+                Monetize and distribute your film on your own terms
+              </li>
+            </ul>
+            <p className="text-gray-100 font-bold text-2xl pt-10">
+              Who This Course is For
+            </p>
+            <p>This course is for you if:</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                You want to tell stories rooted in your culture, environment, and experience
+              </li>
+              <li>
+                You believe filmmaking is more than equipment — it’s about heart, truth, and courage
+              </li>
+              <li>
+                You want to make films but feel limited by budget or access
+              </li>
+              <li>
+                You’re ready to take control of your filmmaking journey — from idea to audience
+              </li>
+              <li>
+                You want practical, real-world strategies from someone who has done it
+              </li>
+            </ul>
+            <p className="title text-gray-100 font-bold text-2xl pt-10">
+              What Makes This Masterclass Different
+            </p>
+            <p>
+              This is not a technical class filled with complicated jargon.
+            </p>
+            <p>
+              This is a filmmaker’s survival guide.
+            </p>
+            <p>
+              It’s a course built from experience — from making films in Lagos with little resources but big vision.
+            </p>
+            <p>
+              It’s honest.
+            </p>
+            <p>
+              It’s practical.
+            </p>
+            <p>
+              It’s designed to help you move from “I have an idea” to “I made a film.”
+            </p>
+            <p>
+              No gimmicks. No shortcuts. Just the real work of storytelling.
+            </p>
           </div>
         </div>
       </section>
       {/* CTA SECTION */}
-      <section className="bg-gray-900 py-16 px-4 md:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <section className="bg-gray-900 py-16 px-4 md:px-8 text-center body">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 title">
           Your story is your power.
         </h2>
         <p className="text-gray-300 max-w-xl mx-auto mb-2">The world doesn’t need another copy — it needs you.</p>
@@ -127,8 +162,8 @@ export default function Page() {
       </section>
 
       {/* TESTIMONIALS SECTION */}
-      <section className="bg-black py-16 px-4 md:px-8 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+      <section className="bg-black py-16 px-4 md:px-8 text-center body">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 title">
           What Filmmakers Are Saying
         </h2>
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 md:gap-4 mt-8">

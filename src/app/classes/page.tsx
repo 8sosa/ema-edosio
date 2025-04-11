@@ -9,7 +9,7 @@ type Module = {
   id: string;
   title: string;
   module: string;
-  content: string;
+  intro: string;
 };
 
 export default function MasterclassesPage() {
@@ -23,14 +23,17 @@ export default function MasterclassesPage() {
         <div className="max-w-7xl mx-auto px-4 py-16 flex flex-col md:flex-row items-center">
           <div className="flex-1">
             <h1 className="text-6xl md:text-5xl font-bold mb-4 title">
-              Filmmaking Masterclass
+              Learn the Process. Build Your Voice. Tell Your Story.
             </h1>
-            <p className="mb-6 text-lg text">
-              Join our in-depth masterclass and learn the art of storytelling—from finding your voice to bringing your film to market.
+            <p className="mb-1 text-lg body">
+              This course is a step-by-step guide to how I make films — from the first idea to the final cut. Every module is designed to give you practical tools, honest insight, and a creative mindset to help you tell stories that matter.
+            </p>
+            <p className="mb-6 text-lg body">
+              This is not theory — this is real-world filmmaking.
             </p>
             <Link
                 href="#modules"
-                className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition text"
+                className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition body"
             >
                 Learn More
             </Link>
@@ -65,11 +68,11 @@ export default function MasterclassesPage() {
                 <h3 className="text-2xl py-5 font-bold mb-2 title">{module.module}: {module.title}</h3>
                 {/* Display a short excerpt of content */}
                 <p className="text-gray-600 mb-4 pb-5 body">
-                  {module.content.substring(0, 200)}...
+                  {module.intro}
                 </p>
                 <Link
                   href={`/classes/${module.id}`}
-                  className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition text"
+                  className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition body"
                 >
                   Learn More
                 </Link>

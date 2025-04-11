@@ -74,7 +74,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col md:flex-row py-15">
       {/* Aside - on mobile this will be at the top, on desktop on the left */}
-      <aside className="w-full md:w-1/4 p-4">
+      <aside className="w-full md:w-1/5 p-4">
         {/* Categories */}
         <div className="p-6 rounded-md border mb-6">
           <TfiLayoutLineSolid className="red line mb-2" />
@@ -95,7 +95,7 @@ export default function HomePage() {
       </aside>
 
       {/* Main Content */}
-      <div className="w-full md:w-3/4 p-4 space-y-12">
+      <div className="w-full md:w-4/5 p-4 space-y-12">
         {/* New Arrivals Section */}
         <section className="py-12 px-6 max-w-8xl">
           <h2 className="title text-2xl md:text-3xl font-bold mb-6 text-center">

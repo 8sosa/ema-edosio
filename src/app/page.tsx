@@ -9,7 +9,7 @@ interface Film {
   teaser: string;
   category: string;
   posters?: string[];
-  synopsis?: string;
+  synopsisAlt: string;
   stills?: string[];
 }
 
@@ -46,10 +46,15 @@ export default function HomePage() {
           <h1 className="title text-3xl md:text-5xl lg:text-6xl font-bold mb-2">
             {heroFilm.title}
           </h1>
-          <p className="title text-md md:text-lg max-w-[50ch] mb-4">
-            {heroFilm.synopsis}
+          <p className="body text-md md:text-lg max-w-[50ch] mb-4 py-5">
+            {heroFilm.synopsisAlt.split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                <br />
+              </span>
+            ))}
           </p>
-          <div className="flex space-x-3">
+          <div className="flex space-x-3 body">
             <Link href={`/film/${heroSlug}`}>
               <button className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition">
                 Watch Now
@@ -76,11 +81,11 @@ export default function HomePage() {
           <h2 className="body hero-training text-xl md:text-2xl">
             Stories That Stay With You.
           </h2>
-          <p className="hero-description text">
+          <p className="hero-description body">
             Authentic, bold, and deeply human storytelling.
           </p>
           <Link href="/filmography">
-            <button className="cta-button bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition">
+            <button className="cta-button bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition body">
               Watch More
             </button>
           </Link>

@@ -29,7 +29,7 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         {/* Desktop Nav */}
-        <nav className="title hidden md:flex items-center justify-between mx-auto max-w-7xl px-4 py-3 gap-10 text-base lg:text-2xl font-bold cursor-pointer">
+        <nav className="body hidden md:flex items-center justify-between mx-auto max-w-7xl px-4 py-3 gap-10 text-base lg:text-2xl font-bold cursor-pointer">
           <NavLink className="navLink" href="/">Home</NavLink>
           <NavLink className="navLink" href="/filmography">Watch More</NavLink>
           <NavLink className="navLink" href="/masterclass">Masterclass</NavLink>
@@ -77,7 +77,7 @@ export default function Header() {
             <HiOutlineX />
           </button>
         </div>
-        <nav className="flex flex-col p-4 space-y-4 text-center items-end title">
+        <nav className="flex flex-col p-4 space-y-4 text-center items-end body">
           <NavLink href="/" className="navLink">Home</NavLink>
           <NavLink href="/about" className="navLink">About</NavLink>
           <NavLink href="/filmography" className="navLink">Watch More</NavLink>

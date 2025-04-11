@@ -7,12 +7,12 @@ export default function CartDisplay() {
   const { cart, removeFromCart, clearCart } = useCart();
 
   if (cart.length === 0) {
-    return <p>Your cart is empty.</p>;
+    return <p className="body">Your cart is empty.</p>;
   }
 
   return (
-    <div className="p-4 border rounded-md">
-      <h2 className="text-xl font-bold mb-4">Your Cart</h2>
+    <div className="p-4 border rounded-md body">
+      <h2 className="text-xl font-bold mb-4 title">Your Cart</h2>
       <ul>
         {cart.map((item) => (
           <li key={item.id} className="flex justify-between items-center mb-2">

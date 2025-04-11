@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white">
       {/* Top Section */}
-      <div className="container mx-auto flex flex-col md:flex-row py-12 px-6 md:px-12 justify-center">
+      <div className="container mx-auto flex flex-col md:flex-row py-12 px-6 md:px-12 justify-center body">
         {/* Accent line + content */}
         <div className="flex items-start w-2/3">
           <div className="w-1 bg-white opacity-30 mr-6" />
@@ -28,7 +28,7 @@ export default function Footer() {
                 />
               </div>
               {/* Checkbox + Subscribe row */}
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full">
+              <div className="body flex flex-col md:flex-row md:items-center md:justify-between w-full">
                 <label className="flex items-center mb-4 md:mb-0">
                   <input type="checkbox" className="w-5 h-5 border border-white rounded bg-transparent mr-3" />
                   <span className="text-lg">Yes, subscribe me to your newsletter.</span>
@@ -48,32 +48,27 @@ export default function Footer() {
       {/* Bottom Section */}
       <div className="border-t border-gray-700">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between py-6 px-6 md:px-12">
-          <p className="text-sm text-center md:text-left mb-4 md:mb-0">
+          <p className="text-sm text-center md:text-left mb-4 md:mb-0 body">
             © {new Date().getFullYear()} Ema Edosio, All Rights Reserved.
           </p>
           <ul className="flex space-x-6">
             <li>
-              <a href="#" className="text-xl hover:text-gray-400">
+              <a href="https://www.instagram.com/emaedosio/" className="text-xl hover:text-gray-400">
                 <FaInstagram />
               </a>
             </li>
             <li>
-              <a href="#" className="text-xl hover:text-gray-400">
-                <FaVimeoV />
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-xl hover:text-gray-400">
+              <a href="https://www.youtube.com/user/EmaEdosio" className="text-xl hover:text-gray-400">
                 <FaYoutube />
               </a>
             </li>
             <li>
-              <a href="#" className="text-xl hover:text-gray-400">
+              <a href="https://web.facebook.com/p/Ema-Edosio-Deelen-100083753704671/?_rdc=1&_rdr" className="text-xl hover:text-gray-400">
                 <FaFacebookF />
               </a>
             </li>
             <li>
-              <a href="#" className="text-xl hover:text-gray-400">
+              <a href="https://x.com/emaedosio" className="text-xl hover:text-gray-400">
                 <FaXTwitter />
               </a>
             </li>

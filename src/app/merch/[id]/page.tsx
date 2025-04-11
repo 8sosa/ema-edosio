@@ -68,7 +68,7 @@ export default function ItemPage() {
   return (
     <main className="max-w-screen-xl mx-auto px-4 py-15 text-white">
       {/* Breadcrumb */}
-      <div className="mb-4 text-sm text-gray-200">
+      <div className="mb-4 text-sm text-gray-200 body">
         <button onClick={() => router.back()} className="underline">
           &larr; Back
         </button>
@@ -89,9 +89,9 @@ export default function ItemPage() {
         </div>
 
         {/* Product Details */}
-        <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-4">
+        <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-4 body">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">{item.name}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2 title">{item.name}</h1>
             <div className="flex items-center gap-1 text-yellow-500">
               {[...Array(item.rating || 4)].map((_, i) => (
                 <AiFillStar key={i} />
@@ -150,8 +150,8 @@ export default function ItemPage() {
 
       {/* Description Section */}
       <div className="mt-10 border-t pt-6">
-        <h2 className="text-xl font-semibold mb-4">Product Details</h2>
-        <p className="text-gray-200">
+        <h2 className="text-xl font-semibold mb-4 title">Product Details</h2>
+        <p className="text-gray-200 body">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue
           mauris eget felis euismod, et placerat velit fermentum.
         </p>
@@ -159,8 +159,8 @@ export default function ItemPage() {
 
       {/* Recommended Products */}
       {recommended.length > 0 && (
-        <div className="mt-10 border-t pt-6">
-          <h2 className="text-xl font-semibold mb-6">You may also like</h2>
+        <div className="mt-10 border-t pt-6 body">
+          <h2 className="text-xl font-semibold mb-6 body">You may also like</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {recommended.map((recItem: Item) => (
               <div

@@ -41,7 +41,7 @@ export default function FilmTrailerPage() {
         <Link href="/filmography" className="body text-gray-400 hover:text-gray-200 text-sm py-15">
           &lt; Back to My Films
         </Link>
-        <h1 className="text-4xl font-bold mt-4 mb-6">{film.title} - Trailer</h1>
+        <h1 className="text-4xl font-bold mt-4 mb-6 title">{film.title} - Trailer</h1>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Trailer Embed */}
           <div className="w-full lg:w-2/3 aspect-video relative bg-gray-800 overflow-hidden rounded-lg">
@@ -66,7 +66,7 @@ export default function FilmTrailerPage() {
           </div>
           {/* Synopsis Text */}
           <div className="w-full lg:w-1/3 flex items-center">
-            <p className="text-center leading-relaxed">{film.extendedSynopsis}</p>
+            <p className="text-center leading-relaxed body">{film.extendedSynopsis}</p>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import filmsData from "@/components/films.json";
 
 interface Film {
   title: string;
-  synopsis?: string;
+  synopsis: string;
   poster?: string;
   runtime?: string;
   category?: string;
@@ -28,7 +28,7 @@ export default function FilmographyPage() {
         <h2 className="text-3xl font-bold text-center mb-6 title">
           Watch My Films
         </h2>
-        <p className='text-center w-full lg:w-2/3 mx-auto'>I&lsquo;m a paragraph. Click here to add your own text and edit me. It&lsquo;s easy. Just click &quot;Edit Text&quot; or double click me to add your own content and make changes to the font. I&lsquo;m a great place for you to tell a story and let your users know a little more about you.</p>
+        <p className='text-center w-full lg:w-2/3 mx-auto body'>I&lsquo;m a paragraph. Click here to add your own text and edit me. It&lsquo;s easy. Just click &quot;Edit Text&quot; or double click me to add your own content and make changes to the font. I&lsquo;m a great place for you to tell a story and let your users know a little more about you.</p>
         <div className="flex flex-wrap justify-center gap-4 py-20">
           {["Romance", "Comedy", "Drama", "Dance"].map((category, i) => (
             <button
@@ -73,14 +73,19 @@ export default function FilmographyPage() {
                     {film.title}
                   </h3>
                   {/* Runtime / Language / Producer / Director */}
-                  <span className="text-sm text-gray-300 text">
+                  <span className="text-sm text-gray-300 body">
                     {film.runtime ? film.runtime : "N/A"} |{" "}
                     {film.category ? film.category : "N/A"} |{" "}
                     {film.genre ? film.genre : "N/A"}
                   </span>
                   {/* Synopsis */}
-                  <p className="text">
-                    {film.synopsis}
+                  <p className="body">
+                  {film.synopsis.split('\n').map((line, index) => (
+                    <span key={index}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
                   </p>
                   <div className="flex items-center justify-evenly gap-4 w-full body">
                     <Link href={`/film/${slug}`}>
