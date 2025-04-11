@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { TfiLayoutLineSolid } from "react-icons/tfi";
@@ -27,14 +27,11 @@ const categories = [
   { id: 5, name: "KEY CHAINS" },
 ];
 
-const tags = ["When Nigeria Happens", "Otiti", "Kasala"];
-
 // Cast your merchandise data to the proper type
 const merchItems = Merchandise.merchandise as Item[];
 
 export default function HomePage() {
   // State to track which tag is selected (if any)
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   // Instead of calling useRef in a loop, create a container ref
   // and initialize the refs once.
@@ -49,25 +46,10 @@ export default function HomePage() {
     });
   }
 
-  // Ref for the tag section
-  const tagSectionRef = useRef<HTMLDivElement>(null);
-
   // Handler for category click – scroll to the respective section
   const handleCategoryClick = (catName: string) => {
     categoryRefs.current[catName].current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  // Handler for tag click – set the selected tag and scroll to tag section
-  const handleTagClick = (tag: string) => {
-    setSelectedTag(tag);
-  };
-
-  // Scroll to the tag section when selectedTag changes and is not null
-  useEffect(() => {
-    if (selectedTag) {
-      tagSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [selectedTag]);
 
   // ProductCard component with navigation to the item detail page.
   const ProductCard = ({ item }: { item: Item }) => (
@@ -110,22 +92,6 @@ export default function HomePage() {
             ))}
           </ul>
         </div>
-        {/* Tags */}
-        <div className="p-6 rounded-md border">
-          <TfiLayoutLineSolid className="red line mb-2" />
-          <h3 className="text-xl font-bold mb-4">Tags</h3>
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag, index) => (
-              <button
-                key={index}
-                onClick={() => handleTagClick(tag)}
-                className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-300 body"
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
       </aside>
 
       {/* Main Content */}
@@ -166,31 +132,6 @@ export default function HomePage() {
             </section>
           );
         })}
-
-        {/* Tag filtered items section */}
-        {selectedTag && (
-          <section
-            ref={tagSectionRef}
-            className="py-12 px-6 max-w-8xl border-t pt-12"
-          >
-            <h2 className="title text-2xl md:text-3xl font-bold mb-6">
-              {selectedTag}
-            </h2>
-            {merchItems.filter((item: Item) =>
-              item.tag.includes(selectedTag)
-            ).length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {merchItems
-                  .filter((item: Item) => item.tag.includes(selectedTag))
-                  .map((item: Item, idx: number) => (
-                    <ProductCard key={idx} item={item} />
-                  ))}
-              </div>
-            ) : (
-              <p>No items found for this tag.</p>
-            )}
-          </section>
-        )}
       </div>
     </main>
   );

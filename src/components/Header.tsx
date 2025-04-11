@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <header
       className={`header fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-black shadow-sm" : "bg-transparent"
+        scrolled ? "bg-black shadow-sm" : "bg-transparent text-black-600"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">

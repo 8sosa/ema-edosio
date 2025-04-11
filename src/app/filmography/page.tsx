@@ -8,11 +8,10 @@ import filmsData from "@/components/films.json";
 interface Film {
   title: string;
   synopsis?: string;
-  posters?: string[];
+  poster?: string;
   runtime?: string;
-  language?: string;
-  producer?: string;
-  director?: string;
+  category?: string;
+  genre?: string;
 }
 
 interface FilmsFile {
@@ -25,11 +24,12 @@ export default function FilmographyPage() {
   return (
     <main className="bg-black text-white min-h-screen py-30">
       {/* CATEGORY BROWSE */}
-      <section className="container mx-auto p-4">
+      <section className="container mx-auto p-4 flex flex-col align-center wrap-pretty">
         <h2 className="text-3xl font-bold text-center mb-6 title">
-          Browse Your Favourite Categories
+          Watch My Films
         </h2>
-        <div className="flex flex-wrap justify-center gap-4">
+        <p className='text-center w-full lg:w-2/3 mx-auto'>I&lsquo;m a paragraph. Click here to add your own text and edit me. It&lsquo;s easy. Just click &quot;Edit Text&quot; or double click me to add your own content and make changes to the font. I&lsquo;m a great place for you to tell a story and let your users know a little more about you.</p>
+        <div className="flex flex-wrap justify-center gap-4 py-20">
           {["Romance", "Comedy", "Drama", "Dance"].map((category, i) => (
             <button
               key={i}
@@ -56,9 +56,9 @@ export default function FilmographyPage() {
               >
                 {/* Left side: Film Poster */}
                 <div className="relative w-full lg:w-5/10 aspect-[2/3] bg-gray-800 overflow-hidden">
-                  {film.posters && film.posters.length > 0 && (
+                  {film.poster && (
                     <Image
-                      src={film.posters[0]}
+                      src={film.poster}
                       alt={`${film.title} Poster`}
                       layout="fill"
                       className="object-cover"
@@ -75,9 +75,8 @@ export default function FilmographyPage() {
                   {/* Runtime / Language / Producer / Director */}
                   <span className="text-sm text-gray-300 text">
                     {film.runtime ? film.runtime : "N/A"} |{" "}
-                    {film.language ? film.language : "N/A"} |{" "}
-                    {film.producer ? film.producer : "N/A"} |{" "}
-                    {film.director ? film.director : "N/A"}
+                    {film.category ? film.category : "N/A"} |{" "}
+                    {film.genre ? film.genre : "N/A"}
                   </span>
                   {/* Synopsis */}
                   <p className="text">

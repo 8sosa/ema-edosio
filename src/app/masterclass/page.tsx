@@ -1,8 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import Home from "../../images/home.jpg";
+import masterclassData from "@/components/modules.json";
 
+type Module = {
+  id: string;
+  title: string;
+  module: string;
+  content: string;
+};
 export default function Page() {
+  const modules: Module[] = masterclassData.modules;
+
   return (
     <>
       {/* Hero Section */}
@@ -27,10 +35,10 @@ export default function Page() {
       <section className="flex flex-col md:flex-row items-start justify-center gap-8 max-w-5xl mx-auto py-16 px-4 md:px-8">
         {/* Left Column: Behind the Scenes Image */}
         <div className="flex-1 w-full aspect-[1/1]">
-          <div className="relative w-full aspect-[1/1] bg-gray-700 rounded-lg overflow-hidden">
+          <div className="relative w-full aspect-[2/3] bg-gray-700 rounded-lg overflow-hidden">
             <Image
-              src={Home}
-              alt="Behind the Scenes in Filmmaking"
+              src="/images/mast.jpg"
+              alt="Ema Edosio"
               fill
               className="object-cover"
             />
@@ -39,61 +47,83 @@ export default function Page() {
         {/* Right Column: Text */}
         <div className="flex-1 flex flex-col justify-center space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold">
-            Bring Your Vision to Life.
+            TELL YOUR STORY. YOUR WAY.
           </h2>
-          <p className="text-gray-300">
-            Whether you&aposre an aspiring director, cinematographer, or screenwriter,
-            learn how to turn raw ideas into visually stunning films.
-            Gain insider knowledge on camera techniques, storytelling, and editing.
-          </p>
-          <Link href="/classes" className="text-red-500 hover:underline font-semibold">
-            Explore Filmmaking Courses
+          <div className="text-gray-300 space-y-4">
+            <p>
+              This masterclass is for filmmakers who want to create bold, honest stories rooted in their own truth.
+            </p>
+            <p>
+              As a filmmaker trained in both film school and real-world experience, I’ve learned that storytelling is not just about technique — it’s about perspective.
+            </p>
+            <p>
+              Every film I’ve made — Kasala!, Otiti, When Nigeria Happens — started with a question I couldn’t ignore, a story I needed to tell.
+            </p>
+            <p>
+              This class is not about chasing trends or formulas.
+            </p>
+            <p>
+              It’s about helping you find your voice — and using your skills, your environment, and your experiences to create films that connect deeply with audiences.
+            </p>
+
+            <p className="font-bold">In this masterclass, I’ll share:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>How to find your unique voice as a filmmaker</li>
+              <li>How to turn real life into powerful stories</li>
+              <li>My creative process — from idea to screen</li>
+              <li>How to make films with limited resources</li>
+              <li>How to build your audience and distribute your work independently</li>
+            </ul>
+          </div>
+
+          <Link href="#modules" className="text-red-500 hover:underline font-semibold">
+            Explore My Modules
           </Link>
         </div>
       </section>
-
+      {/* Modules Overview Section */}
+      <section className="py-16 bg-white text-black" id="modules">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold mb-4 title">
+              Masterclass Modules Overview
+            </h2>
+            <p className="text-gray-600 body">
+              Explore the comprehensive modules designed to guide you from the creative process to monetization.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {modules.map((module) => (
+              <div
+                key={module.id}
+                className="p-6 border rounded-md hover:shadow-lg transition"
+              >
+                <h3 className="text-2xl py-5 font-bold mb-2 title">{module.module}: {module.title}</h3>
+                {/* Display a short excerpt of content */}
+                <p className="text-gray-600 mb-4 pb-5 body">
+                  {module.content.substring(0, 200)}...
+                </p>
+                <Link
+                  href={`/classes/${module.id}`}
+                  className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition text"
+                >
+                  Learn More
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* CTA SECTION */}
       <section className="bg-gray-900 py-16 px-4 md:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Transform Your Filmmaking Today.
+          Your story is your power.
         </h2>
-        <p className="text-gray-300 max-w-xl mx-auto mb-8">
-          Join thousands of filmmakers who have elevated their craft through hands-on
-          masterclasses, practical workshops, and real-world insights.
-        </p>
+        <p className="text-gray-300 max-w-xl mx-auto mb-2">The world doesn’t need another copy — it needs you.</p>
+        <p className="text-gray-300 max-w-xl mx-auto mb-8">Let’s get started.</p>
         <button className="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded-full text-lg font-semibold">
           Enroll Now
         </button>
-      </section>
-
-      {/* ENTERPRISE / TEAM SECTION */}
-      <section className="flex flex-col md:flex-row items-center justify-between max-w-5xl mx-auto py-16 px-4 md:px-8 gap-6">
-        <div className="flex-1">
-          <h3 className="text-2xl md:text-3xl font-bold mb-2">
-            Elevate Your Film Team
-          </h3>
-          <p className="text-gray-300 mb-4">
-            Equip your production crew or creative team with cutting-edge skills and
-            insider techniques from top industry experts.
-            Cultivate a collaborative spirit that drives innovation on set.
-          </p>
-          <Link 
-            href="/classes"
-            className="inline-block bg-white text-black font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition"
-          >
-            Join Our Enterprise Program
-          </Link>
-        </div>
-        <div className="flex-1 w-full">
-          <div className="relative w-full h-48 md:h-64 bg-gray-700 rounded-lg overflow-hidden">
-            <Image
-              src={Home}
-              alt="Film Crew Collaboration"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
       </section>
 
       {/* TESTIMONIALS SECTION */}
@@ -108,7 +138,7 @@ export default function Page() {
               &quot;This masterclass transformed the way I see filmmaking. The practical
               lessons and behind-the-scenes insights have been game-changing.&quot;
             </p>
-            <p className="font-semibold">- Alex R.</p>
+            <p className="font-semibold">- Oloruntobi R.</p>
           </div>
           {/* Testimonial 2 */}
           <div className="flex-1 bg-gray-800 p-6 rounded-lg">
@@ -116,7 +146,7 @@ export default function Page() {
               &quot;I learned techniques that I never thought possible. It&aposs like having
               an on-demand mentor for every shoot.&quot;
             </p>
-            <p className="font-semibold">- Morgan S.</p>
+            <p className="font-semibold">- Chinedu S.</p>
           </div>
         </div>
       </section>

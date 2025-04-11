@@ -1,30 +1,69 @@
+"use client";
 import './page.css';
 import Image from "next/image";
-import Ema from "../../images/ema1.jpg";
 
 export default function AboutPage() {
   return (
     <section className="aboutPage">
       {/* Content Section */}
-      <div className="aboutSecondSection mont">
-        <div className="aboutImageSection">
+      <div className="aboutSecondSection mont flex flex-col lg:flex-row items-start gap-12">
+        <div className="aboutImageSection w-full lg:w-1/2 relative lg:sticky lg:top-24">
           <Image 
-            src={Ema} 
-            alt="Ema Edosio Deelen" 
-            layout="responsive" 
-            objectFit="cover" 
+            src="/images/ema.jpg"
+            alt="Ema Edosio Deelen"
+            width={800}
+            height={1000}
+            className="object-cover rounded-lg"
           />
         </div>
-        <div className="aboutTextSection flex flex-row align-center">
-          <h1>A Filmmaker Without Boundaries</h1>
-          <p className="mt-4">
-            Ema’s journey into filmmaking was anything but conventional. She honed her skills as a cinematographer, director, and video journalist, working with networks like BBC, Vice News and Bloomberg. Her ability to blend intimate, human-driven storytelling with striking visuals has made her one of the most distinct voices in contemporary African cinema.
+
+        <div className="aboutTextSection flex-1 space-y-1">
+          <h1 className="text-4xl font-bold">
+            Ema Edosio — Filmmaker. Visual Storyteller. Voice of a New African Cinema.
+          </h1>
+          <p>
+            Ema Edosio is an award&minus;winning Nigerian filmmaker, director, and cinematographer known for crafting bold, human stories that connect local realities with global audiences.
           </p>
           <p>
-            Her films go beyond the surface, capturing the raw, real, and often overlooked narratives of everyday life. With a career spanning over a decade, she has carved a niche in the industry, creating films that speak to Nigerian audiences at home and in the diaspora while resonating with a global audience.
+            With a career spanning over a decade, Ema honed her skills in cinematography and directing, working with international networks like the BBC, Vice News, and Bloomberg. Her filmmaking merges raw authenticity with striking visual language capturing intimate, everyday moments and transforming them into powerful cinematic experiences.
           </p>
-          <button className='rounded-full'>My Resume</button>
+          <p>
+            Her films explore universal themes—identity, resilience, family, survival—and the beauty of ordinary people navigating extraordinary circumstances. Grounded in the vibrant energy of Lagos, yet resonating far beyond it, her work reflects a new wave of African storytelling: personal, unapologetic, and globally relevant.
+          </p>
+          <p>
+            From Kasala!, her breakout celebration of youth culture and Lagos street life, to Otiti, a delicate exploration of family and forgiveness, and When Nigeria Happens, Nigeria&rsquo;s first contemporary dance film—Ema&rsquo;s work pushes the boundaries of genre and form while staying deeply connected to human truth.
+          </p>
+          <p>
+            She creates films that move between worlds—speaking to Nigerian audiences at home and to a global generation seeking stories that are real, fresh, and rooted in place.
+          </p>
+          <p>
+            For Ema, film is not just art—it&rsquo;s resistance, reflection, and a call to remember who we are.
+          </p>
+          <button className="mt-4 px-6 py-3 text-white rounded-full transition">
+            My Resume
+          </button>
         </div>
+      </div>
+
+      {/* Consultation Section */}
+      <div className="consultationSection container mx-auto mt-16 p-8 bg-gray-900 text-white rounded-lg">
+        <h2 className="text-3xl font-semibold mb-4">One‑on‑One Consultation</h2>
+        <p className="mb-6">
+          Ready to take your storytelling to the next level? Book a personal consultation with Ema Edosio to:
+        </p>
+        <ul className="list-disc list-inside space-y-2 mb-6">
+          <li>Refine your film concept and narrative structure</li>
+          <li>Develop authentic characters rooted in real experiences</li>
+          <li>Create a production plan tailored to your budget</li>
+          <li>Learn on‑set cinematography techniques</li>
+          <li>Build an audience strategy for independent release</li>
+        </ul>
+        <a
+          href="/contact"
+          className="inline-block px-8 py-3 bg-red-600 text-white rounded-full hover:bg-red-700 transition"
+        >
+          Book a Consultation
+        </a>
       </div>
     </section>
   );

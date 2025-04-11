@@ -35,40 +35,39 @@ export default function FilmTrailerPage() {
   const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
 
   return (
-    <main className="bg-black text-white min-h-screen pt-24 pb-10 px-6">
+    <main className="bg-black text-white pt-24 pb-10 px-6">
       <div className="container mx-auto max-w-6xl">
         {/* Back to Filmography */}
-        <Link href="/filmography" className="body text-gray-400 hover:text-gray-200 text-sm">
+        <Link href="/filmography" className="body text-gray-400 hover:text-gray-200 text-sm py-15">
           &lt; Back to My Films
         </Link>
-
-        <h1 className="text-4xl font-bold mt-4">{film.title} - Trailer</h1>
-
-        <div className="mt-6 relative w-full aspect-video bg-gray-800 overflow-hidden rounded-lg">
-          {embedUrl ? (
-            <iframe
-              src={embedUrl}
-              title={`${film.title} Trailer`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute top-0 left-0 w-full h-full"
-            ></iframe>
-          ) : (
-            <video
-              controls
-              className="absolute top-0 left-0 w-full h-full object-cover"
-              src={film.trailerVid}
-            >
-              Your browser does not support the video tag.
-            </video>
-          )}
-        </div>
-
-        {/* Film Synopsis and Trailer Navigation Button */}
-        <div className="filmInfo mt-6">
-          <p className="text text-center leading-relaxed py-10">
-            {film.extendedSynopsis}
-          </p>
+        <h1 className="text-4xl font-bold mt-4 mb-6">{film.title} - Trailer</h1>
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Trailer Embed */}
+          <div className="w-full lg:w-2/3 aspect-video relative bg-gray-800 overflow-hidden rounded-lg">
+            {embedUrl ? (
+              <iframe
+                src={embedUrl}
+                title={`${film.title} Trailer`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full"
+              ></iframe>
+            ) : (
+              <video
+                controls
+                controlsList="nodownload"
+                className="absolute top-0 left-0 w-full h-full object-cover"
+                src={film.trailerVid}
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </div>
+          {/* Synopsis Text */}
+          <div className="w-full lg:w-1/3 flex items-center">
+            <p className="text-center leading-relaxed">{film.extendedSynopsis}</p>
+          </div>
         </div>
       </div>
     </main>

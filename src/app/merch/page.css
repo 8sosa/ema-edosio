@@ -2,8 +2,15 @@
     background-color: rgba(0, 0, 0, 0.443);
 }
 aside {
-    position: sticky;
-    top: 5rem;
-    max-height: max-content;
-    margin-top: 5rem;
-}
+    position: static;
+    top: auto;
+    margin-top: 0;
+  }
+  
+  @media screen and (min-width: 768px) {
+    aside {
+      position: sticky;
+      top: 5rem;
+      margin-top: 5rem;
+    }
+  }

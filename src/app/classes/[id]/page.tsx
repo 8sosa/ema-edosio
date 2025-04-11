@@ -2,50 +2,76 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import masterclassData from "@/components/modules.json";
+import { Metadata } from "next";
 
-type Module = {
-  id: string;
-  title: string;
-  content: string;
-};
+// type Module = {
+//   id: string;
+//   title: string;
+//   content: string;
+//   videoSrc?: string;
+// };
 
-export default async function ModulePage({
+// 1️⃣ Pre‑generate all module routes at build time
+export function generateStaticParams(): { id: string }[] {
+  return masterclassData.modules.map((m) => ({ id: m.id }));
+}
+
+// 2️⃣ Dynamically set the page’s <title> and <meta> — now async so we can await params
+export async function generateMetadata({
   params,
 }: {
   params: Promise<{ id: string }>;
-}) {
-  // Await the params promise before using its properties
-  const resolvedParams = await params;
-  const { id } = resolvedParams;
-
-  const modules: Module[] = masterclassData.modules;
-  const moduleData = modules.find((m) => m.id === id);
-
-  if (!moduleData) {
-    notFound();
+}): Promise<Metadata> {
+  const { id } = await params;
+  const mod = masterclassData.modules.find((m) => m.id === id);
+  if (!mod) {
+    return { title: "Module Not Found" };
   }
+  return {
+    title: mod.title,
+    description: mod.content.slice(0, 160).replace(/\n/g, " "),
+  };
+}
+
+// 3️⃣ Revalidate every hour (ISR)
+export const revalidate = 3600;
+
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+// 4️⃣ Make the page component async and await params before using them
+export default async function ModulePage({ params }: Props) {
+  const { id } = await params;
+  const moduleData = masterclassData.modules.find((m) => m.id === id);
+  if (!moduleData) notFound();
 
   return (
-    <main className="w-full min-h-screen p-4 bg-black-200 py-25">
-      <div className="max-w-3xl mx-auto bg-white p-8 rounded-md shadow-md text-black">
-        <Link href="/classes" className="text-purple-700 hover:underline text">
-          &larr; Back to Modules
+    <main className="container mx-auto min-h-screen py-30 px-4 bg-black text-gray-900">
+      <div className="bg-white p-6 md:p-10 rounded-lg shadow-lg">
+        <Link
+          href="/classes"
+          className="text-purple-600 hover:underline text-sm"
+        >
+          ← Back to Modules
         </Link>
-          {/* Video container */}
-        <div className="mt-6 relative w-full aspect-video bg-black rounded-md overflow-hidden">
-          <video
-            controls
-            className="w-full h-full object-cover"
-            src="/videos/wnh.mp4"
-          >
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <h1 className="text-4xl font-bold mt-4 mb-6 title">{moduleData.title}</h1>
-        <div className="prose max-w-none body">
-          {moduleData.content.split("\n\n").map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+
+        <h1 className="text-3xl md:text-4xl font-bold mt-4 mb-8">
+          {moduleData.title}
+        </h1>
+
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="w-full lg:w-2/4">
+            <video
+              src={moduleData.videoSrc ?? "/videos/wnh.mp4"}
+              controls
+              preload="metadata"
+              className="w-full h-auto rounded-md"
+            />
+          </div>
+          <div className="w-full lg:w-2/4 prose prose-lg max-w-none">
+            <p>Transript placeholder</p>
+          </div>
         </div>
       </div>
     </main>

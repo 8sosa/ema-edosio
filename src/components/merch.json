@@ -2,113 +2,133 @@
     "merchandise": [
       {
         "id": 1,
-        "name": "EMANCIPATORS BLACK T-Shirt",
+        "name": "BLACK T-Shirt",
         "price": 19.99,
         "description": "A stylish and comfortable cotton t-shirt with a unique graphic print.",
         "category": "TEES",
-        "tag": ["When Nigeria Happens"],
         "quantity": 50,
-        "image": "/images/tees/EMANCIPATORSBLACK.png"
+        "image": "/images/Merch/lsb.jpeg",
+        "images": {
+          "image1": "/images/Merch/lsb1.jpeg",
+          "image2": "/images/Merch/lsb2.jpeg"
+        }   
       },
       {
         "id": 2,
-        "name": "FREEDOM BLACK T-Shirt",
+        "name": "WHITE T-Shirt",
         "price": 12.99,
         "description": "Trendy and durable glasses for everyday use.",
         "category": "TEES",
-        "tag": ["When Nigeria Happens"],
         "quantity": 100,
-        "image": "/images/tees/FREEDOMBLACK.png"
+        "image": "/images/Merch/lsw1.jpeg",
+        "images": {
+          "image1": "/images/Merch/lsw.jpeg",
+          "image2": "/images/Merch/lsw2.jpeg"
+        }  
       },
       {
         "id": 3,
-        "name": "FREEDOM WHITE T-Shirt",
+        "name": "BLACK T-Shirt",
         "price": 14.99,
         "description": "Adjustable baseball cap with a stylish embroidered design.",
         "category": "TEES",
-        "tag": ["When Nigeria Happens"],
         "quantity": 75,
-        "image": "/images/tees/FREEDOMWHITE.png"
+        "image": "/images/Merch/bsb.jpeg",
+        "images": {
+          "image1": "/images/Merch/bsb1.jpeg"
+        }  
       },
       {
         "id": 4,
-        "name": "WHEN NIGERIA HAPPENS T-Shirt",
+        "name": "T-Shirt",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
         "category": "TEES",
-        "tag": ["When Nigeria Happens"],
         "quantity": 40,
-        "image": "/images/tees/WNHWHITE.png"
+        "image": "/images/Merch/clsb.jpeg",
+        "images": {
+          "image1": "/images/Merch/clsb1.jpeg",
+          "image2": "/images/Merch/clsb2.jpeg"
+        }  
       },
       {
         "id": 5,
+        "name": "T-Shirt",
+        "price": 39.99,
+        "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
+        "category": "TEES",
+        "quantity": 40,
+        "image": "/images/Merch/clsw2.jpeg",
+        "images": {
+          "image1": "/images/Merch/clsw1.jpeg",
+          "image2": "/images/Merch/clsw.jpeg"
+        }  
+      },
+      {
+        "id": 6,
+        "name": "T-Shirt",
+        "price": 39.99,
+        "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
+        "category": "TEES",
+        "quantity": 40,
+        "image": "/images/Merch/dsb2.jpeg",
+        "images": {
+          "image1": "/images/Merch/dsb1.jpeg",
+          "image2": "/images/Merch/dsb.jpeg"
+        }  
+      },
+      {
+        "id": 7,
+        "name": "T-Shirt",
+        "price": 39.99,
+        "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
+        "category": "TEES",
+        "quantity": 40,
+        "image": "/images/Merch/ssb.jpeg",
+        "images": {
+          "image1": "/images/Merch/ssb1.jpeg",
+          "image2": "/images/Merch/ssb2.jpeg"
+        }  
+      },
+      {
+        "id": 8,
+        "name": "T-Shirt",
+        "price": 39.99,
+        "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
+        "category": "TEES",
+        "quantity": 40,
+        "image": "/images/Merch/ssw.jpeg",
+        "images": {
+          "image1": "/images/Merch/ssw1.jpeg",
+          "image2": "/images/Merch/ssw2.jpeg"
+        }  
+      },
+      {
+        "id": 9,
         "name": "Sticker Pack",
         "price": 5.99,
         "description": "A pack of high-quality vinyl stickers with vibrant designs.",
         "category": "STICKERS",
-        "tag": ["When Nigeria Happens"],
         "quantity": 200,
         "image": "/images/stickers/STICKERS.png"
       },
       {
-        "id": 6,
+        "id": 10,
         "name": "KEY CHAIN",
         "price": 9.99,
         "description": "A durable ceramic coffee mug, perfect for your morning brew.",
         "category": "KEY CHAINS",
-        "tag": ["When Nigeria Happens"],
         "quantity": 80,
         "image": "/images/keychains/key.png"
       },
       {
-        "id": 7,
+        "id": 11,
         "name": "NA TODAY TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
         "category": "TOTE BAGS",
-        "tag": ["When Nigeria Happens"],
         "quantity": 30,
         "image": "/images/tote/TOTEBAG1.png"
-      },
-      {
-        "id": 8,
-        "name": "WHEN NIGERIA HAPPENS BLACK TOTE BAG",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "TOTE BAGS",
-        "tag": ["When Nigeria Happens"],
-        "quantity": 50,
-        "image": "/images/tote/TOTEBAG2.png"
-      },
-      {
-        "id": 9,
-        "name": "WHEN NIGERIA HAPPENS WHITE TOTE BAG",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "TOTE BAGS",
-        "tag": ["When Nigeria Happens"],
-        "quantity": 50,
-        "image": "/images/tote/TOTEBAG2BLACKCOLOR.png"
-      },
-      {
-        "id": 10,
-        "name": "EMANCIPATORS TOTE BAG",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "TOTE BAGS",
-        "tag": ["When Nigeria Happens"],
-        "quantity": 50,
-        "image": "/images/tote/TOTEBAG3.png"
-      },
-      {
-        "id": 11,
-        "name": "WHEN NIGERIA HAPPENS BLUE CAP",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "CAPS",
-        "tag": ["When Nigeria Happens"],
-        "quantity": 50,
-        "image": "/images/caps/blue1.png"
       },
       {
         "id": 12,
@@ -116,7 +136,6 @@
         "price": 29.99,
         "description": "A versatile and spacious bag for daily use.",
         "category": "CAPS",
-        "tag": ["When Nigeria Happens"],
         "quantity": 50,
         "image": "/images/caps/brown1.png"
       },
@@ -126,9 +145,115 @@
         "price": 29.99,
         "description": "A versatile and spacious bag for daily use.",
         "category": "CAPS",
-        "tag": ["When Nigeria Happens"],
         "quantity": 50,
         "image": "/images/caps/green1.png"
+      },
+      {
+        "id": 14,
+        "name": "BLACK TOTE BAG",
+        "price": 29.99,
+        "description": "A versatile and spacious bag for daily use.",
+        "category": "TOTE BAGS",
+        "quantity": 50,
+        "image": "/images/tote/TOTEBAG2.png"
+      },
+      {
+        "id": 15,
+        "name": "WHITE TOTE BAG",
+        "price": 29.99,
+        "description": "A versatile and spacious bag for daily use.",
+        "category": "TOTE BAGS",
+        "quantity": 50,
+        "image": "/images/tote/TOTEBAG2BLACKCOLOR.png"
+      },
+      {
+        "id": 16,
+        "name": "EMANCIPATORS TOTE BAG",
+        "price": 29.99,
+        "description": "A versatile and spacious bag for daily use.",
+        "category": "TOTE BAGS",
+        "quantity": 50,
+        "image": "/images/tote/TOTEBAG3.png"
+      },
+      {
+        "id": 17,
+        "name": "WHEN NIGERIA HAPPENS BLUE CAP",
+        "price": 29.99,
+        "description": "A versatile and spacious bag for daily use.",
+        "category": "CAPS",
+        "quantity": 50,
+        "image": "/images/caps/blue1.png"
+      },
+      {
+        "id": 18,
+        "name": "TOTE BAG",
+        "price": 49.99,
+        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
+        "category": "TOTE BAGS",
+        "quantity": 30,
+        "image": "/images/Merch/st.jpeg"
+      },
+      {
+        "id": 19,
+        "name": "TOTE BAG",
+        "price": 49.99,
+        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
+        "category": "TOTE BAGS",
+        "quantity": 30,
+        "image": "/images/Merch/ltb1.jpeg",
+        "images": {
+          "image1": "/images/Merch/ltb.jpeg",
+          "image2": "/images/Merch/ltb2.jpeg",
+          "image3": "/images/Merch/ltb3.jpeg"
+        } 
+      },
+      {
+        "id": 20,
+        "name": "TOTE BAG",
+        "price": 49.99,
+        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
+        "category": "TOTE BAGS",
+        "quantity": 30,
+        "image": "/images/Merch/dt.jpeg",
+        "images": {
+          "image1": "/images/Merch/dt1.jpeg",
+          "image2": "/images/Merch/dt2.jpeg"
+        } 
+      },
+      {
+        "id": 21,
+        "name": "TOTE BAG",
+        "price": 49.99,
+        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
+        "category": "TOTE BAGS",
+        "quantity": 30,
+        "image": "/images/Merch/clt.jpeg",
+        "images": {
+          "image1": "/images/Merch/clt1.jpeg",
+          "image2": "/images/Merch/clt2.jpeg"
+        } 
+      },
+      {
+        "id": 22,
+        "name": "TOTE BAG",
+        "price": 49.99,
+        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
+        "category": "TOTE BAGS",
+        "quantity": 30,
+        "image": "/images/Merch/dtb.jpeg"
+      },
+      {
+        "id": 21,
+        "name": "TOTE BAG",
+        "price": 49.99,
+        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
+        "category": "TOTE BAGS",
+        "quantity": 30,
+        "image": "/images/Merch/bt2.jpeg",
+        "images": {
+          "image1": "/images/Merch/bt1.jpeg",
+          "image2": "/images/Merch/bt.jpeg"
+        } 
       }
     ]
   }
