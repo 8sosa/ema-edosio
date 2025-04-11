@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { LiaTelegramPlane } from "react-icons/lia";
-import { FaFacebookF, FaXTwitter, FaInstagram, FaYoutube, FaVimeoV } from "react-icons/fa6";
+import { FaFacebookF, FaXTwitter, FaInstagram, FaYoutube } from "react-icons/fa6";
 
 export default function Footer() {
   return (
