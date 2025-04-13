@@ -26,8 +26,6 @@
     border-left: none;
     padding: 1rem;
     width: 100%;
-    align-items: center;
-    text-align: center;
 }
 
 .filmItemText h3 {
@@ -36,8 +34,6 @@
 
 .filmItemText p {
     font-size: 1rem;
-    font-weight: 200;
-    text-align: center;
     padding: 1rem 0;
 }
 
@@ -46,7 +42,6 @@
   .filmItemText {
       border-left: none;
       padding: 1.5rem;
-      text-align: center;
   }
   .filmItemText h3 {
       font-size: 2.5rem;
@@ -66,7 +61,6 @@
   .filmItemText {
       border-left: none;
       padding: 2rem;
-      text-align: center;
   }
   .filmItemText h3 {
       font-size: 3rem;
@@ -83,8 +77,6 @@
       border-left: 1px solid #fff;
       padding: 3rem 1.5rem;
       width: 100%;
-      align-items: center;
-      text-align: right;
   }
   .filmItemText h3 {
       font-size: 3rem;

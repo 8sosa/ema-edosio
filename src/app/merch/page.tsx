@@ -21,10 +21,9 @@ interface Item {
 
 const categories = [
   { id: 1, name: "TEES" },
-  { id: 2, name: "CAPS" },
+  { id: 2, name: "TOTE BAGS" },
   { id: 3, name: "STICKERS" },
-  { id: 4, name: "TOTE BAGS" },
-  { id: 5, name: "KEY CHAINS" },
+  { id: 4, name: "KEY CHAINS" },
 ];
 
 // Cast your merchandise data to the proper type
@@ -72,19 +71,20 @@ export default function HomePage() {
   );
 
   return (
-    <main className="flex flex-col md:flex-row py-15">
+    <main className="flex flex-col md:flex-row pt-10">
       {/* Aside - on mobile this will be at the top, on desktop on the left */}
-      <aside className="w-full md:w-1/5 p-4">
-        {/* Categories */}
-        <div className="p-6 rounded-md border mb-6">
+      <aside className="w-full md:w-1/4 lg:w-1/5 p-4 md:sticky md:top-40 self-start">
+        <div className="p-6 rounded-md border mb-6 bg-black">
           <TfiLayoutLineSolid className="red line mb-2" />
-          <h3 className="text-xl font-bold mb-4 title">Categories</h3>
+          <h3 className="title fontMid font-bold mb-4 break-words text-md sm:text-xl md:text-2xl">
+            Categories
+          </h3>
           <ul className="space-y-2">
             {categories.map((cat) => (
               <li key={cat.id}>
                 <button
                   onClick={() => handleCategoryClick(cat.name)}
-                  className="text-white hover:underline text"
+                  className="text-white hover:underline text break-words whitespace-normal text-sm sm:text-base md:text-[1rem] w-full text-left"
                 >
                   {cat.name}
                 </button>
@@ -94,20 +94,9 @@ export default function HomePage() {
         </div>
       </aside>
 
-      {/* Main Content */}
-      <div className="w-full md:w-4/5 p-4 space-y-12">
-        {/* New Arrivals Section */}
-        <section className="py-12 px-6 max-w-8xl">
-          <h2 className="title text-2xl md:text-3xl font-bold mb-6 text-center">
-            New Arrivals
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {merchItems.slice(0, 8).map((item, idx) => (
-              <ProductCard key={idx} item={item} />
-            ))}
-          </div>
-        </section>
 
+      {/* Main Content */}
+      <div className="w-full md:w-3/4 lg:w-4/5 p-4 space-y-12 pt-20">
         {/* Sections for each category */}
         {categories.map((cat) => {
           const items = merchItems.filter((item: Item) => item.category === cat.name);

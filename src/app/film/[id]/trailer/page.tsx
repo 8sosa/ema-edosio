@@ -65,8 +65,8 @@ export default function FilmTrailerPage() {
             )}
           </div>
           {/* Synopsis Text */}
-          <div className="w-full lg:w-1/3 flex items-center">
-            <p className="text-center leading-relaxed body">{film.extendedSynopsis}</p>
+          <div className="w-full lg:w-1/3 flex items-left border-l-2 pl-5 border-l-blue-100">
+            <p className="text-justify  leading-relaxed body align-center">{film.extendedSynopsis}</p>
           </div>
         </div>
       </div>

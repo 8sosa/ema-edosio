@@ -2,7 +2,7 @@
     "merchandise": [
       {
         "id": 1,
-        "name": "BLACK T-Shirt",
+        "name": "SHARP SHIRT (BLACK)",
         "price": 19.99,
         "description": "A stylish and comfortable cotton t-shirt with a unique graphic print.",
         "category": "TEES",
@@ -15,7 +15,7 @@
       },
       {
         "id": 2,
-        "name": "WHITE T-Shirt",
+        "name": "SHARP SHIRT (WHITE)",
         "price": 12.99,
         "description": "Trendy and durable glasses for everyday use.",
         "category": "TEES",
@@ -28,7 +28,7 @@
       },
       {
         "id": 3,
-        "name": "BLACK T-Shirt",
+        "name": "FAGBO SHIRT (BLACK)",
         "price": 14.99,
         "description": "Adjustable baseball cap with a stylish embroidered design.",
         "category": "TEES",
@@ -40,7 +40,7 @@
       },
       {
         "id": 4,
-        "name": "T-Shirt",
+        "name": "EGUNGUN SHIRT (BLACK)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
         "category": "TEES",
@@ -53,7 +53,7 @@
       },
       {
         "id": 5,
-        "name": "T-Shirt",
+        "name": "EGUNGUN SHIRT (WHITE)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
         "category": "TEES",
@@ -66,7 +66,7 @@
       },
       {
         "id": 6,
-        "name": "T-Shirt",
+        "name": "EMANCIPATORS SHIRT",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
         "category": "TEES",
@@ -79,7 +79,7 @@
       },
       {
         "id": 7,
-        "name": "T-Shirt",
+        "name": "FREEDOM SHIRT (BLACK)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
         "category": "TEES",
@@ -92,7 +92,7 @@
       },
       {
         "id": 8,
-        "name": "T-Shirt",
+        "name": "FREEDOM SHIRT (WHITE)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
         "category": "TEES",
@@ -123,70 +123,7 @@
       },
       {
         "id": 11,
-        "name": "NA TODAY TOTE BAG",
-        "price": 49.99,
-        "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
-        "category": "TOTE BAGS",
-        "quantity": 30,
-        "image": "/images/tote/TOTEBAG1.png"
-      },
-      {
-        "id": 12,
-        "name": "WHEN NIGERIA HAPPENS BROWN CAP",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "CAPS",
-        "quantity": 50,
-        "image": "/images/caps/brown1.png"
-      },
-      {
-        "id": 13,
-        "name": "WHEN NIGERIA HAPPENS GREEN CAP",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "CAPS",
-        "quantity": 50,
-        "image": "/images/caps/green1.png"
-      },
-      {
-        "id": 14,
-        "name": "BLACK TOTE BAG",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "TOTE BAGS",
-        "quantity": 50,
-        "image": "/images/tote/TOTEBAG2.png"
-      },
-      {
-        "id": 15,
-        "name": "WHITE TOTE BAG",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "TOTE BAGS",
-        "quantity": 50,
-        "image": "/images/tote/TOTEBAG2BLACKCOLOR.png"
-      },
-      {
-        "id": 16,
-        "name": "EMANCIPATORS TOTE BAG",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "TOTE BAGS",
-        "quantity": 50,
-        "image": "/images/tote/TOTEBAG3.png"
-      },
-      {
-        "id": 17,
-        "name": "WHEN NIGERIA HAPPENS BLUE CAP",
-        "price": 29.99,
-        "description": "A versatile and spacious bag for daily use.",
-        "category": "CAPS",
-        "quantity": 50,
-        "image": "/images/caps/blue1.png"
-      },
-      {
-        "id": 18,
-        "name": "TOTE BAG",
+        "name": "FREEDOM TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
         "category": "TOTE BAGS",
@@ -194,8 +131,8 @@
         "image": "/images/Merch/st.jpeg"
       },
       {
-        "id": 19,
-        "name": "TOTE BAG",
+        "id": 12,
+        "name": "SHARP TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
         "category": "TOTE BAGS",
@@ -208,8 +145,8 @@
         } 
       },
       {
-        "id": 20,
-        "name": "TOTE BAG",
+        "id": 13,
+        "name": "EMANCIPATORS TOTE BAG (WHITE)",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
         "category": "TOTE BAGS",
@@ -221,8 +158,8 @@
         } 
       },
       {
-        "id": 21,
-        "name": "TOTE BAG",
+        "id": 14,
+        "name": "EGUNGUN TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
         "category": "TOTE BAGS",
@@ -234,8 +171,8 @@
         } 
       },
       {
-        "id": 22,
-        "name": "TOTE BAG",
+        "id": 15,
+        "name": "EMANCIPATORS TOTE BAG (BLACK)",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
         "category": "TOTE BAGS",
@@ -243,8 +180,8 @@
         "image": "/images/Merch/dtb.jpeg"
       },
       {
-        "id": 21,
-        "name": "TOTE BAG",
+        "id": 16,
+        "name": "FAGBO TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
         "category": "TOTE BAGS",

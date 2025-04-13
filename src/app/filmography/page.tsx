@@ -22,18 +22,19 @@ export default function FilmographyPage() {
   const { films } = filmsData as FilmsFile;
 
   return (
-    <main className="bg-black text-white min-h-screen py-30">
+    <main className="bg-black text-white min-h-screen pt-30">
       {/* CATEGORY BROWSE */}
       <section className="container mx-auto p-4 flex flex-col align-center wrap-pretty">
         <h2 className="text-3xl font-bold text-center mb-6 title">
-          Watch My Films
+          Stories that feel close to <span className='text-activeblue'>home</span> — wherever <span className='text-activeblue'>home</span> is.
         </h2>
-        <p className='text-center w-full lg:w-2/3 mx-auto body'>I&lsquo;m a paragraph. Click here to add your own text and edit me. It&lsquo;s easy. Just click &quot;Edit Text&quot; or double click me to add your own content and make changes to the font. I&lsquo;m a great place for you to tell a story and let your users know a little more about you.</p>
+        <p className='text-center w-full lg:w-2/3 mx-auto body'>My films explore love, identity, family, and the human experience across African cities and beyond. Real people. Real moments. Stories that travel.</p>
+        <p className='text-center w-full lg:w-2/3 mx-auto body'>Start watching. Share the experience.</p>
         <div className="flex flex-wrap justify-center gap-4 py-20">
           {["Romance", "Comedy", "Drama", "Dance"].map((category, i) => (
             <button
               key={i}
-              className="body px-4 py-2 bg-gray-800 rounded hover:bg-green-200 hover:text-black transition"
+              className="body px-4 py-2 bg-white rounded hover:bg-activeblue text-black transition"
             >
               {category}
             </button>
@@ -69,17 +70,17 @@ export default function FilmographyPage() {
                 {/* Right side: Film Info */}
                 <div className="filmItemText flex flex-col w-full lg:w-1/3 gap-4">
                   {/* Title */}
-                  <h3 className="text-3xl font-semibold title">
+                  <h3 className="text-3xl font-semibold title hover:text-activeblue">
                     {film.title}
                   </h3>
                   {/* Runtime / Language / Producer / Director */}
-                  <span className="text-sm text-gray-300 body">
+                  <span className="text-sm text-gray-300 body hover:text-activeblue">
                     {film.runtime ? film.runtime : "N/A"} |{" "}
                     {film.category ? film.category : "N/A"} |{" "}
                     {film.genre ? film.genre : "N/A"}
                   </span>
                   {/* Synopsis */}
-                  <p className="body">
+                  <p className="body text-justify text-gray-200">
                   {film.synopsis.split('\n').map((line, index) => (
                     <span key={index}>
                       {line}
@@ -87,7 +88,7 @@ export default function FilmographyPage() {
                     </span>
                   ))}
                   </p>
-                  <div className="flex items-center justify-evenly gap-4 w-full body">
+                  <div className="flex items-center justify-start gap-10 w-full body">
                     <Link href={`/film/${slug}`}>
                       <button className="filmItemBtn p-3 px-10 rounded-full hover:scale-105 transition-transform">
                         ▶ Watch Now

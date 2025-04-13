@@ -29,12 +29,13 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         {/* Desktop Nav */}
-        <nav className="body hidden md:flex items-center justify-between mx-auto max-w-7xl px-4 py-3 gap-10 text-base lg:text-2xl font-bold cursor-pointer">
+        <nav className="body hidden md:flex items-center justify-between mx-auto max-w-7xl px-4 py-3 gap-10 text-base lg:text-1xl font-bold cursor-pointer">
           <NavLink className="navLink" href="/">Home</NavLink>
           <NavLink className="navLink" href="/filmography">Watch More</NavLink>
           <NavLink className="navLink" href="/masterclass">Masterclass</NavLink>
           <NavLink className="navLink" href="/merch">Shop</NavLink>
           <NavLink className="navLink" href="/about">About</NavLink>
+          <NavLink href="/consult" className="navLink">Consultation</NavLink>
           <NavLink className="navLink" href="/contact">Contact</NavLink>
           {/* Cart Icon */}
           <button
@@ -77,13 +78,15 @@ export default function Header() {
             <HiOutlineX />
           </button>
         </div>
-        <nav className="flex flex-col p-4 space-y-4 text-center items-end body">
-          <NavLink href="/" className="navLink">Home</NavLink>
-          <NavLink href="/about" className="navLink">About</NavLink>
-          <NavLink href="/filmography" className="navLink">Watch More</NavLink>
-          <NavLink href="/masterclass" className="navLink">Masterclass</NavLink>
-          <NavLink href="/merch" className="navLink">Merch</NavLink>
-          <NavLink href="/contact" className="navLink">Contact</NavLink>
+        <nav className="flex flex-col p-4 space-y-4 text-center items-center body">
+          <div onClick={() => setMenuOpen(false)} className="gap-15">
+            <NavLink href="/" className="navLink">Home</NavLink>
+            <NavLink href="/filmography" className="navLink">Watch More</NavLink>
+            <NavLink href="/masterclass" className="navLink">Masterclass</NavLink>
+            <NavLink href="/merch" className="navLink">Merch</NavLink>
+            <NavLink href="/about" className="navLink">About</NavLink>
+            <NavLink href="/consult" className="navLink">Consultation</NavLink>
+            <NavLink href="/contact" className="navLink">Contact</NavLink>
             {/* Cart Icon */}
             <button
               onClick={openCart}
@@ -97,6 +100,7 @@ export default function Header() {
                 </span>
               )}
             </button>
+          </div>
         </nav>
       </div>
       <CartDrawer />

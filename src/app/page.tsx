@@ -39,14 +39,15 @@ export default function HomePage() {
             Your browser does not support the video tag.
           </video>
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900 opacity-70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900 opacity-60" />
         </div>
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-start justify-end h-full p-8 md:p-12 lg:p-16">
-          <h1 className="title text-3xl md:text-5xl lg:text-6xl font-bold mb-2">
+        <div className="relative z-10 flex flex-col items-start justify-end h-full p-8 md:p-12 lg:p-16 text-white">
+          <span className="uppercase text-lg mb-4 tracking-wide text-red-900 font-extrabold">Out Now</span>
+          <h1 className="title text-4xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-300 hover:bg-gradient-to-b hover:from-white hover:to-red-950 hover:bg-clip-text hover:text-transparent">
             {heroFilm.title}
           </h1>
-          <p className="body text-md md:text-lg max-w-[50ch] mb-4 py-5">
+          <p className="body text-md md:text-lg max-w-xl mb-8 leading-relaxed text-justify">
             {heroFilm.synopsisAlt.split('\n').map((line, index) => (
               <span key={index}>
                 {line}

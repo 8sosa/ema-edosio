@@ -8,7 +8,7 @@
     font-size: 6rem;
     text-align: left;
     font-weight: 600;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
 }
 .contactP {
     font-size: 1rem;
@@ -54,7 +54,7 @@
 /* Responsive adjustments for tablets and small screens */
 @media (max-width: 768px) {
   .contactPage {
-    padding: 2rem;
+    padding: 10rem 2rem;
     width: 95%;
   }
   /* Stack columns vertically instead of side by side */
@@ -79,7 +79,7 @@
 /* Additional adjustments for phones */
 @media (max-width: 480px) {
   .contactPage {
-    padding: 4rem;
+    padding: 5rem 4rem;
     width: 100%;
   }
   .contactH2 {
