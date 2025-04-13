@@ -1,0 +1,200 @@
+/* Global box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* =======================
+   Base (Mobile First) Styles
+   ======================= */
+.aboutPage {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 5rem 2rem;
+}
+/* About Second Section (Content) */
+.aboutSecondSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #000000;
+}
+
+.aboutImageSection {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.aboutImageSection img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.aboutImageSection button {
+  border: 2px solid #8d8d8d;
+  border-radius: 10px;
+  padding: 0.75rem 2rem;
+  background-color: transparent;
+  transition: all 0.65s ease;
+  cursor: pointer;
+}
+
+.aboutImageSection button:hover {
+  background-color: #ffffffe3;
+  color: black;
+  border: 2px solid #004505;
+}
+
+.aboutTextSection {
+  flex: 1 1 300px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.aboutTextSection h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.aboutTextSection p {
+  font-size: 1rem;
+  font-weight: 200;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+.aboutTextSection button {
+  border: 1px solid #fff;
+  padding: 1rem 2rem;
+  width: max-content;
+  transition: all 0.7s ease;
+}
+.aboutTextSection button:hover {
+  background-color: #cdf9f1;
+  color: #000;
+}
+/* =======================
+   Responsive Breakpoints
+   ======================= */
+
+/* 425px - 767px */
+@media (min-width: 425px) and (max-width: 767px) {
+.aboutPage{
+  padding-top: 5rem;
+}
+  .aboutSecondSection {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .aboutImageSection {
+    flex: 1 1 350px;
+    padding: 0rem 3rem;
+  }
+  
+  .aboutTextSection {
+    flex: 1 1 350px;
+    padding: 2rem;
+  }
+  
+  .aboutTextSection h1 {
+    font-size: 2rem;
+  }
+  
+  .aboutTextSection p {
+    font-size: 1.1rem;
+  }
+}
+
+/* 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .aboutSecondSection {
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .aboutImageSection {
+    flex: 1 1 400px;
+    padding: 0rem 4rem;
+  }
+  
+  .aboutTextSection {
+    flex: 1 1 400px;
+    padding: 2.5rem;
+  }
+  
+  .aboutTextSection h1 {
+    font-size: 2.5rem;
+  }
+  
+  .aboutTextSection p {
+    font-size: 1.3rem;
+  }
+}
+
+/* 1024px - 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+ 
+  .aboutSecondSection {
+    gap: 2rem;
+    padding: 5rem 3rem;
+  }
+  
+  .aboutImageSection {
+    flex: 1 1;
+    gap: 3rem;
+  }
+  
+  .aboutTextSection {
+    flex: 1 1;
+    padding: 0rem 3rem;
+  }
+  
+  .aboutTextSection h1 {
+    font-size: 2rem;
+  }
+  
+  .aboutTextSection p {
+    font-size: 1rem;
+  }
+}
+
+/* 1440px and up */
+@media (min-width: 1440px) {
+ 
+  .aboutSecondSection {
+    gap: 2.5rem;
+    padding: 5rem 4rem;
+  }
+  
+  .aboutImageSection {
+    flex: 1 1;
+    gap: 4rem;
+  }
+  
+  .aboutTextSection {
+    flex: 1 1;
+    padding: 0rem 4rem;
+  }
+  
+  .aboutTextSection h1 {
+    font-size: 3rem;
+  }
+  
+  .aboutTextSection p {
+    font-size: 1.2rem;
+  }
+}
