@@ -4,19 +4,32 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
-import Merchandise from "@/components/merch.json";
 import { AiFillStar } from "react-icons/ai";
 
+// Define your item interface based on your JSON structure.
 interface Item {
   id: number;
   name: string;
   price: number;
+  description: string;
+  category: string;
+  quantity: number;
   image: string;
-  description?: string;
-  category?: string;
+  images?: {
+    [key: string]: string;
+  };
   tag?: string[];
   rating?: number;
 }
+
+// Define the overall merchandise data shape
+interface MerchandiseData {
+  merchandise: Item[];
+}
+
+// Import your JSON and assert its type
+import rawMerch from "@/components/merch.json";
+const Merchandise = rawMerch as MerchandiseData;
 
 export default function ItemPage() {
   const { id } = useParams<{ id: string }>();
@@ -50,7 +63,7 @@ export default function ItemPage() {
     };
 
     addToCart(newItem);
-    console.log("added" + newItem)
+    console.log("added", newItem);
   };
 
   if (!item) {
@@ -61,6 +74,7 @@ export default function ItemPage() {
     );
   }
 
+  // Filter recommended items: same category, not the current item.
   const recommended: Item[] = Merchandise.merchandise
     .filter((p: Item) => p.category === item.category && p.id !== item.id)
     .slice(0, 4);
@@ -91,7 +105,9 @@ export default function ItemPage() {
         {/* Product Details */}
         <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-4 body">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold mb-2 title">{item.name}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2 title">
+              {item.name}
+            </h1>
             <div className="flex items-center gap-1 text-yellow-500">
               {[...Array(item.rating || 4)].map((_, i) => (
                 <AiFillStar key={i} />
@@ -140,10 +156,20 @@ export default function ItemPage() {
 
           {/* Additional Info */}
           <div className="mt-8 border-t pt-4 text-sm text-gray-100 space-y-2">
-            <p><strong>Category:</strong> {item.category}</p>
-            <p><strong>Tags:</strong> {item.tag?.join(", ")}</p>
-            <p><strong>Shipping:</strong> Free shipping on orders over $100</p>
-            <p><strong>Returns:</strong> 30-day return policy</p>
+            <p>
+              <strong>Category:</strong> {item.category}
+            </p>
+            {item.tag && (
+              <p>
+                <strong>Tags:</strong> {item.tag.join(", ")}
+              </p>
+            )}
+            <p>
+              <strong>Shipping:</strong> Free shipping on orders over $100
+            </p>
+            <p>
+              <strong>Returns:</strong> 30-day return policy
+            </p>
           </div>
         </div>
       </div>
@@ -156,6 +182,28 @@ export default function ItemPage() {
           mauris eget felis euismod, et placerat velit fermentum.
         </p>
       </div>
+
+      {/* More Images Section */}
+      {item.images && Object.values(item.images).length > 0 && (
+        <div className="mt-10 border-t pt-6">
+          <h2 className="text-xl font-semibold mb-6 title">More Images</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {Object.values(item.images).map((img, index) => (
+              <div
+                key={index}
+                className="relative w-full aspect-square bg-gray-100 rounded overflow-hidden"
+              >
+                <Image
+                  src={img}
+                  alt={`${item.name} - image ${index + 1}`}
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Recommended Products */}
       {recommended.length > 0 && (
@@ -177,8 +225,12 @@ export default function ItemPage() {
                   />
                 </div>
                 <div className="mt-2">
-                  <h3 className="font-semibold text-gray-200">{recItem.name}</h3>
-                  <p className="text-gray-100">${recItem.price.toFixed(2)}</p>
+                  <h3 className="font-semibold text-gray-200">
+                    {recItem.name}
+                  </h3>
+                  <p className="text-gray-100">
+                    ${recItem.price.toFixed(2)}
+                  </p>
                 </div>
               </div>
             ))}
