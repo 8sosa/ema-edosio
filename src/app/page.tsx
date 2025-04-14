@@ -43,7 +43,7 @@ export default function HomePage() {
         </div>
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-start justify-end h-full p-8 md:p-12 lg:p-16 text-white">
-          <span className="uppercase text-lg mb-4 tracking-wide text-red-900 font-extrabold">Out Now</span>
+          <span className="uppercase text-lg mb-4 tracking-wide font-extrabold">Out Now</span>
           <h1 className="title text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
             {heroFilm.title}
           </h1>
@@ -71,7 +71,7 @@ export default function HomePage() {
       </section>
       
       {/* ABOUT Ema */}
-      <section className="hero flex flex-col md:flex-row items-center justify-between bg-gray-900 text-white p-8 md:p-12 lg:p-16">
+      <section className="flex flex-col md:flex-row items-center justify-between bg-black text-white p-10 md:p-15 lg:p-25">
         <div className="hero-content space-y-4">
           <p className="title hero-subtitle uppercase text-sm tracking-widest">
             Ema Edosio Deelen
@@ -86,7 +86,7 @@ export default function HomePage() {
             Authentic, bold, and deeply human storytelling.
           </p>
           <Link href="/filmography">
-            <button className="cta-button bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition body">
+            <button className="cta-button bg-white hover:bg-amber-300 rounded-full transition body">
               Watch More
             </button>
           </Link>

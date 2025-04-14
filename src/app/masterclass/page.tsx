@@ -16,7 +16,7 @@ export default function Page() {
             Dive into immersive classes taught by renowned filmmakers.
             Transform your vision into compelling films—one scene at a time.
           </p>
-          <Link href="/classes" className="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded-full text-lg font-semibold body">
+          <Link href="/classes" className="cta-button bg-white hover:bg-activeblue rounded-full text-lg body max-w-xl mx-auto">
             Start Your Journey
           </Link>
         </div>
@@ -150,13 +150,13 @@ export default function Page() {
         </div>
       </section>
       {/* CTA SECTION */}
-      <section className="bg-gray-900 py-16 px-4 md:px-8 text-center body">
+      <section className="bg-gray-900 py-16 px-4 md:px-8 text-center align-middle justify-center body">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 title">
           Your story is your power.
         </h2>
         <p className="text-gray-300 max-w-xl mx-auto mb-2">The world doesn’t need another copy — it needs you.</p>
         <p className="text-gray-300 max-w-xl mx-auto mb-8">Let’s get started.</p>
-        <button className="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded-full text-lg font-semibold">
+        <button className="cta-button bg-white hover:bg-activeblue rounded-full text-lg max-w-xl mx-auto">
           Enroll Now
         </button>
       </section>

@@ -7,16 +7,16 @@ export default function AboutPage() {
     <section className="aboutPage">
       {/* Content Section */}
       <div className="aboutSecondSection mont flex flex-col lg:flex-row items-start gap-12">
-      <div className="aboutImageSection w-full aspect-[1/3] lg:w-1/4 relative lg:sticky lg:top-24 max-h-[80vh]">
-        <Image 
-          src="/images/mast.jpg"
-          alt="Ema Edosio Deelen"
-          width={600}
-          height={900}
-          className="object-cover rounded-lg w-full h-auto max-h-[600px]"
-        />
-      </div>
-
+      <div className="flex-1 w-full aspect-[1/1]">
+          <div className="relative w-full aspect-[2/3] bg-gray-700 rounded-lg overflow-hidden lg:sticky lg:top-24 max-h-[80vh]">
+            <Image
+              src="/images/mast.jpg"
+              alt="Ema Edosio"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
 
         <div className="aboutTextSection flex-1 space-y-1">
           <h1 className="text-4xl font-bold title">

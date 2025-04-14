@@ -23,7 +23,12 @@ html {
   font-weight: 200;
   font-style: normal;
 }
-
+p, span, div{
+  font-family: "Poppins", sans-serif !important;
+}
+h1, h2, h3{
+  font-family: Arial, sans-serif !important;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -150,7 +155,6 @@ footer {
 }
 
 .cta-button {
-  background-color: #fff;
   color: #000;
   padding: 1rem 2rem;
   font-weight: bold;
@@ -158,13 +162,18 @@ footer {
   border-radius: 2rem;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
 }
-
-.cta-button:hover {
-  background-color: #ffca28;
-  color: #000;
+.inputLine {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 5px 10px;
+  border-bottom: 2px solid #fff;
+  outline: none;
 }
-
 .hero-image {
   flex: 1 1 400px;
   position: relative;
@@ -192,7 +201,7 @@ footer {
    ========================= */
 
 /* 425px – 767px */
-@media (min-width: 425px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .aboutFirstSection {
     padding: 5rem;
     height: 80vh;

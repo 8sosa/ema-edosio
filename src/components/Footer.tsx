@@ -21,8 +21,8 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white">
       {/* Top Section */}
-      <div className="container body mx-auto w-full lg:w-3/4 flex flex-col md:flex-row py-5 px-6 md:px-12 justify-center">
-        <div className="flex items-start">
+      <div className="container body mx-auto w-full lg:w-4/5 flex flex-col md:flex-row py-5 px-6 md:px-12 justify-center">
+        <div className="flex">
           <div className="w-1 bg-white opacity-30 mr-6" />
           <div className="flex-1 space-y-6">
             <p className="text-gray-400 tracking-wide">Subscribe & Get My Free Book</p>
@@ -40,12 +40,12 @@ export default function Footer() {
                     type="email"
                     required
                     placeholder="you@example.com"
-                    className="w-full bg-transparent border border-white rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="inputLine"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="flex flex-row gap-10 border border-orange-500 text-orange-500 px-8 py-3 uppercase tracking-wide hover:bg-orange-500 hover:text-black transition-colors"
+                  className="gap-10 cta-button rounded-full tracking-wide bg-white hover:bg-activeblue"
                 >
                   Subscribe <LiaTelegramPlane size={18} />
                 </button>
