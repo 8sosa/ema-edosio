@@ -59,8 +59,13 @@ const hasYoutubeTrailer = film.trailerUrl && film.trailerUrl.includes("youtube.c
 const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
 
   return (
-    <main className="bg-black text-white min-h-screen pt-24 pb-10 px-6">
-      <div className="container mx-auto max-w-6xl">
+    <main className="relative text-white min-h-screen pt-24 pb-10 px-6 overflow-hidden">
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center blur-md scale-105"
+        style={{ backgroundImage: "url('/images/_.jpeg')" }}
+      ></div>
+
+      <div className="relative z-10 container mx-auto max-w-6xl">
         {/* Back to Filmography */}
         <Link href="/filmography" className="body text-gray-400 hover:text-gray-200 text-sm">
           &lt; Back to My Films
@@ -96,20 +101,21 @@ const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
           <div className="mt-12">
             <h2 className="title text-2xl md:text-3xl font-bold mb-4">DELETED SCENES</h2>
             <div className="flex overflow-x-auto space-x-4 pb-4">
-              {film.deletedScenes.map((video, idx) => (
-                <div key={idx} className="min-w-[200px] flex-shrink-0 w-1/4">
-                  <video
-                    ref={(el) => {
-                      if (el) videosRef.current[idx] = el;
-                    }}
-                    src={video}
-                    controls
-                    controlsList="nodownload"
-                    loop
-                    className="w-full h-auto rounded-lg shadow-lg"
-                  />
-                </div>
-              ))}
+              {Array.from({ length: 10 }).map((_, repeatIdx) =>
+                  film.bts.map((video, idx) => (
+                    <div key={`${repeatIdx}-${idx}`} className="min-w-[200px] flex-shrink-0 w-1/4">
+                      <video
+                        ref={(el) => {
+                          if (el) videosRef.current[repeatIdx * film.bts.length + idx] = el;
+                        }}
+                        src={video}
+                        controlsList="nodownload"
+                        loop
+                        className="w-full h-auto rounded-lg shadow-lg"
+                      />
+                    </div>
+                  ))
+                )}
             </div>
           </div>
         )}
@@ -119,20 +125,21 @@ const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
           <div className="mt-12">
             <h2 className="title text-2xl md:text-3xl font-bold mb-4">BTS</h2>
             <div className="flex overflow-x-auto space-x-4 pb-4">
-              {film.bts.map((video, idx) => (
-                <div key={idx} className="min-w-[200px] flex-shrink-0 w-1/4">
-                  <video
-                    ref={(el) => {
-                      if (el) videosRef.current[idx] = el;
-                    }}
-                    src={video}
-                    // controls
-                    controlsList="nodownload"
-                    loop
-                    className="w-full h-auto rounded-lg shadow-lg"
-                  />
-                </div>
-              ))}
+              {Array.from({ length: 10 }).map((_, repeatIdx) =>
+                film.bts.map((video, idx) => (
+                  <div key={`${repeatIdx}-${idx}`} className="min-w-[200px] flex-shrink-0 w-1/4">
+                    <video
+                      ref={(el) => {
+                        if (el) videosRef.current[repeatIdx * film.bts.length + idx] = el;
+                      }}
+                      src={video}
+                      controlsList="nodownload"
+                      loop
+                      className="w-full h-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                ))
+              )}
             </div>
           </div>
         )}

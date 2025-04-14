@@ -30,7 +30,9 @@
         "bts": [
           "/videos/Episode.mp4"
         ],
-        "deletedScenes": []
+        "deletedScenes": [
+          "/videos/Episode.mp4"
+        ]
       },
       {
         "title": "Otiti",

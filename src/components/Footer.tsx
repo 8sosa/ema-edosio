@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { LiaTelegramPlane } from "react-icons/lia";
 import { FaFacebookF, FaXTwitter, FaInstagram, FaYoutube } from "react-icons/fa6";
@@ -21,20 +22,31 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white">
       {/* Top Section */}
-      <div className="container body mx-auto w-full lg:w-4/5 flex flex-col md:flex-row py-5 px-6 md:px-12 justify-center">
-        <div className="flex">
+      <div className="container body mx-auto w-full lg:w-4/5 flex flex-col md:flex-row py-5 px-6 md:px-12 justify-start">
+        {/* Image section - hidden on small screens */}
+        <div className="hidden md:block md:w-1/3 aspect-square p-10 rounded">
+          <Image
+            src="/images/ph.png"
+            width={100}
+            height={100}
+            alt="Newsletter Illustration"
+            className="w-full h-auto object-contain"
+          />
+        </div>
+
+        {/* Text and form section */}
+        <div className="flex md:w-1/2">
           <div className="w-1 bg-white opacity-30 mr-6" />
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 space-y-6 flex flex-col justify-center">
             <p className="text-gray-400 tracking-wide">Subscribe & Get My Free Book</p>
             <h2 className="text-5xl md:text-6xl font-bold">Ema&lsquo;s Newsletter</h2>
             <p className="text-gray-400 tracking-wide">Join my mailing list and get a free copy of Visual Storytelling.</p>
             <p className="text-gray-400 tracking-wide">Sign up to stay connected and get exclusive updates, resources, and more.</p>
-
             <form onSubmit={handleSubmit} className="space-y-6">
-                  <label className="block mb-5 text-gray-400">
-                    Enter your email to get the book.<span className="text-red-500">*</span>
-                  </label>
-              <div className="body flex flex-col md:flex-row md:items-center md:justify-between w-full">
+              <label className="block mb-5 text-gray-400">
+                Enter your email to get the book.<span className="text-red-500">*</span>
+              </label>
+              <div className="body flex flex-col gap-5 md:flex-row md:items-center md:justify-between w-full">
                 <div className="w-full lg:w-1/2">
                   <input
                     type="email"
@@ -54,6 +66,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
 
       {/* Modal */}
       {showModal && (
