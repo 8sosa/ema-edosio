@@ -7,7 +7,7 @@ export default function AboutPage() {
     <section className="aboutPage">
       {/* Content Section */}
       <div className="aboutSecondSection mont flex flex-col lg:flex-row items-start gap-12">
-      <div className="aboutImageSection w-full lg:w-1/4 relative lg:sticky lg:top-24 max-h-[600px]">
+      <div className="aboutImageSection w-full aspect-[1/3] lg:w-1/4 relative lg:sticky lg:top-24 max-h-[80vh]">
         <Image 
           src="/images/mast.jpg"
           alt="Ema Edosio Deelen"

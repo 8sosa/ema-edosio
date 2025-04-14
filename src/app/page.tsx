@@ -25,7 +25,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="relative w-full h-[100vh] md:h-[70vh] lg:h-[100vh] overflow-hidden">
+      <section className="relative w-full h-[100vh] lg:h-[100vh] overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0 overflow-hidden">
           <video
@@ -44,7 +44,7 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-start justify-end h-full p-8 md:p-12 lg:p-16 text-white">
           <span className="uppercase text-lg mb-4 tracking-wide text-red-900 font-extrabold">Out Now</span>
-          <h1 className="title text-4xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-300 hover:bg-gradient-to-b hover:from-white hover:to-red-950 hover:bg-clip-text hover:text-transparent">
+          <h1 className="title text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
             {heroFilm.title}
           </h1>
           <p className="body text-md md:text-lg max-w-xl mb-8 leading-relaxed text-justify">
