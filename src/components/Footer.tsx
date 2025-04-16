@@ -20,61 +20,65 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black text-white flex flex-col justify-center items-center">
       {/* Top Section */}
-      <div className="container body mx-auto w-full lg:w-4/5 flex flex-col md:flex-row py-5 px-6 md:px-12 justify-start">
-        {/* Image section - hidden on small screens */}
-        <div className="hidden md:block md:w-1/3 aspect-square p-10 rounded">
+      <div className="topFooter max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-12">
+        {/* Image section */}
+        <div className="hidden md:block md:w-1/3">
           <Image
             src="/images/ph.png"
-            width={100}
-            height={100}
+            priority
+            width={500}
+            height={500}
             alt="Newsletter Illustration"
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-contain rounded-xl"
           />
         </div>
 
         {/* Text and form section */}
-        <div className="flex md:w-1/2">
-          <div className="w-1 bg-white opacity-30 mr-6" />
-          <div className="flex-1 space-y-6 flex flex-col justify-center">
-            <p className="text-gray-400 tracking-wide">Subscribe & Get My Free Book</p>
-            <h2 className="text-5xl md:text-6xl font-bold">Ema&lsquo;s Newsletter</h2>
-            <p className="text-gray-400 tracking-wide">Join my mailing list and get a free copy of Visual Storytelling.</p>
-            <p className="text-gray-400 tracking-wide">Sign up to stay connected and get exclusive updates, resources, and more.</p>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <label className="block mb-5 text-gray-400">
-                Enter your email to get the book.<span className="text-red-500">*</span>
-              </label>
-              <div className="body flex flex-col gap-5 md:flex-row md:items-center md:justify-between w-full">
-                <div className="w-full lg:w-1/2">
-                  <input
-                    type="email"
-                    required
-                    placeholder="you@example.com"
-                    className="inputLine"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="gap-10 cta-button rounded-full tracking-wide bg-white hover:bg-activeblue"
-                >
-                  Subscribe <LiaTelegramPlane size={18} />
-                </button>
-              </div>
-            </form>
-          </div>
+        <div className="md:w-2/3 flex flex-col justify-center space-y-6">
+          <p className="text-gray-400 text-sm tracking-wide">Subscribe & Get My Free Book</p>
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight">Ema&rsquo;s Newsletter</h2>
+          <p className="text-gray-400 tracking-wide">
+            Join my mailing list and get a free copy of <strong>Visual Storytelling</strong>.
+          </p>
+          <p className="text-gray-400 tracking-wide">
+            Sign up to stay connected and get exclusive updates, resources, and more.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <label className="block text-gray-400 text-sm">
+              Enter your email to get the book.<span className="text-red-500">*</span>
+            </label>
+            <div className="flex flex-col md:flex-row gap-10">
+              <input
+                type="email"
+                required
+                placeholder="you@example.com"
+                className="inputLine1 w-full md:w-1/2 px-4 py-3 text-black"
+              />
+              <button
+                type="submit"
+                className="btn-primary"
+              >
+                Subscribe <LiaTelegramPlane size={18} />
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-
 
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
           <div className="bg-white text-black max-w-md w-full p-8 rounded-xl shadow-xl space-y-6 text-center">
             <h3 className="text-2xl font-bold">Thank You for Subscribing!</h3>
-            <p>Your free copy of <strong>Visual Storytelling</strong> is on its way to your inbox.</p>
-            <p>Keep an eye on your email for updates, resources, and behind-the-scenes stories I only share with my community.</p>
+            <p>
+              Your free copy of <strong>Visual Storytelling</strong> is on its way to your inbox.
+            </p>
+            <p>
+              Keep an eye on your email for updates, resources, and behind-the-scenes stories I only share with my community.
+            </p>
             <p>I’m glad you’re here.</p>
             <button
               onClick={handleCloseModal}
@@ -87,20 +91,19 @@ export default function Footer() {
       )}
 
       {/* Bottom Section */}
-      <div className="border-t border-gray-700">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between py-6 px-6 md:px-12">
-          <p className="text-sm text-center md:text-left mb-4 md:mb-0 body">
+      <div className="bottomFooter border-t border-gray-700 mt-16">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-center md:text-left">
             © {new Date().getFullYear()} Ema Edosio, All Rights Reserved.
           </p>
-          <ul className="flex space-x-6">
+          <ul className="flex space-x-6 text-xl gap-5">
             <li>
               <a
                 href="https://www.instagram.com/emaedosio/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xl hover:text-gray-400"
-                aria-label="Visit Instagram"
-                title="Instagram"
+                className="hover:text-gray-400"
+                aria-label="Instagram"
               >
                 <FaInstagram />
               </a>
@@ -110,21 +113,19 @@ export default function Footer() {
                 href="https://www.youtube.com/user/EmaEdosio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xl hover:text-gray-400"
-                aria-label="Visit YouTube"
-                title="YouTube"
+                className="hover:text-gray-400"
+                aria-label="YouTube"
               >
                 <FaYoutube />
               </a>
             </li>
             <li>
               <a
-                href="https://web.facebook.com/p/Ema-Edosio-Deelen-100083753704671/?_rdc=1&_rdr"
+                href="https://web.facebook.com/p/Ema-Edosio-Deelen-100083753704671/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xl hover:text-gray-400"
-                aria-label="Visit Facebook"
-                title="Facebook"
+                className="hover:text-gray-400"
+                aria-label="Facebook"
               >
                 <FaFacebookF />
               </a>
@@ -134,9 +135,8 @@ export default function Footer() {
                 href="https://x.com/emaedosio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xl hover:text-gray-400"
-                aria-label="Visit X (formerly Twitter)"
-                title="X (formerly Twitter)"
+                className="hover:text-gray-400"
+                aria-label="Twitter"
               >
                 <FaXTwitter />
               </a>

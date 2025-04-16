@@ -1,7 +1,6 @@
 {
     "merchandise": [
       {
-        "id": 1,
         "name": "SHARP SHIRT (BLACK)",
         "price": 19.99,
         "description": "A stylish and comfortable cotton t-shirt with a unique graphic print.",
@@ -14,7 +13,6 @@
         }   
       },
       {
-        "id": 2,
         "name": "SHARP SHIRT (WHITE)",
         "price": 12.99,
         "description": "Trendy and durable glasses for everyday use.",
@@ -27,7 +25,6 @@
         }  
       },
       {
-        "id": 3,
         "name": "FAGBO SHIRT (BLACK)",
         "price": 14.99,
         "description": "Adjustable baseball cap with a stylish embroidered design.",
@@ -39,7 +36,6 @@
         }  
       },
       {
-        "id": 4,
         "name": "EGUNGUN SHIRT (BLACK)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
@@ -52,7 +48,6 @@
         }  
       },
       {
-        "id": 5,
         "name": "EGUNGUN SHIRT (WHITE)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
@@ -65,7 +60,6 @@
         }  
       },
       {
-        "id": 6,
         "name": "EMANCIPATORS SHIRT",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
@@ -78,7 +72,6 @@
         }  
       },
       {
-        "id": 7,
         "name": "FREEDOM SHIRT (BLACK)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
@@ -91,7 +84,6 @@
         }  
       },
       {
-        "id": 8,
         "name": "FREEDOM SHIRT (WHITE)",
         "price": 39.99,
         "description": "A warm and cozy jacket with a soft inner lining and front pockets.",
@@ -104,7 +96,6 @@
         }  
       },
       {
-        "id": 9,
         "name": "Sticker Pack",
         "price": 5.99,
         "description": "A pack of high-quality vinyl stickers with vibrant designs.",
@@ -113,7 +104,6 @@
         "image": "/images/stickers/STICKERS.png"
       },
       {
-        "id": 10,
         "name": "KEY CHAIN",
         "price": 9.99,
         "description": "A durable ceramic coffee mug, perfect for your morning brew.",
@@ -122,7 +112,6 @@
         "image": "/images/keychains/key.png"
       },
       {
-        "id": 11,
         "name": "FREEDOM TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
@@ -131,7 +120,6 @@
         "image": "/images/Merch/st.jpeg"
       },
       {
-        "id": 12,
         "name": "SHARP TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
@@ -145,7 +133,6 @@
         } 
       },
       {
-        "id": 13,
         "name": "EMANCIPATORS TOTE BAG (WHITE)",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
@@ -158,7 +145,6 @@
         } 
       },
       {
-        "id": 14,
         "name": "EGUNGUN TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
@@ -171,7 +157,6 @@
         } 
       },
       {
-        "id": 15,
         "name": "EMANCIPATORS TOTE BAG (BLACK)",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",
@@ -180,7 +165,6 @@
         "image": "/images/Merch/dtb.jpeg"
       },
       {
-        "id": 16,
         "name": "FAGBO TOTE BAG",
         "price": 49.99,
         "description": "A comfortable and stylish tracksuit perfect for workouts and casual wear.",

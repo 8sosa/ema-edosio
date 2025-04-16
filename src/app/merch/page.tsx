@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ObjectId } from "mongodb";
 import { TfiLayoutLineSolid } from "react-icons/tfi";
-import Merchandise from "@/components/merch.json";
 import "./page.css";
 
 // Define the Item interface for your merchandise data
 interface Item {
-  id: number;
+  _id: ObjectId;
   name: string;
   price: number;
   image: string;
@@ -26,39 +26,49 @@ const categories = [
   { id: 4, name: "KEY CHAINS" },
 ];
 
-// Cast your merchandise data to the proper type
-const merchItems = Merchandise.merchandise as Item[];
-
 export default function HomePage() {
-  // State to track which tag is selected (if any)
+  const [merchItems, setMerchItems] = useState<Item[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Instead of calling useRef in a loop, create a container ref
-  // and initialize the refs once.
-  const categoryRefs = useRef<
-    Record<string, React.RefObject<HTMLDivElement | null>>
-  >({});
+  useEffect(() => {
+    const fetchMerch = async () => {
+      try {
+        const res = await fetch("/api/merchandise");
+        const data = await res.json();
+        setMerchItems(data);
+      } catch (err) {
+        console.error("Failed to load merchandise:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Populate the refs on the first render only
+    fetchMerch();
+  }, []);
+
+  // Refs for category sections
+  const categoryRefs = useRef<Record<string, React.RefObject<HTMLDivElement | null>>>({});
+
+  // Initialize refs
   if (Object.keys(categoryRefs.current).length === 0) {
     categories.forEach((category) => {
       categoryRefs.current[category.name] = React.createRef<HTMLDivElement>();
     });
   }
 
-  // Handler for category click – scroll to the respective section
   const handleCategoryClick = (catName: string) => {
     categoryRefs.current[catName].current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // ProductCard component with navigation to the item detail page.
   const ProductCard = ({ item }: { item: Item }) => (
-    <Link href={`/merch/${item.id}`}>
+    <Link href={`/merch/${item._id}`}>
       <div className="flex flex-col w-full cursor-pointer">
         <div className="relative w-full aspect-square bg-gray-100 rounded overflow-hidden">
           <Image
             src={item.image}
             alt={item.name}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-center"
           />
         </div>
@@ -70,13 +80,21 @@ export default function HomePage() {
     </Link>
   );
 
+  if (loading) {
+    return (
+      <main className="flex justify-center items-center h-screen bg-black text-white">
+        <p>Loading merchandise...</p>
+      </main>
+    );
+  }
+
   return (
     <main className="flex flex-col md:flex-row pt-10">
-      {/* Aside - on mobile this will be at the top, on desktop on the left */}
-      <aside className="w-full md:w-1/4 lg:w-1/5 p-4 md:sticky md:top-40 self-start">
-        <div className="p-6 rounded-md border mb-6 bg-black">
-          <TfiLayoutLineSolid className="red line mb-2" />
-          <h3 className="title fontMid font-bold mb-4 break-words text-md sm:text-xl md:text-2xl">
+      {/* Sidebar */}
+      <aside className="w-full md:w-1/4 lg:w-1/5 p-4 md:sticky md:top-40 self-start bg-black text-white">
+        <div className="p-6 rounded-md border mb-6">
+          <TfiLayoutLineSolid className="text-red-500 mb-2" />
+          <h3 className="font-bold mb-4 text-xl sm:text-2xl md:text-3xl">
             Categories
           </h3>
           <ul className="space-y-2">
@@ -84,7 +102,7 @@ export default function HomePage() {
               <li key={cat.id}>
                 <button
                   onClick={() => handleCategoryClick(cat.name)}
-                  className="text-white hover:underline text break-words whitespace-normal text-sm sm:text-base md:text-[1rem] w-full text-left"
+                  className="text-white hover:underline text-sm sm:text-base md:text-lg w-full text-left"
                 >
                   {cat.name}
                 </button>
@@ -94,24 +112,20 @@ export default function HomePage() {
         </div>
       </aside>
 
-
-      {/* Main Content */}
+      {/* Content */}
       <div className="w-full md:w-3/4 lg:w-4/5 p-4 space-y-12 pt-20">
-        {/* Sections for each category */}
         {categories.map((cat) => {
-          const items = merchItems.filter((item: Item) => item.category === cat.name);
+          const items = merchItems.filter((item) => item.category === cat.name);
           return (
             <section
               key={cat.id}
               ref={categoryRefs.current[cat.name]}
-              className="py-12 px-6 max-w-8xl"
+              className="py-12 px-6"
             >
-              <h2 className="title text-2xl md:text-3xl font-bold mb-6">
-                {cat.name}
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">{cat.name}</h2>
               {items.length > 0 ? (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {items.map((item: Item, idx: number) => (
+                  {items.map((item, idx) => (
                     <ProductCard key={idx} item={item} />
                   ))}
                 </div>

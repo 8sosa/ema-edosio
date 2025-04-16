@@ -2,31 +2,24 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ObjectId } from "mongodb";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import { AiFillStar } from "react-icons/ai";
-import rawMerch from "@/components/merch.json";
 
+// Define the Item interface for your merchandise data
 interface Item {
-  id: number;
+  _id: ObjectId;
   name: string;
   price: number;
   description: string;
   category: string;
   quantity: number;
   image: string;
-  images?: {
-    [key: string]: string;
-  };
+  images?: { [key: string]: string };
   tag?: string[];
   rating?: number;
 }
-
-interface MerchandiseData {
-  merchandise: Item[];
-}
-
-const Merchandise = rawMerch as MerchandiseData;
 
 export default function ItemPage() {
   const { id } = useParams<{ id: string }>();
@@ -38,37 +31,61 @@ export default function ItemPage() {
   // For the modal: selected image and modal state
   const [modalImage, setModalImage] = useState<string>("");
   const [showModal, setShowModal] = useState<boolean>(false);
-
-  // Moved selectedSize hook to the top so it's always called
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
-  // Some example sizes constant. This does not need to be a hook.
+  // State for recommended products
+  const [recommended, setRecommended] = useState<Item[]>([]);
+
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "3XL", "4XL"];
 
+  // Fetch the specific item data based on the URL id.
   useEffect(() => {
     if (id) {
-      const foundItem = Merchandise.merchandise.find(
-        (itm: Item) => itm.id === Number(id)
-      );
-      if (foundItem) {
-        setItem(foundItem);
-        // Default the main image to the first available image if present
-        if (foundItem.images && Object.values(foundItem.images).length > 0) {
-          setModalImage(Object.values(foundItem.images)[0]);
-        } else {
-          setModalImage(foundItem.image);
+      const fetchItem = async () => {
+        try {
+          const res = await fetch(`/api/merchandise/${id}`);
+          const data = await res.json();
+          const itemData = data as Item;
+          if (itemData.images && Object.values(itemData.images).length > 0) {
+            setModalImage(Object.values(itemData.images)[0]);
+          } else {
+            setModalImage(itemData.image);
+          }
+          setItem(itemData);
+        } catch (error) {
+          console.error("Error fetching item data", error);
         }
-      } else {
-        console.error("Item not found");
-      }
+      };
+
+      fetchItem();
     }
   }, [id]);
+
+  // Once the item is loaded, fetch recommended products from all merchandise.
+  useEffect(() => {
+    if (item) {
+      const fetchRecommended = async () => {
+        try {
+          const res = await fetch("/api/merchandise");
+          const allItems = (await res.json()) as Item[];
+          const recItems = allItems
+            .filter((p: Item) => p.category === item.category && p._id !== item._id)
+            .slice(0, 4);
+          setRecommended(recItems);
+        } catch (error) {
+          console.error("Error fetching recommended items", error);
+        }
+      };
+
+      fetchRecommended();
+    }
+  }, [item]);
 
   const handleAdd = () => {
     if (!item) return;
 
     const newItem = {
-      id: item.id.toString(),
+      id: item._id.toString(),
       title: item.name,
       price: item.price,
       quantity: quantity,
@@ -87,11 +104,6 @@ export default function ItemPage() {
     );
   }
 
-  // Recommended items: same category, not the current item.
-  const recommended: Item[] = Merchandise.merchandise
-    .filter((p: Item) => p.category === item.category && p.id !== item.id)
-    .slice(0, 4);
-
   return (
     <main className="max-w-screen-xl pt-20 lg:pt-20 mx-auto p-4 sm:p-6 lg:p-8 text-white">
       {/* Modal */}
@@ -102,7 +114,7 @@ export default function ItemPage() {
         >
           <div
             className="relative max-w-3xl w-full aspect-[1/1]"
-            onClick={(e) => e.stopPropagation()} // prevent closing when clicking on the image area
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal image area
           >
             <button
               onClick={() => setShowModal(false)}
@@ -122,15 +134,15 @@ export default function ItemPage() {
 
       {/* Breadcrumb */}
       <div className="mb-4 text-sm text-gray-200">
-        <button onClick={() => router.back()} className="underline">
+        <button onClick={() => router.back()} className="underline hover:text-gray-300">
           &larr; Back
         </button>
       </div>
 
-      {/* Main Section: images + details */}
+      {/* Main Section: Images + Details */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* Thumbnails column */}
-        {item.images && Object.values(item.images).length > 0 ? (
+        {item.images && Object.values(item.images).length > 0 && (
           <div className="hidden md:flex flex-col gap-2 w-16">
             {Object.values(item.images).map((img, index) => (
               <div
@@ -150,7 +162,7 @@ export default function ItemPage() {
               </div>
             ))}
           </div>
-        ) : null}
+        )}
 
         {/* Main Image */}
         <div className="w-full md:w-1/2 lg:w-1/2 relative max-w-lg mx-auto aspect-square bg-gray-100 rounded-md overflow-hidden">
@@ -158,6 +170,8 @@ export default function ItemPage() {
             src={item.image}
             alt={item.name}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
             className="object-cover object-center"
           />
         </div>
@@ -165,9 +179,7 @@ export default function ItemPage() {
         {/* Product Info */}
         <div className="w-full md:w-1/2 lg:w-2/5 flex flex-col gap-4 mx-auto md:mx-0">
           <h1 className="text-2xl sm:text-3xl font-bold title">{item.name}</h1>
-          <p className="text-sm text-gray-400">
-          {item.description}
-          </p>
+          <p className="text-sm text-gray-400">{item.description}</p>
           <div className="text-3xl font-semibold text-green-100">
             ${item.price.toFixed(2)}
           </div>
@@ -225,12 +237,6 @@ export default function ItemPage() {
             >
               Add to Bag
             </button>
-            {/* <button
-              className="border border-gray-500 text-gray-200 px-4 py-3 rounded hover:bg-gray-800 transition"
-              onClick={() => alert("Favorited!")}
-            >
-              Favorite ♥
-            </button> */}
           </div>
         </div>
       </div>
@@ -253,51 +259,15 @@ export default function ItemPage() {
         </p>
       </div>
 
-      {/* Description Section */}
-      {/* <div className="mt-8 border-t border-gray-600 pt-6">
-        <h2 className="text-xl font-semibold mb-4 title">Product Details</h2>
-        <p className="text-gray-200 text-sm">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue
-          mauris eget felis euismod, et placerat velit fermentum. Curabitur
-          congue enim dictum, lacinia massa in, eleifend dui.
-        </p>
-      </div> */}
-
-      {/* More Images Section (Horizontal Thumbnails) */}
-      {/* {item.images && Object.values(item.images).length > 1 && (
-        <div className="mt-8 border-t border-gray-600 pt-6">
-          <h2 className="text-xl font-semibold mb-6 title">More Images</h2>
-          <div className="flex gap-4 overflow-x-auto pb-2">
-            {Object.values(item.images).map((img, index) => (
-              <div
-                key={index}
-                className="relative w-32 h-32 rounded-md overflow-hidden flex-shrink-0 bg-gray-100 cursor-pointer"
-                onClick={() => {
-                  setModalImage(img);
-                  setShowModal(true);
-                }}
-              >
-                <Image
-                  src={img}
-                  alt={`${item.name} - image ${index + 1}`}
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )} */}
-
       {/* Recommended Products */}
       {recommended.length > 0 && (
         <div className="mt-10 border-t border-gray-600 pt-6">
           <h2 className="text-xl font-semibold mb-6">You may also like</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {recommended.map((recItem: Item) => (
+            {recommended.map((recItem) => (
               <div
-                key={recItem.id}
-                onClick={() => router.push(`/merch/${recItem.id}`)}
+                key={recItem._id.toString()}
+                onClick={() => router.push(`/merch/${recItem._id}`)}
                 className="cursor-pointer rounded-md p-4 hover:shadow-md transition flex flex-col bg-gray-800"
               >
                 <div className="relative w-full aspect-square bg-gray-200 rounded overflow-hidden">
@@ -305,6 +275,7 @@ export default function ItemPage() {
                     src={recItem.image}
                     alt={recItem.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-center"
                   />
                 </div>

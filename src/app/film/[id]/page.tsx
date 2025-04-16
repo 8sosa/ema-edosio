@@ -62,7 +62,6 @@ const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
     <main className="relative text-white min-h-screen pt-24 pb-10 px-6 overflow-hidden">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center blur-md scale-105"
-        style={{ backgroundImage: "url('/images/_.jpeg')" }}
       ></div>
 
       <div className="relative z-10 container mx-auto max-w-6xl">
@@ -96,54 +95,48 @@ const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
           </div>
         </div>
 
-       {/* Deleted Scenes Carousel */}
-        {film.deletedScenes && film.deletedScenes.length > 0 && (
-          <div className="mt-12">
-            <h2 className="title text-2xl md:text-3xl font-bold mb-4">DELETED SCENES</h2>
-            <div className="flex overflow-x-auto space-x-4 pb-4">
-              {Array.from({ length: 10 }).map((_, repeatIdx) =>
-                  film.bts.map((video, idx) => (
-                    <div key={`${repeatIdx}-${idx}`} className="min-w-[200px] flex-shrink-0 w-1/4">
-                      <video
-                        ref={(el) => {
-                          if (el) videosRef.current[repeatIdx * film.bts.length + idx] = el;
-                        }}
-                        src={video}
-                        controlsList="nodownload"
-                        loop
-                        className="w-full h-auto rounded-lg shadow-lg"
-                      />
-                    </div>
-                  ))
-                )}
-            </div>
+      {/* Deleted Scenes Carousel */}
+      {film.deletedScenes && film.deletedScenes.length > 0 && (
+        <div className="mt-12">
+          <h2 className="title text-2xl md:text-3xl font-bold mb-4">DELETED SCENES</h2>
+          <div className="flex overflow-x-auto space-x-4 pb-4">
+            {film.deletedScenes.map((video, idx) => (
+              <div key={idx} className="min-w-[200px] flex-shrink-0 w-1/4">
+                <video
+                  ref={(el) => {
+                    if (el) videosRef.current[idx] = el;
+                  }}
+                  src={video}
+                  controlsList="nodownload"
+                  loop
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
+              </div>
+            ))}
           </div>
-        )}
-
-        {/* BTS Carousel */}
-        {film.bts && film.bts.length > 0 && (
-          <div className="mt-12">
-            <h2 className="title text-2xl md:text-3xl font-bold mb-4">BTS</h2>
-            <div className="flex overflow-x-auto space-x-4 pb-4">
-              {Array.from({ length: 10 }).map((_, repeatIdx) =>
-                film.bts.map((video, idx) => (
-                  <div key={`${repeatIdx}-${idx}`} className="min-w-[200px] flex-shrink-0 w-1/4">
-                    <video
-                      ref={(el) => {
-                        if (el) videosRef.current[repeatIdx * film.bts.length + idx] = el;
-                      }}
-                      src={video}
-                      controlsList="nodownload"
-                      loop
-                      className="w-full h-auto rounded-lg shadow-lg"
-                    />
-                  </div>
-                ))
-              )}
-            </div>
+        </div>
+      )}
+      {/* BTS Carousel */}
+      {film.bts && film.bts.length > 0 && (
+        <div className="mt-12">
+          <h2 className="title text-2xl md:text-3xl font-bold mb-4">BTS</h2>
+          <div className="flex overflow-x-auto space-x-4 pb-4">
+            {film.bts.map((video, idx) => (
+              <div key={idx} className="min-w-[200px] flex-shrink-0 w-1/4">
+                <video
+                  ref={(el) => {
+                    if (el) videosRef.current[idx] = el;
+                  }}
+                  src={video}
+                  controlsList="nodownload"
+                  loop
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
+              </div>
+            ))}
           </div>
-        )}
-
+        </div>
+      )}
       </div>
     </main>
   );

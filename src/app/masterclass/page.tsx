@@ -6,7 +6,7 @@ export default function Page() {
     <>
       {/* Hero Section */}
       <section className="relative w-full bg-black text-white flex flex-col items-center py-30 px-4 my-10 md:px-8">
-        <div className="max-w-5xl w-full text-center">
+        <div className="max-w-5xl w-full textCenter">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 uppercase title">
             Master the Art of Filmmaking.
             <br />
@@ -150,7 +150,7 @@ export default function Page() {
         </div>
       </section>
       {/* CTA SECTION */}
-      <section className="bg-gray-900 py-16 px-4 md:px-8 text-center align-middle justify-center body">
+      <section className="bg-gray-900 py-16 px-4 md:px-8 textCenter align-middle justify-center body">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 title">
           Your story is your power.
         </h2>
@@ -162,7 +162,7 @@ export default function Page() {
       </section>
 
       {/* TESTIMONIALS SECTION */}
-      <section className="bg-black py-16 px-4 md:px-8 text-center body">
+      <section className="bg-black py-16 px-4 md:px-8 textCenter body">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 title">
           What Filmmakers Are Saying
         </h2>

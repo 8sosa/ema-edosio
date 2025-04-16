@@ -22,12 +22,19 @@ html {
   font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-style: normal;
+  text-align: justify;
+}
+.textCenter{
+  text-align: center !important;
 }
 p, span, div{
   font-family: "Poppins", sans-serif !important;
 }
 h1, h2, h3{
   font-family: Arial, sans-serif !important;
+}
+.bottomFooter, .topFooter {
+  width: 100%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -174,6 +181,16 @@ footer {
   border-bottom: 2px solid #fff;
   outline: none;
 }
+.inputLine1 {
+  width: 50%;
+  margin-top: 1rem;
+  padding: 5px 10px;
+  border-bottom: 2px solid #fff;
+  outline: none;
+}
+.inputLine:placeholder-shown, .inputLine1:placeholder-shown{
+  color: #fff;
+}
 .hero-image {
   flex: 1 1 400px;
   position: relative;
@@ -195,7 +212,38 @@ footer {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.btn-primary, .btn-secondary{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.btn-primary {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
 
+.btn-primary:hover {
+  background-color: #e5e7eb; /* Tailwind's gray-200 */
+}
+
+.btn-secondary {
+  background-color: rgba(75, 85, 99, 0.75); /* Tailwind's gray-600 with 75% opacity */
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #6b7280; /* solid gray-600 */
+}
 /* =========================
    Responsive Breakpoints
    ========================= */

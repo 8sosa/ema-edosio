@@ -3,27 +3,123 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String  @id @default(uuid())
-  name      String?
-  email     String  @unique
-  password  String? // Only used for credentials-based authentication
-  role      Role    @default(USER)
-  createdAt DateTime @default(now())
+  id                   String               @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String?
+  email                String               @unique
+  password             String?
+  phone                String?
+  address              String?
+  role                 Role                 @default(USER)
+  createdAt            DateTime             @default(now())
+
+  orders               Order[]
+  filmAccesses         FilmAccess[]
+  masterclassAccesses  MasterclassAccess[]
+}
+
+model Product {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  price       Float
+  createdAt   DateTime     @default(now())
+
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id              String       @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String       @db.ObjectId
+  user            User         @relation(fields: [userId], references: [id])
+  totalAmount     Float
+  shippingDetails String?
+  createdAt       DateTime     @default(now())
+
+  items           OrderItem[]
+
+  @@index([userId])
+}
+
+model OrderItem {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  orderId         String     @db.ObjectId
+  productId       String     @db.ObjectId
+  quantity        Int
+  priceAtPurchase Float
+
+  order           Order      @relation(fields: [orderId], references: [id])
+  product         Product    @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model Film {
+  id         String        @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  synopsis   String
+  createdAt  DateTime      @default(now())
+
+  accesses   FilmAccess[]
+}
+
+model FilmAccess {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String    @db.ObjectId
+  filmId     String    @db.ObjectId
+  createdAt  DateTime  @default(now())
+  expiresAt  DateTime
+
+  user       User      @relation(fields: [userId], references: [id])
+  film       Film      @relation(fields: [filmId], references: [id])
+
+  @@index([userId])
+  @@index([filmId])
+}
+
+model Masterclass {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  price       Float
+  createdAt   DateTime  @default(now())
+
+  modules     Module[]
+  accesses    MasterclassAccess[]
+}
+
+model Module {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  masterclassId String  @db.ObjectId
+  module      String
+  title       String
+  intro       String
+  videoSrc    String
+
+  masterclass Masterclass @relation(fields: [masterclassId], references: [id])
+}
+
+model MasterclassAccess {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String       @db.ObjectId
+  masterclassId  String       @db.ObjectId
+  purchasedAt    DateTime     @default(now())
+  expiresAt      DateTime?    // Optional, can be set to null for lifetime access
+
+  user           User         @relation(fields: [userId], references: [id])
+  masterclass    Masterclass  @relation(fields: [masterclassId], references: [id])
+
+  @@index([userId])
+  @@index([masterclassId])
+  @@unique([userId, masterclassId], name: "userId_masterclassId") // ✅ Named constraint
 }
 
 enum Role {
   ADMIN
   USER
-}
-
-model Film {
-  id        String   @id @default(uuid())
-  title     String
-  synopsis  String
-  createdAt DateTime @default(now())
 }

@@ -25,7 +25,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="relative w-full h-[100vh] lg:h-[100vh] overflow-hidden">
+      <section className="relative w-full h-[100vh] overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0 overflow-hidden">
           <video
@@ -38,16 +38,16 @@ export default function HomePage() {
             <source src={heroFilm.teaser} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900 opacity-60" />
         </div>
+
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-start justify-end h-full p-8 md:p-12 lg:p-16 text-white">
-          <span className="uppercase text-lg mb-4 tracking-wide font-extrabold">Out Now</span>
-          <h1 className="title text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <span className="uppercase text-lg mb-4 tracking-wide title">Out Now</span>
+          <h1 className="title text-4xl md:text-6xl lg:text-7xl mb-6">
             {heroFilm.title}
           </h1>
-          <p className="body text-md md:text-lg max-w-xl mb-8 leading-relaxed text-justify">
+          <p className="body text-md md:text-lg max-w-xl mb-8 leading-relaxed">
             {heroFilm.synopsisAlt.split('\n').map((line, index) => (
               <span key={index}>
                 {line}
@@ -55,38 +55,34 @@ export default function HomePage() {
               </span>
             ))}
           </p>
-          <div className="flex space-x-3 body">
+          <div className="flex space-x-3">
             <Link href={`/film/${heroSlug}`}>
-              <button className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition">
-                Watch Now
-              </button>
+              <button className="btn-primary body">Watch Now</button>
             </Link>
             <Link href={`/film/${heroSlug}/trailer`}>
-              <button className="bg-gray-600 bg-opacity-75 px-6 py-2 rounded hover:bg-gray-500 transition">
-                Trailer
-              </button>
+              <button className="btn-secondary body">Trailer</button>
             </Link>
           </div>
         </div>
       </section>
-      
-      {/* ABOUT Ema */}
-      <section className="flex flex-col md:flex-row items-center justify-between bg-black text-white p-10 md:p-15 lg:p-25">
+
+      {/* ABOUT EMA */}
+      <section className="flex flex-col md:flex-row items-center justify-between bg-black text-white p-10 md:p-16 lg:p-24">
         <div className="hero-content space-y-4">
-          <p className="title hero-subtitle uppercase text-sm tracking-widest">
+          <p className="hero-subtitle uppercase title text-sm tracking-widest">
             Ema Edosio Deelen
           </p>
-          <h1 className="hero-title text-3xl md:text-4xl font-bold title">
+          <h1 className="hero-title text-3xl md:text-4xl title">
             Cinema That Speaks.
           </h1>
-          <h2 className="body hero-training text-xl md:text-2xl">
+          <h2 className="hero-training text-xl md:text-2xl body">
             Stories That Stay With You.
           </h2>
           <p className="hero-description body">
             Authentic, bold, and deeply human storytelling.
           </p>
           <Link href="/filmography">
-            <button className="cta-button bg-white hover:bg-amber-300 rounded-full transition body">
+            <button className="cta-button btn-primary body">
               Watch More
             </button>
           </Link>

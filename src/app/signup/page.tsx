@@ -1,16 +1,38 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Image from "next/image"; // Import Image from next/image
 
 export default function SignupPage() {
+  const { status } = useSession();  // Removed 'session' since it's not being used directly
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [status, router]);
+
+  // Show loading state while checking session
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,33 +47,78 @@ export default function SignupPage() {
     setLoading(false);
   };
 
+  const handleOAuthSignIn = (provider: string) => {
+    signIn(provider, { callbackUrl: "/dashboard" });
+  };
+
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold">Sign Up</h1>
-      <form onSubmit={handleSignup} className="space-y-4">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="p-2 bg-blue-600 text-white rounded w-full"
-        >
-          {loading ? "Signing Up..." : "Sign Up"}
-        </button>
-      </form>
-      {message && <p className="text-red-500">{message}</p>}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-900 to-black p-4">
+      <div className="flex w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg">
+        {/* Left Side */}
+        <div className="w-1/2 bg-[url('/background-image.jpg')] bg-cover bg-center text-black p-10 hidden md:flex flex-col justify-center">
+          <h2 className="text-4xl font-bold mb-4">Create your Account</h2>
+          <p className="text-lg">Share your artwork and Get projects!</p>
+        </div>
+
+        {/* Right Side - Sign Up Form */}
+        <div className="text-black w-full md:w-1/2 p-10">
+          <h3 className="text-2xl font-bold mb-6 text-center">Sign Up</h3>
+          <form onSubmit={handleSignup} className="space-y-4">
+            <input
+              type="email"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            />
+            <div className="flex items-center">
+              <input type="checkbox" id="terms" className="mr-2" />
+              <label htmlFor="terms" className="text-sm text-gray-600">
+                Accept Terms & Conditions
+              </label>
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-black text-white py-3 rounded-md font-semibold hover:bg-gray-800 transition"
+            >
+              {loading ? "Signing Up..." : "Join us →"}
+            </button>
+          </form>
+
+          <div className="my-6 flex items-center justify-center text-sm text-gray-500">
+            <span className="mx-2">or</span>
+          </div>
+
+          <div className="space-y-3">
+            <button
+              type="button"
+              onClick={() => handleOAuthSignIn("google")}
+              className="w-full border border-gray-300 py-3 rounded-md flex items-center justify-center hover:bg-gray-100 transition"
+            >
+              <Image src="/google-icon.svg" alt="Google" className="w-5 h-5 mr-2" width={20} height={20} />
+              Sign up with Google
+            </button>
+            <button
+              type="button"
+              onClick={() => handleOAuthSignIn("apple")}
+              className="w-full bg-black text-white py-3 rounded-md flex items-center justify-center hover:bg-gray-800 transition"
+            >
+              <Image src="/apple-icon.svg" alt="Apple" className="w-5 h-5 mr-2" width={20} height={20} />
+              Sign up with Apple
+            </button>
+          </div>
+
+          {message && <p className="mt-4 text-center text-red-500">{message}</p>}
+        </div>
+      </div>
     </div>
   );
 }

@@ -20,35 +20,25 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-  
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  
+
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add("overflow-hidden");
     } else {
       document.body.classList.remove("overflow-hidden");
     }
-  
     return () => document.body.classList.remove("overflow-hidden");
   }, [menuOpen]);
-  
 
   return (
     <header
-      className={`header fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-black shadow-sm" : "bg-transparent text-black-600"
+      className={`header flex justify-center items-center fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        scrolled ? "bg-black shadow-lg" : "bg-transparent text-white"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 py-7 flex items-center justify-end md:justify-center">
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10 text-base lg:text-1xl">
+      <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between md:justify-center">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-12 text-base lg:text-xl py-4">
           <NavLink className="navLink" href="/">Home</NavLink>
           <NavLink className="navLink" href="/filmography">Watch More</NavLink>
           <NavLink className="navLink" href="/masterclass">Masterclass</NavLink>
@@ -57,8 +47,12 @@ export default function Header() {
           <NavLink className="navLink" href="/consult">Consultation</NavLink>
           <NavLink className="navLink" href="/contact">Contact</NavLink>
 
-          {/* Cart */}
-          <button onClick={openCart} className="relative cursor-pointer" aria-label="Open Cart">
+          {/* Cart Button */}
+          <button
+            onClick={openCart}
+            className="relative cursor-pointer"
+            aria-label="Open Cart"
+          >
             <ShoppingCart className="w-6 h-6 text-white" />
             {totalItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
@@ -68,7 +62,7 @@ export default function Header() {
           </button>
         </nav>
 
-        {/* Mobile Burger Icon */}
+        {/* Mobile Menu Toggle */}
         <button
           className="md:hidden text-white text-3xl focus:outline-none"
           onClick={() => setMenuOpen(true)}
@@ -79,65 +73,66 @@ export default function Header() {
       </div>
 
       {/* Mobile Off-Canvas Menu */}
-        <div
-          className={`fixed top-0 right-0 h-screen w-full bg-black transform ${
-            menuOpen ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 ease-in-out z-50`}
-        >
-          <div className="flex items-center justify-end px-4 py-3">
-            <button
-              className="text-3xl text-white focus:outline-none"
+      <div
+        className={`fixed top-0 right-0 h-screen w-full bg-black transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out z-50`}
+      >
+        <div className="flex items-center justify-end px-6 py-6">
+          <button
+            className="text-3xl text-white focus:outline-none"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close Menu"
+          >
+            <HiOutlineX />
+          </button>
+        </div>
+
+        <nav className="flex flex-col items-center px-8 pt-8 space-y-8 text-lg font-semibold py-6">
+          {[
+            { href: "/", label: "Home" },
+            { href: "/filmography", label: "Watch More" },
+            { href: "/masterclass", label: "Masterclass" },
+            { href: "/merch", label: "Shop" },
+            { href: "/about", label: "About" },
+            { href: "/consult", label: "Consultation" },
+            { href: "/contact", label: "Contact" },
+          ].map(({ href, label }, i) => (
+            <span
+              key={href}
               onClick={() => setMenuOpen(false)}
-              aria-label="Close Menu"
-            >
-              <HiOutlineX />
-            </button>
-          </div>
-
-          <nav className="flex flex-col items-center px-6 pt-4 space-y-6 text-lg font-semibold">
-            {[
-              { href: "/", label: "Home" },
-              { href: "/filmography", label: "Watch More" },
-              { href: "/masterclass", label: "Masterclass" },
-              { href: "/merch", label: "Merch" },
-              { href: "/about", label: "About" },
-              { href: "/consult", label: "Consultation" },
-              { href: "/contact", label: "Contact" },
-            ].map(({ href, label }, i) => (
-              <span
-                key={href}
-                onClick={() => setMenuOpen(false)}
-                style={{ transitionDelay: `${i * 100}ms` }}
-                className={`transition-all duration-500 ease-in-out transform ${
-                  menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
-                }`}
-              >
-                <NavLink href={href} className="navLink text-white">
-                  {label}
-                </NavLink>
-              </span>
-            ))}
-
-            <button
-              onClick={() => {
-                openCart();
-                setMenuOpen(false);
-              }}
-              className={`relative cursor-pointer transition-all duration-500 ease-in-out transform ${
+              style={{ transitionDelay: `${i * 100}ms` }}
+              className={`transition-all duration-500 ease-in-out transform ${
                 menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
               }`}
-              style={{ transitionDelay: "700ms" }}
-              aria-label="Open Cart"
             >
-              <ShoppingCart className="w-6 h-6 text-white" />
-              {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
-                  {totalItems}
-                </span>
-              )}
-            </button>
-          </nav>
-        </div>
+              <NavLink href={href} className="navLink text-white">
+                {label}
+              </NavLink>
+            </span>
+          ))}
+
+          {/* Cart Button in Mobile Menu */}
+          <button
+            onClick={() => {
+              openCart();
+              setMenuOpen(false);
+            }}
+            className={`relative cursor-pointer transition-all duration-500 ease-in-out transform ${
+              menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+            }`}
+            style={{ transitionDelay: "700ms" }}
+            aria-label="Open Cart"
+          >
+            <ShoppingCart className="w-6 h-6 text-white" />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
+                {totalItems}
+              </span>
+            )}
+          </button>
+        </nav>
+      </div>
 
       <CartDrawer />
     </header>

@@ -35,13 +35,13 @@ export default function FilmTrailerPage() {
   const embedUrl = hasYoutubeTrailer ? getEmbedUrl(film.trailerUrl) : null;
 
   return (
-    <main className="bg-black text-white pt-24 pb-10 px-6">
+    <main className="bg-black text-white pt-24 pb-10 px-6 overflow-hidden">
       <div className="container mx-auto max-w-6xl">
         {/* Back to Filmography */}
-        <Link href="/filmography" className="body text-gray-400 hover:text-gray-200 text-sm py-15">
+        <Link href="/filmography" className="text-gray-400 hover:text-gray-200 text-sm py-15">
           &lt; Back to My Films
         </Link>
-        <h1 className="text-4xl font-bold mt-4 mb-6 title">{film.title} - Trailer</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mt-6 mb-8">{film.title} - Trailer</h1>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Trailer Embed */}
           <div className="w-full lg:w-2/3 aspect-video relative bg-gray-800 overflow-hidden rounded-lg">
@@ -65,8 +65,8 @@ export default function FilmTrailerPage() {
             )}
           </div>
           {/* Synopsis Text */}
-          <div className="w-full lg:w-1/3 flex items-left border-l-2 pl-5 border-l-blue-100">
-            <p className="text-justify  leading-relaxed body align-center">{film.extendedSynopsis}</p>
+          <div className="w-full lg:w-1/3 flex items-start border-l-2 pl-5 border-l-blue-100">
+            <p className="text-justify leading-relaxed text-sm md:text-base">{film.extendedSynopsis}</p>
           </div>
         </div>
       </div>

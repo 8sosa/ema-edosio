@@ -1,6 +1,7 @@
 /* Global box-sizing */
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 /* =======================
@@ -8,19 +9,21 @@
    ======================= */
 .aboutPage {
   width: 100%;
-  background-color: #000;
+  background-color: #111; /* Dark background for consistency */
   color: #fff;
   padding-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-/* About Second Section (Content) */
+
 .aboutSecondSection {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #000000;
+  gap: 1.5rem;
+  background-color: #111;
+  padding: 1.5rem;
 }
 
 .aboutImageSection {
@@ -64,8 +67,8 @@
 }
 
 .aboutTextSection h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-size: 2rem; /* Adjusted for better consistency */
+  font-weight: 700; /* Consistent bold font */
   margin-bottom: 1rem;
 }
 
@@ -74,45 +77,50 @@
   font-weight: 200;
   margin-top: 1rem;
   line-height: 1.6;
+  color: #d1d5db; /* Light gray for better readability */
 }
+
 .aboutTextSection button {
   border: 1px solid #fff;
   padding: 1rem 2rem;
   width: max-content;
   transition: all 0.7s ease;
 }
+
 .aboutTextSection button:hover {
   background-color: #cdf9f1;
   color: #000;
 }
+
 /* =======================
    Responsive Breakpoints
    ======================= */
 
 /* 425px - 767px */
 @media (min-width: 425px) and (max-width: 767px) {
-.aboutPage{
-  padding-top: 5rem;
-}
+  .aboutPage {
+    padding-top: 5rem;
+  }
+
   .aboutSecondSection {
     gap: 1.5rem;
     padding: 1.5rem;
   }
-  
+
   .aboutImageSection {
     flex: 1 1 350px;
     padding: 0rem 3rem;
   }
-  
+
   .aboutTextSection {
     flex: 1 1 350px;
     padding: 2rem;
   }
-  
+
   .aboutTextSection h1 {
     font-size: 2rem;
   }
-  
+
   .aboutTextSection p {
     font-size: 1.1rem;
   }
@@ -120,26 +128,25 @@
 
 /* 768px - 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
-
   .aboutSecondSection {
     gap: 2rem;
     padding: 2rem;
   }
-  
+
   .aboutImageSection {
     flex: 1 1 400px;
     padding: 0rem 4rem;
   }
-  
+
   .aboutTextSection {
     flex: 1 1 400px;
     padding: 2.5rem;
   }
-  
+
   .aboutTextSection h1 {
     font-size: 2.5rem;
   }
-  
+
   .aboutTextSection p {
     font-size: 1.3rem;
   }
@@ -147,26 +154,25 @@
 
 /* 1024px - 1439px */
 @media (min-width: 1024px) and (max-width: 1439px) {
- 
   .aboutSecondSection {
     gap: 2rem;
     padding: 5rem 3rem;
   }
-  
+
   .aboutImageSection {
     flex: 1 1;
     gap: 3rem;
   }
-  
+
   .aboutTextSection {
     flex: 1 1;
     padding: 0rem 3rem;
   }
-  
+
   .aboutTextSection h1 {
     font-size: 2rem;
   }
-  
+
   .aboutTextSection p {
     font-size: 1rem;
   }
@@ -174,26 +180,25 @@
 
 /* 1440px and up */
 @media (min-width: 1440px) {
- 
   .aboutSecondSection {
     gap: 2.5rem;
     padding: 5rem 4rem;
   }
-  
+
   .aboutImageSection {
     flex: 1 1;
     gap: 4rem;
   }
-  
+
   .aboutTextSection {
     flex: 1 1;
     padding: 0rem 4rem;
   }
-  
+
   .aboutTextSection h1 {
     font-size: 3rem;
   }
-  
+
   .aboutTextSection p {
     font-size: 1.2rem;
   }

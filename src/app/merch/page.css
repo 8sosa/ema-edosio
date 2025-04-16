@@ -1,6 +1,10 @@
+/* Consistent overlay styling */
 .overlay {
-    background-color: rgba(0, 0, 0, 0.443);
+  background-color: rgba(0, 0, 0, 0.7); /* Adjusted opacity for better visibility */
 }
+
+/* Consistent font size for mid-range text */
 .fontMid {
-  font-size: 1.25rem ;
+  font-size: 1.125rem; /* Slightly adjusted to align with standard text sizes */
+  font-weight: 400;    /* Added font-weight for better consistency */
 }

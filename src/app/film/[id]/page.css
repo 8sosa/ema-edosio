@@ -1,6 +1,6 @@
 .film {
   border-radius: 0;
-  border-bottom: 1px solid #ffffff7b;
+  border-bottom: 1px solid #2e2e2e; /* Same as the previous pages */
   padding-bottom: 5rem;
 }
 
@@ -16,25 +16,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .playBtn:hover {
   background-color: #fff;
   color: black;
 }
+
+/* Film Info */
 .filmInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .film h1 {
-  font-size: 3rem;
+  font-size: 3rem; /* Matching the font size from FilmographyPage */
+  font-weight: 700;
 }
+
 .filmInfo p {
   font-size: 1rem;
   font-weight: 200;
   text-align: justify;
+  color: #d1d1d1; /* Lighter color to match previous page text style */
 }
+
 /* Responsive adjustments */
 
 /* Extra Small devices (up to 640px) */
@@ -45,6 +53,9 @@
   .film h1 {
     font-size: 2rem;
   }
+  .filmInfo p {
+    font-size: 1.1rem; /* Slightly larger than before */
+  }
 }
 
 /* Small to Medium devices (641px to 1024px) */
@@ -54,8 +65,6 @@
   }
   .filmInfo p {
     font-size: 1.3rem;
-    font-weight: 200;
-    text-align: justify;
   }
 }
 
@@ -65,8 +74,6 @@
     padding-bottom: 5rem;
   }
   .filmInfo p {
-    font-size: 2rem;
-    font-weight: 200;
-    text-align: justify;
+    font-size: 1.6rem; /* A more consistent font size with the larger screens */
   }
 }

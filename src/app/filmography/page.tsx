@@ -52,15 +52,15 @@ const categories = useMemo(() => {
     <main className="bg-black text-white min-h-screen pt-30">
       {/* CATEGORY BROWSE */}
       <section className="container mx-auto p-4 flex flex-col items-center wrap-pretty">
-        <h2 className="text-3xl font-bold text-center mb-6 title">
+        <h2 className="text-3xl font-bold textCenter mb-6 title">
           Stories that feel close to <span className="text-activeblue">home</span> — wherever{" "}
           <span className="text-activeblue">home</span> is.
         </h2>
-        <p className="text-center w-full lg:w-2/3 mx-auto body">
+        <p className="textCenter w-full lg:w-2/3 mx-auto body">
           My films explore love, identity, family, and the human experience across African cities
           and beyond. Real people. Real moments. Stories that travel.
         </p>
-        <p className="text-center w-full lg:w-2/3 mx-auto body">Start watching. Share the experience.</p>
+        <p className="textCenter w-full lg:w-2/3 mx-auto body">Start watching. Share the experience.</p>
         <div className="flex flex-wrap justify-center gap-4 py-20">
           {categories.map((category, i) => (
             <button

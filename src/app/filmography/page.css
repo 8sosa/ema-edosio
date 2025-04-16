@@ -3,12 +3,16 @@
     padding-bottom: 1rem;
 }
 
+/* Base buttons styling for consistency */
 .filmItemBtn,
 .filmItemBtn1 {
     border: 1px solid #fff;
     background-color: transparent;
-    transition: all 0.6s ease;
+    transition: all 0.3s ease;
     color: #fff;
+    font-size: 1rem;  /* Aligning font size */
+    padding: 1rem 2rem; /* Consistent padding across all buttons */
+    border-radius: 9999px;  /* Smooth round edges */
 }
 
 .filmItemBtn:hover {
@@ -29,91 +33,105 @@
 }
 
 .filmItemText h3 {
-    font-size: 2rem;
+    font-size: 2rem; /* Keep consistent heading size */
+    font-weight: 600; /* Consistent weight with homepage */
+    line-height: 1.4;
 }
 
 .filmItemText p {
     font-size: 1rem;
     padding: 1rem 0;
+    line-height: 1.6;
 }
 
 /* Small devices (640px - 767px) */
 @media (min-width: 320px) and (max-width: 767px) {
-  .filmItemText {
-      border-left: none;
-      padding: 1.5rem;
-  }
-  .filmItemText h3 {
-      font-size: 2.5rem;
-  }
-  .filmItemText p {
-      font-size: 1.1rem;
-      padding: 1.2rem 0;
-  }
-  .filmItemBtn, .filmItemBtn1 {
-    font-size: .7rem;
-    padding: 1rem 1.5rem;
-  }
+    .filmItemText {
+        border-left: none;
+        padding: 1.5rem;
+    }
+
+    .filmItemText h3 {
+        font-size: 2.5rem;
+    }
+
+    .filmItemText p {
+        font-size: 1.1rem;
+        padding: 1.2rem 0;
+    }
+
+    .filmItemBtn, .filmItemBtn1 {
+        font-size: .8rem;
+        padding: 1rem 1.5rem;
+    }
 }
 
 /* Medium devices (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .filmItemText {
-      border-left: none;
-      padding: 2rem;
-  }
-  .filmItemText h3 {
-      font-size: 3rem;
-  }
-  .filmItemText p {
-      font-size: 1.15rem;
-      padding: 1.3rem 0;
-  }
+    .filmItemText {
+        border-left: none;
+        padding: 2rem;
+    }
+
+    .filmItemText h3 {
+        font-size: 3rem;
+    }
+
+    .filmItemText p {
+        font-size: 1.15rem;
+        padding: 1.3rem 0;
+    }
 }
 
 /* Large devices (1024px - 1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
-  .filmItemText {
-      border-left: 1px solid #fff;
-      padding: 3rem 1.5rem;
-      width: 100%;
-  }
-  .filmItemText h3 {
-      font-size: 3rem;
-  }
-  .filmItemText p {
-      font-size: 1.1rem;
-      padding: 1.3rem 0;
-  }
+    .filmItemText {
+        border-left: 1px solid #fff;
+        padding: 3rem 1.5rem;
+        width: 100%;
+    }
+
+    .filmItemText h3 {
+        font-size: 3rem;
+    }
+
+    .filmItemText p {
+        font-size: 1.1rem;
+        padding: 1.3rem 0;
+    }
 }
 
 /* Extra Large devices (1280px - 1535px) */
 @media (min-width: 1280px) and (max-width: 1535px) {
-  .filmItemText {
-      border-left: 1px solid #fff;
-      padding: 6rem 2rem;
-  }
-  .filmItemText h3 {
-      font-size: 4rem;
-  }
-  .filmItemText p {
-      font-size: 1.2rem;
-      padding: 1.5rem 0;
-      max-width: 90%;
-  }
+    .filmItemText {
+        border-left: 1px solid #fff;
+        padding: 6rem 2rem;
+    }
+
+    .filmItemText h3 {
+        font-size: 4rem;
+    }
+
+    .filmItemText p {
+        font-size: 1.2rem;
+        padding: 1.5rem 0;
+        max-width: 90%;
+    }
 }
 
 /* 2XL devices (1536px and up) */
 @media (min-width: 1536px) {
-  .filmItemText {
-      border-left: 1px solid #fff;
-      padding: 7rem 2rem;
-  }
-  .filmItemText h3 {
-      font-size: 4rem;
-  }
-  .filmItemText p {
-      font-size: 1.2rem;
-      padding: 1.5rem 0;
-  }
+    .filmItemText {
+        border-left: 1px solid #fff;
+        padding: 7rem 2rem;
+    }
+
+    .filmItemText h3 {
+        font-size: 4rem;
+    }
+
+    .filmItemText p {
+        font-size: 1.2rem;
+        padding: 1.5rem 0;
+    }
 }

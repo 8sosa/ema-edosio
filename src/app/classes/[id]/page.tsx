@@ -3,14 +3,12 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import masterclassData from "@/components/modules.json";
 import { Metadata } from "next";
+import MasterclassPaywall from "@/components/MasterclassPaywall";
 
-
-// 1️⃣ Pre‑generate all module routes at build time
 export function generateStaticParams(): { id: string }[] {
   return masterclassData.modules.map((m) => ({ id: m.id }));
 }
 
-// 2️⃣ Dynamically set the page’s <title> and <meta> — now async so we can await params
 export async function generateMetadata({
   params,
 }: {
@@ -18,23 +16,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const mod = masterclassData.modules.find((m) => m.id === id);
-  if (!mod) {
-    return { title: "Module Not Found" };
-  }
+  if (!mod) return { title: "Module Not Found" };
   return {
     title: mod.title,
     description: mod.intro.replace(/\n/g, " "),
   };
 }
 
-// 3️⃣ Revalidate every hour (ISR)
 export const revalidate = 3600;
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-// 4️⃣ Make the page component async and await params before using them
 export default async function ModulePage({ params }: Props) {
   const { id } = await params;
   const moduleData = masterclassData.modules.find((m) => m.id === id);
@@ -54,19 +48,21 @@ export default async function ModulePage({ params }: Props) {
           {moduleData.module}: {moduleData.title}
         </h1>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          <div className="w-full lg:w-2/4">
-            <video
-              src={moduleData.videoSrc ?? "/videos/wnh.mp4"}
-              controls
-              preload="metadata"
-              className="w-full h-auto rounded-md"
-            />
+        <MasterclassPaywall moduleId={id} amount={30000}>
+          <div className="flex flex-col lg:flex-row gap-8">
+            <div className="w-full lg:w-2/4">
+              <video
+                src={moduleData.videoSrc ?? "/videos/wnh.mp4"}
+                controls
+                preload="metadata"
+                className="w-full h-auto rounded-md"
+              />
+            </div>
+            <div className="body w-full lg:w-2/4 prose prose-lg max-w-none">
+              <p>Transcript placeholder</p>
+            </div>
           </div>
-          <div className="body w-full lg:w-2/4 prose prose-lg max-w-none">
-            <p>Transript placeholder</p>
-          </div>
-        </div>
+        </MasterclassPaywall>
       </div>
     </main>
   );
