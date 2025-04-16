@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 import Home from "../../images/home.jpg";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+
 
 type Module = {
   id: string;
@@ -23,6 +25,7 @@ type PaystackResponse = {
 
 export default function MasterclassesPage() {
   const { data: session, status } = useSession();
+  const router = useRouter();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [modules, setModules] = useState<Module[]>([]);
   const [loading, setLoading] = useState(true);
@@ -252,8 +255,13 @@ export default function MasterclassesPage() {
                 You don&apos;t currently have access to this course. Make a one-time payment below to unlock lifetime access.
               </p>
               <button
-                onClick={handlePay}
-                disabled={!session}
+                onClick={() => {
+                  if (!session) {
+                    router.push("/login"); // This will route to the sign-in page
+                  } else {
+                    handlePay(); // Continue with Paystack payment
+                  }
+                }}
                 className="bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition body"
               >
                 {session ? "Pay ₦100,000 to Join Now" : "Sign in to Pay"}

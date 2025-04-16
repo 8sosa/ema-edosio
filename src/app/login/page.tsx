@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+// import Image from "next/image"; // Import Image from next/image
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -23,35 +25,27 @@ export default function LoginPage() {
     if (result?.error) {
       setErrorMsg(result.error);
       setLoading(false);
+      console.log(errorMsg)
     } else {
       window.location.href = "/";
     }
   };
+  // const handleOAuthSignIn = (provider: string) => {
+  //   signIn(provider, { callbackUrl: "/dashboard" });
+  // };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Panel */}
-      <div className="w-1/2 bg-gradient-to-br from-purple-500 via-pink-400 to-yellow-300 text-white flex items-center justify-center flex-col p-12">
-        <div className="text-4xl font-bold mb-2">Welcome Back!</div>
-        {/* Optional logo */}
-        <div className="mt-4">
-          <svg
-            className="w-10 h-10 text-white"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M10 0L12.4 6H18L13.5 9.9L15.9 16L10 12.2L4.1 16L6.5 9.9L2 6H7.6L10 0Z" />
-          </svg>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-900 to-black p-4">
+      <div className="flex w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg">
+        {/* Left Side */}
+        <div className="w-1/2 bg-[url('/background-image.jpg')] bg-cover bg-center text-black p-10 hidden md:flex flex-col justify-center">
+          <h2 className="text-4xl font-bold mb-4">Create your Account</h2>
+          <p className="text-lg">Watch my films and join my masterclass!</p>
         </div>
-      </div>
 
-      {/* Right Panel */}
-      <div className="w-1/2 flex items-center justify-center p-12">
-        <div className="w-full max-w-md">
-          <h2 className="text-2xl font-semibold mb-1">Login</h2>
-          <p className="text-gray-500 mb-6">
-            Welcome back! Please login to your account.
-          </p>
+        {/* Right Side - Sign Up Form */}
+        <div className="text-black w-full md:w-1/2 p-10">
+          <h3 className="text-2xl font-bold mb-6 text-center">Sign In</h3>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm mb-1">User Name</label>
@@ -99,8 +93,30 @@ export default function LoginPage() {
               Signup
             </Link>
           </p>
+
+          {/* <div className="my-6 flex items-center justify-center text-sm text-gray-500">
+            <span className="mx-2">or</span>
+          </div>
+
+          <div className="space-y-3">
+            <button
+              type="button"
+              onClick={() => handleOAuthSignIn("google")}
+              className="w-full border border-gray-300 py-3 rounded-md flex items-center justify-center hover:bg-gray-100 transition"
+            >
+              <Image src="/google-icon.svg" alt="Google" className="w-5 h-5 mr-2" width={20} height={20} />
+              Sign up with Google
+            </button>
+            <button
+              type="button"
+              onClick={() => handleOAuthSignIn("apple")}
+              className="w-full bg-black text-white py-3 rounded-md flex items-center justify-center hover:bg-gray-800 transition"
+            >
+              <Image src="/apple-icon.svg" alt="Apple" className="w-5 h-5 mr-2" width={20} height={20} />
+              Sign up with Apple
+            </button>
+          </div> */}
         </div>
       </div>
-    </div>
-  );
+    </div>  );
 }

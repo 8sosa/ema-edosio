@@ -1,8 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { signIn, useSession } from "next-auth/react";
+import { 
+  // signIn,
+   useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Image from "next/image"; // Import Image from next/image
+import Link from "next/link";
+// import Image from "next/image"; // Import Image from next/image
 
 export default function SignupPage() {
   const { status } = useSession();  // Removed 'session' since it's not being used directly
@@ -41,15 +44,17 @@ export default function SignupPage() {
 
     if (res.ok) {
       setMessage("Signup successful! You can now log in.");
+      
     } else {
       setMessage("Error signing up.");
     }
     setLoading(false);
   };
+  console.log(message)
 
-  const handleOAuthSignIn = (provider: string) => {
-    signIn(provider, { callbackUrl: "/dashboard" });
-  };
+  // const handleOAuthSignIn = (provider: string) => {
+  //   signIn(provider, { callbackUrl: "/dashboard" });
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-900 to-black p-4">
@@ -57,7 +62,7 @@ export default function SignupPage() {
         {/* Left Side */}
         <div className="w-1/2 bg-[url('/background-image.jpg')] bg-cover bg-center text-black p-10 hidden md:flex flex-col justify-center">
           <h2 className="text-4xl font-bold mb-4">Create your Account</h2>
-          <p className="text-lg">Share your artwork and Get projects!</p>
+          <p className="text-lg">Watch my films and join my masterclass!</p>
         </div>
 
         {/* Right Side - Sign Up Form */}
@@ -92,11 +97,16 @@ export default function SignupPage() {
               {loading ? "Signing Up..." : "Join us →"}
             </button>
           </form>
-
-          <div className="my-6 flex items-center justify-center text-sm text-gray-500">
+          <p className="text-sm mt-6 text-gray-600">
+            Already have an account?{" "}
+            <Link href="/login" className="text-purple-600 hover:underline">
+              Sign In
+            </Link>
+          </p>
+          {/* <div className="my-6 flex items-center justify-center text-sm text-gray-500">
             <span className="mx-2">or</span>
-          </div>
-
+          </div> */}
+{/* 
           <div className="space-y-3">
             <button
               type="button"
@@ -114,9 +124,7 @@ export default function SignupPage() {
               <Image src="/apple-icon.svg" alt="Apple" className="w-5 h-5 mr-2" width={20} height={20} />
               Sign up with Apple
             </button>
-          </div>
-
-          {message && <p className="mt-4 text-center text-red-500">{message}</p>}
+          </div> */}
         </div>
       </div>
     </div>

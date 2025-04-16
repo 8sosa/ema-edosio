@@ -36,6 +36,7 @@ export default function HomePage() {
         const res = await fetch("/api/merchandise");
         const data = await res.json();
         setMerchItems(data);
+        // console.log("Fetched merch data:", data); 
       } catch (err) {
         console.error("Failed to load merchandise:", err);
       } finally {
@@ -83,7 +84,7 @@ export default function HomePage() {
   if (loading) {
     return (
       <main className="flex justify-center items-center h-screen bg-black text-white">
-        <p>Loading merchandise...</p>
+        <p>Loading Merchandise...</p>
       </main>
     );
   }
