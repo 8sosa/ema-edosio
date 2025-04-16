@@ -11,8 +11,10 @@ export default function SignupPage() {
   const { status } = useSession();  // Removed 'session' since it's not being used directly
   const router = useRouter();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -44,7 +46,7 @@ export default function SignupPage() {
 
     if (res.ok) {
       setMessage("Signup successful! You can now log in.");
-      
+
     } else {
       setMessage("Error signing up.");
     }
@@ -60,9 +62,9 @@ export default function SignupPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-900 to-black p-4">
       <div className="flex w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg">
         {/* Left Side */}
-        <div className="w-1/2 bg-[url('/background-image.jpg')] bg-cover bg-center text-black p-10 hidden md:flex flex-col justify-center">
-          <h2 className="text-4xl font-bold mb-4">Create your Account</h2>
-          <p className="text-lg">Watch my films and join my masterclass!</p>
+        <div className="w-1/2 bg-[url('/images/WNH/still1.jpg')] bg-cover bg-center text-black p-10 hidden md:flex flex-col justify-center">
+          {/* <h2 className="text-4xl font-bold mb-4">Create your Account</h2>
+          <p className="text-lg">Watch my films and join my masterclass!</p> */}
         </div>
 
         {/* Right Side - Sign Up Form */}
@@ -70,10 +72,24 @@ export default function SignupPage() {
           <h3 className="text-2xl font-bold mb-6 text-center">Sign Up</h3>
           <form onSubmit={handleSignup} className="space-y-4">
             <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            />
+            <input
               type="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            />
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
             <input
@@ -83,12 +99,7 @@ export default function SignupPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
-            <div className="flex items-center">
-              <input type="checkbox" id="terms" className="mr-2" />
-              <label htmlFor="terms" className="text-sm text-gray-600">
-                Accept Terms & Conditions
-              </label>
-            </div>
+
             <button
               type="submit"
               disabled={loading}
@@ -99,7 +110,7 @@ export default function SignupPage() {
           </form>
           <p className="text-sm mt-6 text-gray-600">
             Already have an account?{" "}
-            <Link href="/login" className="text-purple-600 hover:underline">
+            <Link href="/login" className="text-activeblue hover:underline">
               Sign In
             </Link>
           </p>

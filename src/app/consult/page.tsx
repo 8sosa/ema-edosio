@@ -60,7 +60,7 @@ export default function ConsultPage() {
                     required
                     value={form[id as keyof typeof form]}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+                    className="inputLine"
                     />
                 </div>
                 ))}
@@ -77,7 +77,7 @@ export default function ConsultPage() {
                     required
                     value={form.project}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+                    className="inputLine"
                 />
                 </div>
     
@@ -98,7 +98,7 @@ export default function ConsultPage() {
                         required
                         value={form[id as keyof typeof form]}
                         onChange={handleChange}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+                        className="inputLine"
                     />
                     </div>
                 ))}

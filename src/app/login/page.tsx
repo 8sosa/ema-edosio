@@ -38,9 +38,9 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-900 to-black p-4">
       <div className="flex w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg">
         {/* Left Side */}
-        <div className="w-1/2 bg-[url('/background-image.jpg')] bg-cover bg-center text-black p-10 hidden md:flex flex-col justify-center">
-          <h2 className="text-4xl font-bold mb-4">Create your Account</h2>
-          <p className="text-lg">Watch my films and join my masterclass!</p>
+        <div className="w-1/2 bg-[url('/images/WNH/still1.jpg')] bg-cover bg-center text-black p-10 hidden md:flex flex-col pt-25">
+          {/* <h2 className="text-4xl font-bold mb-4">Create your Account</h2>
+          <p className="text-lg">Watch my films and join my masterclass!</p> */}
         </div>
 
         {/* Right Side - Sign Up Form */}
@@ -71,17 +71,17 @@ export default function LoginPage() {
             </div>
             <div className="flex items-center justify-between text-sm text-gray-600">
               <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-purple-600" />
+                <input type="checkbox" className="accent-activeblue" />
                 Remember Me
               </label>
-              <a href="#" className="text-purple-600 hover:underline">
+              <a href="#" className="text-activeblue hover:underline">
                 Forgot Password?
               </a>
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="p-3 bg-purple-600 hover:bg-purple-700 text-white rounded w-full font-semibold transition"
+              className="w-full bg-black text-white py-3 rounded-md font-semibold hover:bg-gray-800 transition"
             >
               {loading ? "Logging in..." : "Login"}
             </button>
@@ -89,7 +89,7 @@ export default function LoginPage() {
           </form>
           <p className="text-sm mt-6 text-gray-600">
             New User?{" "}
-            <Link href="/signup" className="text-purple-600 hover:underline">
+            <Link href="/signup" className="text-activeblue hover:underline">
               Signup
             </Link>
           </p>

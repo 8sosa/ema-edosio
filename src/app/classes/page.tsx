@@ -194,7 +194,7 @@ export default function MasterclassesPage() {
             </p>
             <Link
               href="#modules"
-              className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition body"
+              className="btn-primary"
             >
               Learn More
             </Link>
@@ -213,14 +213,14 @@ export default function MasterclassesPage() {
       <section className="py-16 bg-white text-black" id="modules">
         <div className="max-w-7xl mx-auto px-4">
           {loading ? (
-            <p className="text-center">Loading...</p>
+            <p className="text-center text-lg">Loading...</p>
           ) : hasAccess ? (
             <>
               <div className="mb-10 text-center">
-                <h2 className="text-3xl font-bold mb-4 title">
+                <h2 className="text-6xl md:text-5xl font-bold mb-4 title">
                   Masterclass Modules Overview
                 </h2>
-                <p className="text-gray-600 body">
+                <p className="text-gray-600 text-lg body">
                   Explore the comprehensive modules designed to guide you from the creative process to monetization.
                 </p>
               </div>
@@ -238,7 +238,7 @@ export default function MasterclassesPage() {
                     </p>
                     <Link
                       href={`/classes/${module.id}`}
-                      className="inline-block bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition body"
+                      className="btn-secondary"
                     >
                       Learn More
                     </Link>
@@ -247,11 +247,11 @@ export default function MasterclassesPage() {
               </div>
             </>
           ) : (
-            <div className="text-center max-w-xl mx-auto">
-              <h2 className="text-3xl font-bold mb-4 title">
+            <div className="textCenter max-w-xl mx-auto forceCenter">
+              <h2 className="text-6xl md:text-5xl font-bold mb-4 title">
                 Join the Masterclass
               </h2>
-              <p className="text-gray-600 mb-6 body">
+              <p className="text-gray-600 mb-6 body text-lg textCenter">
                 You don&apos;t currently have access to this course. Make a one-time payment below to unlock lifetime access.
               </p>
               <button
@@ -262,7 +262,7 @@ export default function MasterclassesPage() {
                     handlePay(); // Continue with Paystack payment
                   }
                 }}
-                className="bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition body"
+                className="btn-secondary"
               >
                 {session ? "Pay ₦100,000 to Join Now" : "Sign in to Pay"}
               </button>

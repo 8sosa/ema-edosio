@@ -60,25 +60,25 @@ export default function HomePage() {
               <button className="btn-primary body">Watch Now</button>
             </Link>
             <Link href={`/film/${heroSlug}/trailer`}>
-              <button className="btn-secondary body">Trailer</button>
+              <button className="pri2 body">Trailer</button>
             </Link>
           </div>
         </div>
       </section>
 
       {/* ABOUT EMA */}
-      <section className="flex flex-col md:flex-row items-center justify-between bg-black text-white p-10 md:p-16 lg:p-24">
+      <section className="flex flex-col md:flex-row items-center justify-between bg-black text-white p-8 md:p-12 lg:p-16">
         <div className="hero-content space-y-4">
           <p className="hero-subtitle uppercase title text-sm tracking-widest">
             Ema Edosio Deelen
           </p>
-          <h1 className="hero-title text-3xl md:text-4xl title">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl title">
             Cinema That Speaks.
           </h1>
-          <h2 className="hero-training text-xl md:text-2xl body">
+          <h2 className="hero-training text-4xl md:text-5xl font-bold body">
             Stories That Stay With You.
           </h2>
-          <p className="hero-description body">
+          <p className="body text-md md:text-lg max-w-xl mb-8 leading-relaxed">
             Authentic, bold, and deeply human storytelling.
           </p>
           <Link href="/filmography">

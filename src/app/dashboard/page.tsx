@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 interface OrderItem {
   id: string;
@@ -64,15 +65,11 @@ export default function DashboardPage() {
   }
 
   if (!session) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Please sign in to view your dashboard.</p>
-      </div>
-    );
+    redirect("/");
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white px-10 pt-40">
+    <div className="min-h-screen bg-black text-white px-10 pt-40">
       <div className="flex justify-between mb-6">
         <h1 className="text-3xl font-bold">Welcome, {userDetails?.name || "Friend"}</h1>
         <button

@@ -45,7 +45,7 @@ export default function CartDrawer() {
             >
               <p>Please log in to checkout.</p>
               <button
-                onClick={() => router.push("/api/auth/signin")}
+                onClick={() => router.push("/login")}
                 className="mt-4 bg-blue-600 text-white px-4 py-2 rounded"
               >
                 Sign In
