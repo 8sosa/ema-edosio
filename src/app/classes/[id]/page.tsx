@@ -48,7 +48,7 @@ export default async function ModulePage({ params }: Props) {
           {moduleData.module}: {moduleData.title}
         </h1>
 
-        <MasterclassPaywall moduleId={id} amount={30000}>
+        <MasterclassPaywall masterclassId={id} amount={30000}>
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="w-full lg:w-2/4">
               <video
